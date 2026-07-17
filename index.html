@@ -210,7 +210,7 @@
   
 <script>
 (function () {
-  var MIN_SHOW = 10;   // counter stays hidden until this many downloads
+  var MIN_SHOW = 2;   // counter stays hidden until this many downloads
   fetch("https://api.github.com/repos/RNAlgotrading/rnalgotrading-site/releases")
     .then(function (r) { return r.json(); })
     .then(function (rels) {
