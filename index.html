@@ -100,6 +100,7 @@
     <a class="btn btn-ghost" href="https://mail.google.com/mail/?view=cm&fs=1&to=RNAlgotrading@gmail.com&su=RN%20TradeLab%20-%20Early%20Access">Get early access</a>
   </div>
   <div style="margin-top:18px">
+    <span class="pill" id="dl-count" hidden style="color:#35d07f; border-color:#35d07f;"></span>
     <span class="pill">No broker needed for the trial</span>
     <span class="pill">Sample data included</span>
     <span class="pill">No orders placed - ever</span>
@@ -206,6 +207,26 @@
   </div>
   <p style="margin-top:14px">&copy; RNAlgotrading 2026</p>
 </footer>
-
+  
+<script>
+(function () {
+  var MIN_SHOW = 10;   // counter stays hidden until this many downloads
+  fetch("https://api.github.com/repos/RNAlgotrading/rnalgotrading-site/releases")
+    .then(function (r) { return r.json(); })
+    .then(function (rels) {
+      var n = 0;
+      (rels || []).forEach(function (rel) {
+        (rel.assets || []).forEach(function (a) { n += a.download_count || 0; });
+      });
+      if (n >= MIN_SHOW) {
+        var el = document.getElementById("dl-count");
+        el.textContent = "\u2B07 " + n.toLocaleString() +
+                         " downloads and counting \u2014 why wait?";
+        el.hidden = false;
+      }
+    })
+    .catch(function () {});   // API hiccup -> simply show nothing
+})();
+</script>
 </body>
 </html>
