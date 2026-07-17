@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>RNAlgotrading - RN TradeLab | Test your trading ideas before the market tests you</title>
+<meta name="description" content="RNAlgotrading builds practical research tools for Indian retail traders. RN TradeLab: walk-forward backtesting, portfolio analytics and live signal scanning for NSE stocks. 7-day free trial, no broker needed.">
+<style>
+  :root { --bg:#1c2026; --panel:#23272e; --card:#2b303a; --accent:#4a9eff;
+          --green:#35d07f; --text:#e8eaed; --sub:#9aa0aa; --border:#3a404d; }
+  * { margin:0; padding:0; box-sizing:border-box; }
+  body { background:var(--bg); color:var(--text);
+         font-family:'Segoe UI', system-ui, sans-serif; line-height:1.6; }
+  .wrap { max-width:1000px; margin:0 auto; padding:0 20px; }
+  nav { background:var(--panel); border-bottom:1px solid var(--border);
+        position:sticky; top:0; z-index:10; }
+  .nav-inner { max-width:1000px; margin:0 auto; padding:14px 20px;
+        display:flex; align-items:center; gap:22px; flex-wrap:wrap; }
+  .brand { font-weight:700; font-size:1.15rem; color:var(--text); }
+  .brand span { color:var(--accent); }
+  nav a { color:var(--sub); text-decoration:none; font-size:.95rem; }
+  nav a:hover { color:var(--accent); }
+  header { padding:56px 0 40px; text-align:center; }
+  .kicker { color:var(--sub); font-size:1rem; }
+  h1 { font-size:2.5rem; color:var(--accent); margin-top:6px; }
+  .tagline { font-size:1.25rem; margin:10px 0 4px; }
+  .sub { color:var(--sub); }
+  .video-wrap { position:relative; padding-bottom:56.25%; height:0;
+        margin:30px auto 0; max-width:860px; border-radius:12px;
+        overflow:hidden; border:1px solid var(--border); }
+  .video-wrap iframe { position:absolute; top:0; left:0;
+        width:100%; height:100%; border:0; }
+  .btn { display:inline-block; margin:26px 8px 0; padding:14px 34px;
+         border-radius:8px; font-size:1.05rem; font-weight:600;
+         text-decoration:none; }
+  .btn-primary { background:var(--accent); color:#fff; }
+  .btn-ghost { border:2px solid var(--accent); color:var(--accent); }
+  .pill { display:inline-block; background:var(--card); border:1px solid var(--border);
+          border-radius:20px; padding:4px 14px; margin:4px; font-size:.9rem; color:var(--sub); }
+  section { padding:44px 0; border-top:1px solid var(--border); }
+  h2 { font-size:1.7rem; margin-bottom:22px; }
+  .grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(280px,1fr)); gap:16px; }
+  .card { background:var(--card); border:1px solid var(--border);
+          border-radius:10px; padding:20px; }
+  .card h3 { color:var(--accent); font-size:1.05rem; margin-bottom:8px; }
+  .card p { color:var(--sub); font-size:.95rem; }
+  .steps { counter-reset:s; }
+  .step { background:var(--card); border:1px solid var(--border); border-radius:10px;
+          padding:18px 20px 18px 64px; margin-bottom:12px; position:relative; }
+  .step::before { counter-increment:s; content:counter(s); position:absolute;
+          left:18px; top:16px; width:30px; height:30px; border-radius:50%;
+          background:var(--accent); color:#fff; font-weight:700;
+          display:flex; align-items:center; justify-content:center; }
+  .shots { display:grid; grid-template-columns:repeat(auto-fit,minmax(300px,1fr)); gap:14px; }
+  .shots img { width:100%; border-radius:8px; border:1px solid var(--border); }
+  .price { text-align:center; }
+  .price .amount { font-size:2.4rem; color:var(--green); font-weight:700; }
+  details { background:var(--card); border:1px solid var(--border);
+            border-radius:8px; padding:14px 18px; margin-bottom:10px; }
+  summary { cursor:pointer; font-weight:600; }
+  details p { color:var(--sub); margin-top:8px; }
+  footer { padding:36px 0 48px; border-top:1px solid var(--border);
+           color:var(--sub); font-size:.85rem; text-align:center; }
+  .disclaimer { background:var(--panel); border:1px solid var(--border);
+           border-radius:8px; padding:14px 18px; margin-top:18px; font-size:.85rem; }
+  a { color:var(--accent); }
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="nav-inner">
+    <div class="brand">RN<span>Algotrading</span></div>
+    <a href="#product">Product</a>
+    <a href="#how">How it works</a>
+    <a href="#pricing">Pricing</a>
+    <a href="#faq">FAQ</a>
+    <a href="https://mail.google.com/mail/?view=cm&fs=1&to=RNAlgotrading@gmail.com&su=RNAlgotrading%20-%20Question">Contact</a>
+  </div>
+</nav>
+
+<header class="wrap" id="product">
+  <p class="kicker">RNAlgotrading builds practical research tools for Indian retail traders. Our flagship:</p>
+  <h1>RN TradeLab</h1>
+  <p class="tagline">Test. Learn. Then trade.</p>
+  <p class="sub">Prove your strategy works on data it has never seen -
+     <em>before</em> you risk a single rupee on NSE stocks.</p>
+
+  <div class="video-wrap">
+    <iframe src="https://www.youtube.com/embed/JsfZJRdZ1rg"
+            title="RN TradeLab - overview"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+            allowfullscreen></iframe>
+  </div>
+
+  <div>
+    <!-- After creating your GitHub Release, paste the zip's asset URL below -->
+    <a class="btn btn-primary" href="PASTE_GITHUB_RELEASE_ZIP_URL_HERE">
+       Download for Windows (free 7-day trial)</a>
+    <a class="btn btn-ghost" href="https://mail.google.com/mail/?view=cm&fs=1&to=RNAlgotrading@gmail.com&su=RN%20TradeLab%20-%20Early%20Access">Get early access</a>
+  </div>
+  <div style="margin-top:18px">
+    <span class="pill">No broker needed for the trial</span>
+    <span class="pill">Sample data included</span>
+    <span class="pill">No orders placed - ever</span>
+  </div>
+</header>
+
+<section class="wrap">
+  <h2>Why RN TradeLab</h2>
+  <div class="grid">
+    <div class="card"><h3>Honest backtesting</h3>
+      <p>Walk-forward 70/30 split: your strategy is judged only on the 30%
+      of history it never saw. Beautiful in-sample curves that collapse
+      out-of-sample are exposed, not hidden.</p></div>
+    <div class="card"><h3>Your own strategies</h3>
+      <p>Write entry logic in the built-in editor with a guided template.
+      Validated automatically, registered instantly - each strategy is its
+      own file.</p></div>
+    <div class="card"><h3>Discipline built in</h3>
+      <p>Trend, time-window and volatility filters plus daily / weekly /
+      monthly loss limits - simulated inside the backtest, with no
+      lookahead bias.</p></div>
+    <div class="card"><h3>Portfolios, not bets</h3>
+      <p>Sector-aware selection and a correlation-aware optimizer that
+      avoids stocks which lose money on the same days. Sharpe, drawdown
+      and rupee P&amp;L under a realistic capital model.</p></div>
+    <div class="card"><h3>Live signal scanning</h3>
+      <p>During market hours the app scans your portfolio at every
+      completed bar - locked to the exact setup you validated. You place
+      every trade yourself.</p></div>
+    <div class="card"><h3>Market context</h3>
+      <p>World market timings in IST and a live sector heatmap of the
+      Indian market - see where the money is rotating today.</p></div>
+  </div>
+</section>
+
+<section class="wrap">
+  <h2>Screenshots</h2>
+  <div class="shots">
+    <img src="images/backtest.png" alt="Walk-forward backtest results">
+    <img src="images/portfolio.png" alt="Portfolio analytics">
+    <img src="images/heatmap.png" alt="Live sector heatmap">
+    <img src="images/signals.png" alt="Live signal scanning">
+  </div>
+</section>
+
+<section class="wrap" id="how">
+  <h2>Get started in 3 steps</h2>
+  <div class="steps">
+    <div class="step"><b>Download &amp; run.</b> Unzip, double-click
+      RN_TradeLab.exe. No Python, no installs. (Windows SmartScreen may
+      warn about a new publisher - click "More info &rarr; Run anyway".)</div>
+    <div class="step"><b>Sign up &amp; load sample data.</b> Your 7-day
+      trial starts. One click generates 50 demo stocks - every feature
+      works with zero configuration and no broker account.</div>
+    <div class="step"><b>Test your ideas.</b> Backtest, build portfolios,
+      and when you're ready for real NSE data, connect your own Upstox
+      API from Broker Settings inside the app.</div>
+  </div>
+</section>
+
+<section class="wrap price" id="pricing">
+  <h2>Pricing</h2>
+  <p><span class="amount">Rs 299</span> / month &nbsp;after a free 7-day trial</p>
+  <p class="sub" style="margin-top:8px">Subscribe from inside the app:
+     click "Activate License", send the one-click request, and receive
+     your key by email. Works fully with sample data even before your
+     broker API is ready.</p>
+</section>
+
+<section class="wrap" id="faq">
+  <h2>Frequently asked</h2>
+  <details><summary>Do I have to switch my broker to Upstox?</summary>
+    <p>No. RN TradeLab never places orders - Upstox is used purely as a
+    data feed for candles and quotes. Many users open a free Upstox
+    account only for data and keep trading wherever they already do.
+    And the entire trial runs on included sample data with no broker at
+    all.</p></details>
+  <details><summary>Does the app trade automatically?</summary>
+    <p>Never. It generates research and signals; every real trade is
+    placed by you, in your own broker app. This is an educational
+    research tool.</p></details>
+  <details><summary>Windows says "Windows protected your PC" - is it safe?</summary>
+    <p>That is Microsoft SmartScreen flagging a new, unsigned publisher -
+    normal for small independent software. Click "More info" then "Run
+    anyway". A code-signing certificate is planned as the user base
+    grows.</p></details>
+  <details><summary>Will my strategies or data leave my computer?</summary>
+    <p>No. Your broker keys, data, strategies and results live in files
+    next to the app on your PC. Nothing is uploaded.</p></details>
+  <details><summary>Which Windows versions are supported?</summary>
+    <p>Windows 10 and 11, 64-bit.</p></details>
+</section>
+
+<footer class="wrap">
+  <p><b>RNAlgotrading</b> - practical tools for traders who test first.</p>
+  <p style="margin-top:6px">www.RNAlgotrading.com &middot; RNAlgotrading@gmail.com</p>
+  <div class="disclaimer">
+    DISCLAIMER: RN TradeLab is a purely educational tool for learning to
+    test trading ideas on historical data. It does not provide investment
+    advice, tips or recommendations, does not place orders, and any
+    results shown are from backtests on historical data - not indicative
+    of future returns. Trading involves risk of loss. This is not
+    SEBI-registered investment advice.
+  </div>
+  <p style="margin-top:14px">&copy; RNAlgotrading 2026</p>
+</footer>
+
+</body>
+</html>
