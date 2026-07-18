@@ -214,5 +214,25 @@
   <p style="margin-top:14px">&copy; RNAlgotrading 2026</p>
 </footer>
 
+  <script>
+(function () {
+  var MIN_SHOW = 10;   // counter stays hidden until this many downloads
+  fetch("https://api.github.com/repos/RNAlgotrading/rnalgotrading-site/releases")
+    .then(function (r) { return r.json(); })
+    .then(function (rels) {
+      var n = 0;
+      (rels || []).forEach(function (rel) {
+        (rel.assets || []).forEach(function (a) { n += a.download_count || 0; });
+      });
+      if (n >= MIN_SHOW) {
+        var el = document.getElementById("dl-count");
+        el.textContent = "\u2B07 " + n.toLocaleString() +
+                         " downloads and counting \u2014 why wait?";
+        el.hidden = false;
+      }
+    })
+    .catch(function () {});   // API hiccup -> simply show nothing
+})();
+</script>
 </body>
 </html>
