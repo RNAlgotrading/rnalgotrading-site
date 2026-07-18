@@ -4,7 +4,8 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>RNAlgotrading - RN TradeLab | Test your trading ideas before the market tests you</title>
-<meta name="description" content="RNAlgotrading builds practical research tools for Indian retail traders. RN TradeLab: walk-forward backtesting, portfolio analytics and live signal scanning for NSE stocks. 7-day free trial, no broker needed.">
+<meta name="description" content="RNAlgotrading builds practical research tools for Indian retail traders. RN TradeLab: walk-forward backtesting, portfolio analytics and live signal scanning for NSE stocks. 14-day free trial, no broker needed.">
+<link rel="icon" type="image/x-icon" href="favicon.ico">
 <style>
   :root { --bg:#1c2026; --panel:#23272e; --card:#2b303a; --accent:#4a9eff;
           --green:#35d07f; --text:#e8eaed; --sub:#9aa0aa; --border:#3a404d; }
@@ -16,11 +17,14 @@
         position:sticky; top:0; z-index:10; }
   .nav-inner { max-width:1000px; margin:0 auto; padding:14px 20px;
         display:flex; align-items:center; gap:22px; flex-wrap:wrap; }
-  .brand { font-weight:700; font-size:1.15rem; color:var(--text); }
+  .brand { font-weight:700; font-size:1.15rem; color:var(--text);
+        display:flex; align-items:center; }
+  .brand img { height:28px; margin-right:9px; }
   .brand span { color:var(--accent); }
   nav a { color:var(--sub); text-decoration:none; font-size:.95rem; }
   nav a:hover { color:var(--accent); }
-  header { padding:56px 0 40px; text-align:center; }
+  header { padding:48px 0 40px; text-align:center; }
+  .hero-logo { height:96px; margin-bottom:14px; }
   .kicker { color:var(--sub); font-size:1rem; }
   h1 { font-size:2.5rem; color:var(--accent); margin-top:6px; }
   .tagline { font-size:1.25rem; margin:10px 0 4px; }
@@ -70,7 +74,7 @@
 
 <nav>
   <div class="nav-inner">
-    <div class="brand">RN<span>Algotrading</span></div>
+    <div class="brand"><img src="logo.png" alt="RN">RN<span>Algotrading</span></div>
     <a href="#product">Product</a>
     <a href="#how">How it works</a>
     <a href="#pricing">Pricing</a>
@@ -80,6 +84,7 @@
 </nav>
 
 <header class="wrap" id="product">
+  <img class="hero-logo" src="logo.png" alt="RN TradeLab">
   <p class="kicker">RNAlgotrading builds practical research tools for Indian retail traders. Our flagship:</p>
   <h1>RN TradeLab</h1>
   <p class="tagline">Test. Learn. Then trade.</p>
@@ -94,15 +99,13 @@
   </div>
 
   <div>
-    <!-- After creating your GitHub Release, paste the zip's asset URL below -->
     <a class="btn btn-primary" href="https://github.com/RNAlgotrading/rnalgotrading-site/releases/download/v0.2/RN_TradeLab.zip">
        Download for Windows (free 14-day trial)</a>
     <a class="btn btn-ghost" href="https://mail.google.com/mail/?view=cm&fs=1&to=RNAlgotrading@gmail.com&su=RN%20TradeLab%20-%20Early%20Access">Get early access</a>
   </div>
   <div style="margin-top:18px">
-    <span class="pill" id="dl-count" hidden style="color:#35d07f; border-color:#35d07f;"></span>
     <span class="pill">No broker needed for the trial</span>
-    <span class="pill">Sample data included</span>
+    <span class="pill">Free Yahoo data + sample data included</span>
     <span class="pill">No orders placed - ever</span>
   </div>
 </header>
@@ -139,10 +142,10 @@
 <section class="wrap">
   <h2>Screenshots</h2>
   <div class="shots">
-    <img src="Images/backtest.png" alt="backtest">
-    <img src="Images/portfolio.png" alt="portfolio">
-    <img src="Images/heatmap.png" alt="heatmap">
-    <img src="Images/signals.png" alt="signals">
+    <img src="Images/backtest.png" alt="Walk-forward backtest results">
+    <img src="Images/portfolio.png" alt="Portfolio analytics">
+    <img src="Images/heatmap.png" alt="Live sector heatmap">
+    <img src="Images/signals.png" alt="Live signal scanning">
   </div>
 </section>
 
@@ -152,11 +155,11 @@
     <div class="step"><b>Download &amp; run.</b> Unzip, double-click
       RN_TradeLab.exe. No Python, no installs. (Windows SmartScreen may
       warn about a new publisher - click "More info &rarr; Run anyway".)</div>
-    <div class="step"><b>Sign up &amp; load sample data.</b> Your 7-day
-      trial starts. One click generates 50 demo stocks - every feature
-      works with zero configuration and no broker account.</div>
+    <div class="step"><b>Sign up &amp; explore free.</b> Your 14-day
+      trial starts. Load included sample data, or download real NSE data
+      free via Yahoo Finance - every feature works with no broker account.</div>
     <div class="step"><b>Test your ideas.</b> Backtest, build portfolios,
-      and when you're ready for real NSE data, connect your own Upstox
+      and for full-depth data and live scanning, connect your own Upstox
       API from Broker Settings inside the app.</div>
   </div>
 </section>
@@ -166,18 +169,20 @@
   <p><span class="amount">Rs 499</span> / month &nbsp;after a free 14-day trial</p>
   <p class="sub" style="margin-top:8px">Subscribe from inside the app:
      click "Activate License", send the one-click request, and receive
-     your key by email. Works fully with sample data even before your
-     broker API is ready.</p>
+     your key by email. Works fully with free Yahoo and sample data even
+     before your broker API is ready.</p>
 </section>
 
 <section class="wrap" id="faq">
   <h2>Frequently asked</h2>
+  <details><summary>Do I need a broker account to try it?</summary>
+    <p>No. The trial runs on included sample data and on free real NSE
+    data via Yahoo Finance - no account needed. Connect your own Upstox
+    API later for full-depth history and live signal scanning.</p></details>
   <details><summary>Do I have to switch my broker to Upstox?</summary>
     <p>No. RN TradeLab never places orders - Upstox is used purely as a
-    data feed for candles and quotes. Many users open a free Upstox
-    account only for data and keep trading wherever they already do.
-    And the entire trial runs on included sample data with no broker at
-    all.</p></details>
+    data feed. Many users open a free Upstox account only for data and
+    keep trading wherever they already do.</p></details>
   <details><summary>Does the app trade automatically?</summary>
     <p>Never. It generates research and signals; every real trade is
     placed by you, in your own broker app. This is an educational
@@ -207,26 +212,6 @@
   </div>
   <p style="margin-top:14px">&copy; RNAlgotrading 2026</p>
 </footer>
-  
-<script>
-(function () {
-  var MIN_SHOW = 10;   // counter stays hidden until this many downloads
-  fetch("https://api.github.com/repos/RNAlgotrading/rnalgotrading-site/releases")
-    .then(function (r) { return r.json(); })
-    .then(function (rels) {
-      var n = 0;
-      (rels || []).forEach(function (rel) {
-        (rel.assets || []).forEach(function (a) { n += a.download_count || 0; });
-      });
-      if (n >= MIN_SHOW) {
-        var el = document.getElementById("dl-count");
-        el.textContent = "\u2B07 " + n.toLocaleString() +
-                         " downloads and counting \u2014 why wait?";
-        el.hidden = false;
-      }
-    })
-    .catch(function () {});   // API hiccup -> simply show nothing
-})();
-</script>
+
 </body>
 </html>
