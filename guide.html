@@ -1,0 +1,411 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>RN TradeLab - User Guide | RNAlgotrading</title>
+<meta name="description" content="RN TradeLab user guide - setup, features, and how everything works, before you download.">
+<link rel="icon" type="image/x-icon" href="favicon.ico">
+<style>
+  :root { --bg:#1c2026; --panel:#23272e; --card:#2b303a; --accent:#4a9eff;
+          --green:#35d07f; --text:#e8eaed; --sub:#9aa0aa; --border:#3a404d; }
+  * { margin:0; padding:0; box-sizing:border-box; }
+  body { background:var(--bg); color:var(--text);
+         font-family:'Segoe UI', system-ui, sans-serif; line-height:1.6; }
+  .wrap { max-width:1000px; margin:0 auto; padding:0 20px; }
+  nav { background:var(--panel); border-bottom:1px solid var(--border);
+        position:sticky; top:0; z-index:10; }
+  .nav-inner { max-width:1000px; margin:0 auto; padding:14px 20px;
+        display:flex; align-items:center; gap:22px; flex-wrap:wrap; }
+  .brand { font-weight:700; font-size:1.15rem; color:var(--text);
+        display:flex; align-items:center; }
+  .brand img { height:28px; margin-right:9px; }
+  .brand span { color:var(--accent); }
+  nav a { color:var(--sub); text-decoration:none; font-size:.95rem; }
+  nav a:hover { color:var(--accent); }
+  header { padding:48px 0 40px; text-align:center; }
+  .hero-logo { height:96px; margin-bottom:14px; }
+  .kicker { color:var(--sub); font-size:1rem; }
+  h1 { font-size:2.5rem; color:var(--accent); margin-top:6px; }
+  .tagline { font-size:1.25rem; margin:10px 0 4px; }
+  .sub { color:var(--sub); }
+  .video-wrap { position:relative; padding-bottom:56.25%; height:0;
+        margin:30px auto 0; max-width:860px; border-radius:12px;
+        overflow:hidden; border:1px solid var(--border); }
+  .video-wrap iframe { position:absolute; top:0; left:0;
+        width:100%; height:100%; border:0; }
+  .btn { display:inline-block; margin:26px 8px 0; padding:14px 34px;
+         border-radius:8px; font-size:1.05rem; font-weight:600;
+         text-decoration:none; }
+  .btn-primary { background:var(--accent); color:#fff; }
+  .btn-ghost { border:2px solid var(--accent); color:var(--accent); }
+  .pill { display:inline-block; background:var(--card); border:1px solid var(--border);
+          border-radius:20px; padding:4px 14px; margin:4px; font-size:.9rem; color:var(--sub); }
+  section { padding:44px 0; border-top:1px solid var(--border); }
+  h2 { font-size:1.7rem; margin-bottom:22px; }
+  .grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(280px,1fr)); gap:16px; }
+  .card { background:var(--card); border:1px solid var(--border);
+          border-radius:10px; padding:20px; }
+  .card h3 { color:var(--accent); font-size:1.05rem; margin-bottom:8px; }
+  .card p { color:var(--sub); font-size:.95rem; }
+  .steps { counter-reset:s; }
+  .step { background:var(--card); border:1px solid var(--border); border-radius:10px;
+          padding:18px 20px 18px 64px; margin-bottom:12px; position:relative; }
+  .step::before { counter-increment:s; content:counter(s); position:absolute;
+          left:18px; top:16px; width:30px; height:30px; border-radius:50%;
+          background:var(--accent); color:#fff; font-weight:700;
+          display:flex; align-items:center; justify-content:center; }
+  .shots { display:grid; grid-template-columns:repeat(auto-fit,minmax(300px,1fr)); gap:14px; }
+  .shots img { width:100%; border-radius:8px; border:1px solid var(--border); }
+  .price { text-align:center; }
+  .price .amount { font-size:2.4rem; color:var(--green); font-weight:700; }
+  details { background:var(--card); border:1px solid var(--border);
+            border-radius:8px; padding:14px 18px; margin-bottom:10px; }
+  summary { cursor:pointer; font-weight:600; }
+  details p { color:var(--sub); margin-top:8px; }
+  footer { padding:36px 0 48px; border-top:1px solid var(--border);
+           color:var(--sub); font-size:.85rem; text-align:center; }
+  .disclaimer { background:var(--panel); border:1px solid var(--border);
+           border-radius:8px; padding:14px 18px; margin-top:18px; font-size:.85rem; }
+  a { color:var(--accent); }
+
+  .guide-body h3 { color:var(--accent); font-size:1.5rem;
+             margin:36px 0 14px; border-top:1px solid var(--border);
+             padding-top:28px; }
+  .guide-body h3:first-of-type { border-top:none; padding-top:0; }
+  .guide-body h4 { color:var(--text); font-size:1.1rem; margin:22px 0 8px; }
+  .guide-body p { color:var(--sub); margin-bottom:10px; }
+  .guide-body ul, .guide-body ol { color:var(--sub); margin:8px 0 14px 22px; }
+  .guide-body li { margin-bottom:6px; }
+  .guide-body code { background:var(--card); border:1px solid var(--border);
+             border-radius:4px; padding:1px 6px; font-size:.9em;
+             color:var(--green); }
+  .guide-body pre { background:var(--card) !important; border:1px solid var(--border); }
+  .guide-body b { color:var(--text); }
+  .guide-body hr { border:none; border-top:1px solid var(--border); margin:28px 0; }
+  .guide-toc { background:var(--panel); border:1px solid var(--border);
+             border-radius:10px; padding:16px 22px; margin-bottom:28px;
+             font-size:.92rem; }
+  .guide-toc a { display:block; padding:3px 0; }
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="nav-inner">
+    <div class="brand"><img src="logo.png" alt="RN">RN<span>Algotrading</span></div>
+    <a href="index.html#product">Product</a>
+    <a href="index.html#how">How it works</a>
+    <a href="index.html#pricing">Pricing</a>
+    <a href="index.html#faq">FAQ</a>
+    <a href="guide.html" style="color:var(--accent);">User Guide</a>
+    <a href="releases.html">Release Notes</a>
+    <a href="https://mail.google.com/mail/?view=cm&fs=1&to=RNAlgotrading@gmail.com&su=RNAlgotrading%20-%20Question">Contact</a>
+  </div>
+</nav>
+
+<header class="wrap" style="padding:48px 0 24px; text-align:left;">
+  <p class="kicker">RN TradeLab</p>
+  <h1 style="font-size:2rem;">User Guide</h1>
+  <p class="sub">Everything the app can do, before you download it.
+     This is the same guide built into the app (Help &rarr; User Guide).</p>
+</header>
+
+<section class="wrap" style="border-top:none; padding-top:0;">
+  <div class="guide-toc">
+    <b style="color:var(--text);">On this page</b>
+    <a href="#1-getting-started">1. Getting started</a><a href="#2-the-tabs">2. The tabs</a><a href="#strategy-library-examples-you-can-learn-from-and-tune">Strategy library (examples you can learn from and tune)</a><a href="#3-a-honest-testing-checklist">3. A honest-testing checklist</a><a href="#4-files-worth-knowing">4. Files worth knowing</a>
+  </div>
+  <div class="guide-body">
+    <h2>RN TradeLab - User Guide (v0.4)</h2>
+<p>A trading research app with one purpose: **prove your strategy works on</p>
+<p>data it has never seen, before you risk money on it.**</p>
+<p>Educational tool only. Not investment advice. No performance guarantees.</p>
+<p>The app never places orders.</p>
+<hr>
+<h3 id="1-getting-started">1. Getting started</h3>
+<h4>Windows app (most users)</h4>
+<ol style='margin-top:2px;'>
+<li>Double-click <b>RN_TradeLab.exe</b>. That's it - no Python, no installs. (Windows SmartScreen may warn about a new unsigned app: click <b>More info -&gt; Run anyway</b>.)</li>
+<li><b>Sign Up</b> on the login screen (email + password, tick the educational-use acknowledgement). Your account is bound to this computer and starts a <b>14-day trial</b> - the status bar shows days left.</li>
+<li><b>Trying it without a broker - nothing to configure:</b> Tab 1 -&gt; <b>Load Sample Data</b> -&gt; Tab 3 -&gt; **Run Walk-forward Backtest**. Every research feature works on the 50 DEMO stocks.</li>
+<li>Only when you want real NSE data do you touch config.json (see "Connecting Upstox" below).</li>
+<li><b>After the trial - Rs 499/month:</b> click <b>Activate License</b> on the login screen, send us the request (one click via Gmail), and we reply with your key. Paste it, Activate, done - the app then shows "Licensed until &lt;date&gt;" and reminds you near renewal. A subscription works fully with Sample Data even before your Upstox API is ready.</li>
+</ol>
+<h4>Where your files live</h4>
+<p>Everything you own - **config.json, your strategies, downloaded data,</p>
+<p>saved portfolios, your account and licence** - is kept in one stable</p>
+<p>folder:</p>
+<pre style='background:#2b303a; color:#d7dae0; padding:8px 10px; border-radius:6px;'>Documents\RN TradeLab\</pre>
+<p>Use <b>Help -&gt; Open My Data Folder</b> to jump straight there. Because this</p>
+<p>folder is separate from the program itself, you can run RN_TradeLab.exe</p>
+<p>from anywhere and it always finds your work.</p>
+<h4 id="updating-to-a-new-version">Updating to a new version</h4>
+<ol style='margin-top:2px;'>
+<li>Download the new version and unzip it <b>anywhere</b> you like.</li>
+<li>Run the new <b>RN_TradeLab.exe</b>.</li>
+</ol>
+<p>That's all. Your settings, strategies, data, portfolios and licence are</p>
+<p>picked up automatically - nothing to copy, nothing to re-activate. (If</p>
+<p>you are updating from a very old build that kept files beside the exe,</p>
+<p>they are moved into the folder above automatically on first run.)</p>
+<h4>Running from source (developers)</h4>
+<p>Install Python 3.11+ (tick "Add to PATH"), copy the project folder,</p>
+<p><code>pip install -r requirements.txt</code>, then <code>python main.py</code>.</p>
+<h4>Free real data - Yahoo Finance (no account needed)</h4>
+<p>In Tab 1 set <b>Data source</b> to *Yahoo Finance (free)* and click</p>
+<p>Download. You get the rolling last ~60 days of 5-minute candles for</p>
+<p>your whole universe - real NSE prices, no broker, no signup. Two</p>
+<p>things to know: quotes are DELAYED (research only - Live Signals and</p>
+<p>the sector heatmap still need Upstox), and the window rolls, so</p>
+<p><b>update regularly</b>: the app merges each download into your local</p>
+<p>history, which keeps growing beyond 60 days. Skip 60+ days and that</p>
+<p>gap is gone for good.</p>
+<h4>Connecting Upstox (full history + live features)</h4>
+<ol style='margin-top:2px;'>
+<li>Create an app at https://account.upstox.com/developer/apps (redirect URI can be <code>http://localhost</code>).</li>
+<li>In Tab 1, click <b>Broker Settings (Upstox)...</b> and paste your api_key, api_secret and access_token - the app writes config.json for you and unlocks downloading. This is the only place you need to enter broker details - no hand-editing of config files.</li>
+<li><b>Token validity varies</b> with your Upstox app settings - some tokens expire daily (~3:30 AM IST), others last much longer. If downloads start failing with a 401 error, generate a fresh token and paste it into Broker Settings.</li>
+</ol>
+<hr>
+<h3 id="2-the-tabs">2. The tabs</h3>
+<p><b>Tab 1 - Download Data</b></p>
+<ul style='margin-top:2px;'>
+<li><b>Update index lists from NSE</b>: fetches official Nifty 50/100/200</li>
+</ul>
+<p>constituents and extends sectors.csv (run after each rebalance).</p>
+<ul style='margin-top:2px;'>
+<li>Pick a Universe -&gt; <b>Build stocks.csv</b> -&gt; <b>Download / Update Data</b></li>
+</ul>
+<p>(incremental: only new candles are fetched).</p>
+<ul style='margin-top:2px;'>
+<li>Data is stored once at 5-min; all higher timeframes are built from it.</li>
+</ul>
+<p><b>Tab 2 - Strategies</b></p>
+<ul style='margin-top:2px;'>
+<li>Left: your strategy files. Right: the code editor.</li>
+<li><b>Create New Strategy</b> opens a guided template. Write your entry</li>
+</ul>
+<p>logic, click <b>Add Strategy</b> - it is validated (syntax, structure,</p>
+<p>a smoke-test run) and instantly appears in the dropdowns.</p>
+<ul style='margin-top:2px;'>
+<li>Existing strategies open read-only; <b>Edit</b> unlocks, <b>Save Changes</b></li>
+</ul>
+<p>re-validates. Broken files are listed as LOAD ERROR and kept out of</p>
+<p>the dropdowns until fixed.</p>
+<ul style='margin-top:2px;'>
+<li>Rules that keep backtests honest are in the template: signal</li>
+</ul>
+<p>timestamps must be real candles; never use future rows.</p>
+<p><b>Tab 3 - Backtest</b></p>
+<ul style='margin-top:2px;'>
+<li>Choose Strategy, Mode (Intraday = forced EOD exit / Swing = hold till</li>
+</ul>
+<p>SL or target), Capital, <b>Dataset</b> (universe, custom dataset, or</p>
+<p>Sample Data) and <b>Timeframe</b> (5/10/15/30/60 min or Daily).</p>
+<ul style='margin-top:2px;'>
+<li><b>Regime Settings</b>: optional entry filters - chart EMA, daily EMA,</li>
+</ul>
+<p>time window, minimum ATR%. Evaluated on the previous candle</p>
+<p>(no lookahead).</p>
+<ul style='margin-top:2px;'>
+<li><b>Risk Settings</b>: per-stock daily/weekly/monthly loss limits -</li>
+</ul>
+<p>once breached, no new entries in that stock for the period.</p>
+<ul style='margin-top:2px;'>
+<li>Click a curve thumbnail to open the equity chart, then</li>
+</ul>
+<p><b>See Trades on Chart</b> for a candlestick view of every trade: entry</p>
+<p>and exit joined by a dotted line (green = winner, red = loser), faint</p>
+<p>dashed stoploss and target levels, and a tinted background showing</p>
+<p>where out-of-sample data begins. Navigate with the slider, jump</p>
+<p>straight from one trade to the next, zoom with + / - or the mouse</p>
+<p>wheel, and press <b>Fit Trade</b> to fill the screen with a single trade</p>
+<p>so you can see exactly how it played out.</p>
+<ul style='margin-top:2px;'>
+<li>Results are <b>out-of-sample only</b> (the 30% the strategy never saw).</li>
+</ul>
+<p>Click any column header to sort. Click a curve thumbnail for the full</p>
+<p>equity chart (black = in-sample, blue = out-of-sample) and the</p>
+<p>trade-by-trade list with quantities and rupee P&amp;L.</p>
+<ul style='margin-top:2px;'>
+<li><b>Create custom dataset...</b> in the Dataset dropdown filters a</li>
+</ul>
+<p>universe by price (from local data) and by any numeric column you add</p>
+<p>to fundamentals.csv (e.g. exported from screener.in).</p>
+<p><b>Tab 4 - Optimize</b></p>
+<ul style='margin-top:2px;'>
+<li>Pick an *optimizable* strategy (one that declares tunable inputs),</li>
+</ul>
+<p>a dataset and timeframe. Set each parameter's Start / Stop / Increment.</p>
+<ul style='margin-top:2px;'>
+<li>A live estimate shows how many combinations and roughly how long it</li>
+</ul>
+<p>will take; a cap prevents runaway runs (reduce your ranges if warned).</p>
+<ul style='margin-top:2px;'>
+<li><b>Run Optimization</b> searches the IN-SAMPLE data only and returns one</li>
+</ul>
+<p>row per parameter combination, ranked by in-sample Sharpe. The</p>
+<p>out-of-sample (OS) columns beside each row are the honest reality</p>
+<p>check - a row that is strong in-sample but weak out-of-sample is</p>
+<p>overfit. Pick a combination that holds up in BOTH, then set those</p>
+<p>values in your strategy and use the Backtest tab as usual.</p>
+<p><b>Tab 5 - Portfolio</b></p>
+<ul style='margin-top:2px;'>
+<li>Tick stocks manually, or <b>Choose Sectors</b> + **Auto-select Top N per</li>
+</ul>
+<p>sector<b>, or </b>Suggest Portfolio** - a correlation-aware optimizer</p>
+<p>that maximizes the combined in-sample Sharpe (out-of-sample is never</p>
+<p>touched during selection; it remains the judge).</p>
+<ul style='margin-top:2px;'>
+<li>Name it, <b>Save Portfolio</b>, then <b>Show Portfolio Performance</b>:</li>
+</ul>
+<p>Sharpe, drawdown, rupee P&amp;L and the equity curve under a realistic</p>
+<p>capital model (capital split equally across stocks; idle when a stock</p>
+<p>has no trade).</p>
+<p><b>Tab 6 - Live Signals</b></p>
+<ul style='margin-top:2px;'>
+<li>During market hours, pick a saved portfolio and **Scan Portfolio</li>
+</ul>
+<p>Now**. The strategy, timeframe and filters are LOCKED to what that</p>
+<p>portfolio was built and validated with - you cannot accidentally</p>
+<p>scan an untested configuration. Trade the alerts manually in your</p>
+<p>broker app.</p>
+<ul style='margin-top:2px;'>
+<li>Update your data in Tab 1 each morning first - the scanner prepends</li>
+</ul>
+<p>stored history so indicators compute exactly as in the backtest.</p>
+<p><b>Tab 7 - Performance</b></p>
+<ul style='margin-top:2px;'>
+<li>Log every live trade (including the mistake in Notes). The summary</li>
+</ul>
+<p>compares your live results to the backtest - the whole point of the</p>
+<p>manual-trading phase.</p>
+<p><b>Tab 7 - Knowledge Base</b></p>
+<ul style='margin-top:2px;'>
+<li><b>World Market Details</b>: major indices with OPEN/CLOSED status,</li>
+</ul>
+<p>sessions converted to IST (daylight-saving handled automatically),</p>
+<p>last price and day change.</p>
+<ul style='margin-top:2px;'>
+<li><b>Sector Heatmap (India)</b>: live sector tiles via your Upstox token;</li>
+</ul>
+<p>click a sector to drill into its stocks.</p>
+<hr>
+<h3 id="strategy-library-examples-you-can-learn-from-and-tune">Strategy library (examples you can learn from and tune)</h3>
+<p>Every strategy below is a plain .py file in your <b>strategies</b> folder -</p>
+<p>open any of them in Tab 2 to read the code and comments. All are long</p>
+<p>only, and all expose tunable inputs in the <b>Optimize</b> tab.</p>
+<p><b>Indicator based</b></p>
+<p>| Strategy | Idea |</p>
+<p>|---|---|</p>
+<p>| EMA Crossover | fast EMA crosses above slow EMA |</p>
+<p>| MACD Crossover | MACD line crosses above its signal line |</p>
+<p>| RSI Reversal | RSI climbs back up through oversold (buys the bounce) |</p>
+<p>| Bollinger Breakout | close pushes above the upper band |</p>
+<p>| Bollinger Mean-Reversion | close reclaims the lower band, target = middle band |</p>
+<p>| Stochastic Crossover | %K crosses %D while oversold |</p>
+<p><b>Price structure (no indicators)</b></p>
+<p>| Strategy | Idea |</p>
+<p>|---|---|</p>
+<p>| Recent-High Breakout | breaks the highest high of the last N candles |</p>
+<p>| Support Bounce | dips to recent support and closes back above it |</p>
+<p>| Inside Bar Breakout | breaks out of a coiled inside-bar pattern |</p>
+<p>| Gap-Up Continuation | opens well above yesterday's close |</p>
+<p>| Gap-Down Fill | opens well below, targeting the gap fill |</p>
+<p>| ORB Breakout | breaks the opening range of the day |</p>
+<p><b>Combinations (a filter plus a trigger)</b></p>
+<p>| Strategy | Idea |</p>
+<p>|---|---|</p>
+<p>| EMA Trend + RSI Pullback | buy dips only while the trend is up |</p>
+<p>| MACD + Volume Confirm | crossover only if volume beats its average |</p>
+<p>| VWAP Bounce | intraday dip to VWAP that holds, on an up day |</p>
+<p>Tips: compare <b>Bollinger Breakout</b> against <b>Bollinger Mean-Reversion</b></p>
+<p>on the same stocks - the same indicator, opposite ideas, and only the</p>
+<p>out-of-sample column tells you which your market rewards. Gap strategies</p>
+<p>need real market data (sample data has no overnight gaps).</p>
+<h3 id="3-a-honest-testing-checklist">3. A honest-testing checklist</h3>
+<ul style='margin-top:2px;'>
+<li>Judge strategies on <b>out-of-sample</b> numbers only.</li>
+<li>Change one thing at a time (one filter, one timeframe) and compare.</li>
+<li>A beautiful in-sample curve that flattens out-of-sample is</li>
+</ul>
+<p>curve-fitting - the app is designed to show you exactly that.</p>
+<ul style='margin-top:2px;'>
+<li>Custom datasets filter on <b>today's</b> fundamentals: fine for choosing</li>
+</ul>
+<p>what to trade forward, but it flatters historical results slightly</p>
+<p>(survivorship-style bias). Don't read filtered backtests as "what I</p>
+<p>would have earned".</p>
+<ul style='margin-top:2px;'>
+<li>Paper-trade the live signals for 2-4 weeks and let Tab 6 tell you</li>
+</ul>
+<p>whether reality matches the backtest before risking capital.</p>
+<hr>
+<h3 id="4-files-worth-knowing">4. Files worth knowing</h3>
+<p>| File | Purpose |</p>
+<p>|---|---|</p>
+<p>| config.json | API keys, token, capital, filter/risk settings |</p>
+<p>| stocks.csv | current download universe |</p>
+<p>| nifty50/100/200.txt | universe lists (refresh from NSE in-app) |</p>
+<p>| sectors.csv | symbol-to-sector mapping (editable) |</p>
+<p>| fundamentals.csv | your fundamental data for dataset filters |</p>
+<p>| strategies/*.py | one file per strategy |</p>
+<p>| data/*_5min.parquet | downloaded / sample candles |</p>
+<p>| data/portfolios/*.json | saved portfolios (with settings stamp) |</p>
+<p>| data/datasets/*.json | saved custom datasets |</p>
+<p>| data/trade_journal.csv | your live trade log (opens in Excel) |</p>
+<p>| data/users.db | local accounts (trial/license, machine binding) |</p>
+<hr>
+<p>*Start small. Validate honestly. Let the data say no.*</p>
+<p><b>Tab 8 - Knowledge Base</b></p>
+<ul style='margin-top:2px;'>
+<li><b>Top Gainers / Losers</b> - the day's biggest movers with a market</li>
+</ul>
+<p>breadth snapshot (advancing vs declining).</p>
+<ul style='margin-top:2px;'>
+<li><b>Gap &amp; Momentum Movers</b> - which stocks opened away from yesterday's</li>
+</ul>
+<p>close, whether that gap is HOLDING or FADING since the open, and how</p>
+<p>today's volume compares with the stock's own 20-day average. This is</p>
+<p>the live view of what the Gap-Up Continuation and Gap-Down Fill</p>
+<p>strategies backtest.</p>
+<ul style='margin-top:2px;'>
+<li><b>Sector Heatmap (India)</b> - live sector performance; click a tile to</li>
+</ul>
+<p>drill into its stocks.</p>
+<ul style='margin-top:2px;'>
+<li><b>World Market Details</b> - global market timings and moves in IST.</li>
+<li><b>Trading Glossary</b> - searchable definitions explained in the context</li>
+</ul>
+<p>of how RN TradeLab uses them.</p>
+<p>The live panels refresh every 60 seconds during market hours and need an</p>
+<p>Upstox connection (Yahoo's free data is delayed, so it powers research</p>
+<p>rather than live views).</p>
+<p>Top Gainers/Losers, Gap &amp; Momentum and the Sector Heatmap each have a</p>
+<p><b>Universe</b> dropdown - All, Nifty 50/100/200, or any custom dataset</p>
+<p>you've created - so you can narrow live movers to the stocks you</p>
+<p>actually care about instead of your whole downloaded universe.</p>
+  </div>
+
+  <div style="margin-top:36px; text-align:center;">
+    <a class="btn btn-primary" href="index.html#product">Download RN TradeLab</a>
+  </div>
+</section>
+
+<footer class="wrap">
+  <p><b>RNAlgotrading</b> - practical tools for traders who test first.</p>
+  <p style="margin-top:6px">www.RNAlgotrading.com &middot; RNAlgotrading@gmail.com</p>
+  <div class="disclaimer">
+    DISCLAIMER: RN TradeLab is a purely educational tool for learning to
+    test trading ideas on historical data. It does not provide investment
+    advice, tips or recommendations, does not place orders, and any
+    results shown are from backtests on historical data - not indicative
+    of future returns. Trading involves risk of loss. This is not
+    SEBI-registered investment advice.
+  </div>
+  <p style="margin-top:14px">&copy; RNAlgotrading 2026</p>
+</footer>
+
+</body>
+</html>
