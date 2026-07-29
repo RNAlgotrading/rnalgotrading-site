@@ -87,6 +87,19 @@
              border-radius:10px; padding:16px 22px; margin-bottom:28px;
              font-size:.92rem; }
   .guide-toc a { display:block; padding:3px 0; }
+
+  .dropdown { position:relative; }
+  .dropdown-menu { position:absolute; top:32px; left:-10px; width:270px;
+      background:var(--panel); border:1px solid var(--border); border-radius:8px;
+      padding:8px; box-shadow:0 8px 24px rgba(0,0,0,.35); opacity:0; visibility:hidden;
+      transform:translateY(-6px); transition:all .15s ease; z-index:20; }
+  .dropdown:hover .dropdown-menu { opacity:1; visibility:visible; transform:translateY(0); }
+  .dropdown-menu a { display:block; padding:10px 12px; border-radius:6px;
+      text-decoration:none; font-size:.88rem; }
+  .dropdown-menu a:hover { background:var(--card); }
+  .dropdown-menu .seg-name { color:var(--text); font-weight:600; }
+  .dropdown-menu .seg-hook { color:var(--sub); font-size:.78rem; margin-top:2px; }
+  .dropdown-menu .divider { border-top:1px solid var(--border); margin:6px 4px 0; padding-top:8px; }
 </style>
 </head>
 <body>
@@ -97,6 +110,20 @@
     <a href="index.html#product">Product</a>
     <a href="index.html#how">How it works</a>
     <a href="index.html#pricing">Pricing</a>
+        <div class="dropdown">
+      <a href="students.html">Students &darr;</a>
+      <div class="dropdown-menu">
+        <a href="students.html#grade12"><div class="seg-name">12th grade (IP / CS)</div>
+          <div class="seg-hook">School project starter</div></a>
+        <a href="students.html#undergrad"><div class="seg-name">Undergraduate CS</div>
+          <div class="seg-hook">Backtesting research project</div></a>
+        <a href="students.html#mba"><div class="seg-name">MBA</div>
+          <div class="seg-hook">Portfolio construction study</div></a>
+        <div class="divider">
+          <a href="https://mail.google.com/mail/?view=cm&fs=1&to=RNAlgotrading@gmail.com&su=Student%20project%20-%20not%20sure%20which%20one" style="color:var(--accent); padding:8px 12px; font-size:.82rem;">Not sure? Email me &rarr;</a>
+        </div>
+      </div>
+    </div>
     <a href="index.html#faq">FAQ</a>
     <a href="guide.html" style="color:var(--accent);">User Guide</a>
     <a href="releases.html">Release Notes</a>
@@ -117,7 +144,7 @@
     <a href="#1-getting-started">1. Getting started</a><a href="#2-the-tabs">2. The tabs</a><a href="#strategy-library-examples-you-can-learn-from-and-tune">Strategy library (examples you can learn from and tune)</a><a href="#3-a-honest-testing-checklist">3. A honest-testing checklist</a><a href="#4-files-worth-knowing">4. Files worth knowing</a>
   </div>
   <div class="guide-body">
-    <h2>RN TradeLab - User Guide (v0.2)</h2>
+    <h2>RN TradeLab - User Guide (v0.4)</h2>
 <p>A trading research app with one purpose: **prove your strategy works on</p>
 <p>data it has never seen, before you risk money on it.**</p>
 <p>Educational tool only. Not investment advice. No performance guarantees.</p>

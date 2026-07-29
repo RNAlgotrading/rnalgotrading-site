@@ -80,6 +80,19 @@
              color:#0a0f0a; font-size:.72rem; font-weight:700;
              padding:2px 10px; border-radius:12px; margin-left:10px;
              vertical-align:middle; }
+
+  .dropdown { position:relative; }
+  .dropdown-menu { position:absolute; top:32px; left:-10px; width:270px;
+      background:var(--panel); border:1px solid var(--border); border-radius:8px;
+      padding:8px; box-shadow:0 8px 24px rgba(0,0,0,.35); opacity:0; visibility:hidden;
+      transform:translateY(-6px); transition:all .15s ease; z-index:20; }
+  .dropdown:hover .dropdown-menu { opacity:1; visibility:visible; transform:translateY(0); }
+  .dropdown-menu a { display:block; padding:10px 12px; border-radius:6px;
+      text-decoration:none; font-size:.88rem; }
+  .dropdown-menu a:hover { background:var(--card); }
+  .dropdown-menu .seg-name { color:var(--text); font-weight:600; }
+  .dropdown-menu .seg-hook { color:var(--sub); font-size:.78rem; margin-top:2px; }
+  .dropdown-menu .divider { border-top:1px solid var(--border); margin:6px 4px 0; padding-top:8px; }
 </style>
 </head>
 <body>
@@ -90,6 +103,20 @@
     <a href="index.html#product">Product</a>
     <a href="index.html#how">How it works</a>
     <a href="index.html#pricing">Pricing</a>
+        <div class="dropdown">
+      <a href="students.html">Students &darr;</a>
+      <div class="dropdown-menu">
+        <a href="students.html#grade12"><div class="seg-name">12th grade (IP / CS)</div>
+          <div class="seg-hook">School project starter</div></a>
+        <a href="students.html#undergrad"><div class="seg-name">Undergraduate CS</div>
+          <div class="seg-hook">Backtesting research project</div></a>
+        <a href="students.html#mba"><div class="seg-name">MBA</div>
+          <div class="seg-hook">Portfolio construction study</div></a>
+        <div class="divider">
+          <a href="https://mail.google.com/mail/?view=cm&fs=1&to=RNAlgotrading@gmail.com&su=Student%20project%20-%20not%20sure%20which%20one" style="color:var(--accent); padding:8px 12px; font-size:.82rem;">Not sure? Email me &rarr;</a>
+        </div>
+      </div>
+    </div>
     <a href="index.html#faq">FAQ</a>
     <a href="guide.html">User Guide</a>
     <a href="releases.html" style="color:var(--accent);">Release Notes</a>
