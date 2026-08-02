@@ -1,5 +1,5 @@
 {
-  "latest": "0.3",
+  "latest": "0.4",
   "url": "https://rnalgotrading.github.io/rnalgotrading-site/",
-  "notes": "- Volume panel on the trade chart\n- Add any indicator (EMA, SMA, Bollinger, RSI) to the chart with your own period - no code needed\n- Hover over any candle to see OHLC, volume, and every active indicator's value\n- Click a trade in the trade list to jump the chart straight to it\n- Fixed a crash when opening the trade chart"
+  "notes": "- New SuperTrend indicator and strategy (dual-colour on the chart)\n- Slippage and Commission - realistic trading-cost assumptions\n- One Settings window for Capital, Costs, Exits, Filters and Risk\n- Flexible exits: Stoploss, Target, Trailing Stop, Time-based - mix and match\n- Chart: Volume panel, hover for OHLC/indicator values, click-to-jump trades"
 }
