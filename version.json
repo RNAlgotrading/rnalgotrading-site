@@ -1,5 +1,5 @@
 {
-  "latest": "0.5",
+  "latest": "0.6",
   "url": "https://rnalgotrading.github.io/rnalgotrading-site/",
-  "notes": "- New SuperTrend indicator and strategy (dual-colour on the chart)\n- Slippage and Commission - realistic trading-cost assumptions\n- One Settings window for Capital, Costs, Exits, Filters and Risk\n- Flexible exits: Stoploss, Target, Trailing Stop, Time-based - mix and match\n- Chart: Volume panel, hover for OHLC/indicator values, click-to-jump trades"
+  "notes": "- Fundamental Analysis: free snapshot, ratios, revenue trend and shareholding pattern for any symbol\n- Write your own indicators (Studies tab) - 8 built-ins are real files, add any to a chart with a new picker\n- Each chart indicator now gets its own dedicated panel, stacked TradeStation-style\n- Chart display overhaul - always fills the window, no more shrinking or clipping\n- Multi-currency support - correct Rs/$ display, never guessed on mixed baskets\n- Fixed a trial-bypass edge case and a MACD rendering bug"
 }
