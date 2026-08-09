@@ -1,5 +1,5 @@
 {
   "latest": "0.6",
   "url": "https://rnalgotrading.github.io/rnalgotrading-site/",
-  "notes": "- RN TradeLab is now completely free - 6 months full access, no price shown anywhere\n- New: Live Chart (Premium) - live 1-second candle updates from your broker, auto-backfilled and permanently saved\n- Fundamental Analysis: free snapshot, ratios, revenue trend and shareholding pattern for any symbol\n- Write your own indicators (Studies tab) - 8 built-ins are real files, add any to a chart with a new picker\n- Each chart indicator now gets its own dedicated panel, stacked TradeStation-style\n- Chart display overhaul - always fills the window, no more shrinking or clipping\n- Multi-currency support - correct Rs/$ display, never guessed on mixed baskets\n- Fixed a trial-bypass edge case and a MACD rendering bug"
+  "notes": "- RN TradeLab is now free - full access, no card, no price anywhere\n- New: Live Chart - watch the current candle update live from your broker while the market is open\n- New: Fundamental Analysis - a free snapshot for any symbol: ratios, revenue trend, shareholding pattern\n- New: Write your own indicators in Studies, apply them straight to a live chart\n- Charts now always fit your screen, however you resize or stack indicators\n- Smarter Rs/$ currency display"
 }
