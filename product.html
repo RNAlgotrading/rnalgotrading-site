@@ -92,6 +92,14 @@
         border:none; }
   .modal-cancel { background:transparent; color:var(--sub); border:1px solid var(--border) !important; }
   .modal-continue { background:var(--gold); color:#1c1600; }
+
+  .plan-radios { display:flex; flex-direction:column; gap:8px; margin-bottom:18px; }
+  .plan-radios label { display:flex; align-items:center; gap:10px; background:var(--panel);
+        border:1px solid var(--border); border-radius:8px; padding:10px 14px;
+        cursor:pointer; font-size:.9rem; }
+  .plan-radios label:has(input:checked) { border-color:var(--gold); }
+  .plan-radios input[type="radio"] { accent-color:var(--gold); width:16px; height:16px; }
+  .plan-radios .save-tag { color:var(--gold); font-size:.8rem; font-weight:600; }
 </style>
 </head>
 <body>
@@ -208,15 +216,36 @@
       <li>Download and open RN TradeLab, then sign up (free).</li>
       <li>On the login screen, click <b>Activate License</b> and copy
         your <b>Request Code</b> - it's unique to your installation.</li>
-      <li>Click "Continue to Email" below. Paste your Request Code in,
-        tell us monthly or yearly, and send.</li>
+      <li>Pick a plan, click "Continue to Email" - your Request Code
+        and choice go in automatically, ready to send.</li>
     </ol>
+    <div class="plan-radios">
+      <label><input type="radio" name="goldPlan" value="Monthly (Rs 499/month)" checked>
+        Monthly - Rs 499 / month</label>
+      <label><input type="radio" name="goldPlan" value="Yearly (Rs 4,500/year)">
+        Yearly - Rs 4,500 / year <span class="save-tag">save ~25%</span></label>
+    </div>
     <div class="modal-actions">
       <button class="modal-cancel" onclick="document.getElementById('goldModal').classList.remove('open')">Cancel</button>
-      <a class="modal-continue" href="https://mail.google.com/mail/?view=cm&fs=1&to=RNAlgotrading@gmail.com&su=RN%20TradeLab%20-%20Activate%20License&body=Hi%2C%0A%0AI%27d%20like%20to%20activate%20Gold.%0A%0AMy%20sign-in%20email%3A%20%0APlan%3A%20monthly%20(Rs%20499)%20or%20yearly%20(Rs%204%2C500)%20-%20please%20keep%20one%0AMy%20Request%20Code%3A%20">Continue to Email</a>
+      <button class="modal-continue" onclick="sendGoldRequest()">Continue to Email</button>
     </div>
   </div>
 </div>
+
+<script>
+function sendGoldRequest() {
+  var plan = document.querySelector('input[name="goldPlan"]:checked').value;
+  var body = "Hi,\n\nI'd like to activate Gold.\n\n"
+      + "My sign-in email: \n"
+      + "Plan: " + plan + "\n"
+      + "My Request Code: ";
+  var url = "https://mail.google.com/mail/?view=cm&fs=1"
+      + "&to=RNAlgotrading@gmail.com"
+      + "&su=" + encodeURIComponent("RN TradeLab - Activate License")
+      + "&body=" + encodeURIComponent(body);
+  window.location.href = url;
+}
+</script>
 
 </body>
 </html>
