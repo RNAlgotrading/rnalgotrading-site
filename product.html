@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>RNAlgotrading - Product &amp; Pricing | RN TradeLab</title>
+<meta name="description" content="RN TradeLab plans: Basic (free forever) and Gold (early access to new features). See exactly what's included in each, side by side.">
+<link rel="icon" type="image/x-icon" href="favicon.ico">
+<style>
+  :root { --bg:#1c2026; --panel:#23272e; --card:#2b303a; --accent:#4a9eff;
+          --green:#35d07f; --gold:#e8b84a; --text:#e8eaed; --sub:#9aa0aa; --border:#3a404d; }
+  * { margin:0; padding:0; box-sizing:border-box; }
+  body { background:var(--bg); color:var(--text);
+         font-family:'Segoe UI', system-ui, sans-serif; line-height:1.6; }
+  .wrap { max-width:1000px; margin:0 auto; padding:0 20px; }
+  nav { background:var(--panel); border-bottom:1px solid var(--border);
+        position:sticky; top:0; z-index:10; }
+  .nav-inner { max-width:1000px; margin:0 auto; padding:14px 20px;
+        display:flex; align-items:center; gap:22px; flex-wrap:wrap; }
+  .brand { font-weight:700; font-size:1.15rem; color:var(--text);
+        display:flex; align-items:center; }
+  .brand img { height:28px; margin-right:9px; }
+  .brand span { color:var(--accent); }
+  nav a { color:var(--sub); text-decoration:none; font-size:.95rem; }
+  nav a:hover { color:var(--accent); }
+  nav a.active { color:var(--accent); }
+  header { padding:48px 0 8px; text-align:center; }
+  h1 { font-size:2.2rem; color:var(--accent); }
+  .sub { color:var(--sub); }
+  .lede { max-width:640px; margin:14px auto 0; color:var(--sub); }
+  section { padding:44px 0; border-top:1px solid var(--border); }
+  h2 { font-size:1.5rem; margin-bottom:18px; }
+  a { color:var(--accent); }
+
+  .plans { display:grid; grid-template-columns:repeat(auto-fit,minmax(300px,1fr));
+           gap:20px; align-items:stretch; }
+  .plan { background:var(--card); border:1px solid var(--border); border-radius:12px;
+          padding:28px 26px; display:flex; flex-direction:column; }
+  .plan.gold { border-color:var(--gold); position:relative; }
+  .plan-badge { display:inline-block; background:var(--gold); color:#1c1600;
+        font-weight:700; font-size:.72rem; letter-spacing:.04em; text-transform:uppercase;
+        border-radius:20px; padding:3px 12px; position:absolute; top:-12px; right:24px; }
+  .plan-name { font-size:1.3rem; font-weight:700; }
+  .plan.gold .plan-name { color:var(--gold); }
+  .plan-price { font-size:2rem; font-weight:700; color:var(--green); margin:10px 0 4px; }
+  .plan.gold .plan-price { color:var(--gold); }
+  .plan-price small { font-size:.95rem; color:var(--sub); font-weight:400; }
+  .plan-desc { color:var(--sub); font-size:.9rem; margin-bottom:18px; min-height:40px; }
+  .plan-features { list-style:none; flex:1; }
+  .plan-features li { padding:7px 0 7px 26px; position:relative; font-size:.92rem; }
+  .plan-features li::before { content:"\2713"; position:absolute; left:0; color:var(--green);
+        font-weight:700; }
+  .plan.gold .plan-features li::before { color:var(--gold); }
+  .plan-features li.dim { color:var(--sub); }
+  .plan-features li.dim::before { content:"\2013"; color:var(--sub); }
+  .plan-btn { display:block; text-align:center; margin-top:22px; padding:12px 20px;
+        border-radius:8px; font-weight:600; text-decoration:none; }
+  .plan .plan-btn { background:var(--accent); color:#fff; }
+  .plan.gold .plan-btn { background:var(--gold); color:#1c1600; }
+
+  .note { background:var(--panel); border:1px solid var(--border); border-radius:8px;
+          padding:16px 20px; font-size:.9rem; color:var(--sub); margin-top:24px; }
+  .note b { color:var(--text); }
+
+  .roadmap { display:flex; gap:10px; flex-wrap:wrap; margin-top:14px; }
+  .roadmap span { background:var(--card); border:1px solid var(--border); border-radius:20px;
+        padding:5px 16px; font-size:.85rem; color:var(--sub); }
+  .roadmap span.now { border-color:var(--accent); color:var(--accent); }
+
+  footer { padding:36px 0 48px; border-top:1px solid var(--border);
+           color:var(--sub); font-size:.85rem; text-align:center; }
+  .disclaimer { background:var(--panel); border:1px solid var(--border);
+           border-radius:8px; padding:14px 18px; margin-top:18px; font-size:.85rem; text-align:left; }
+  .modal-overlay { display:none; position:fixed; inset:0; background:rgba(0,0,0,.6);
+        z-index:100; align-items:center; justify-content:center; padding:20px; }
+  .modal-overlay.open { display:flex; }
+  .modal-box { background:var(--card); border:1px solid var(--gold); border-radius:12px;
+        max-width:440px; width:100%; padding:28px; }
+  .modal-box h3 { color:var(--gold); font-size:1.2rem; margin-bottom:6px; }
+  .modal-box .sub { font-size:.88rem; margin-bottom:18px; }
+  .modal-steps { counter-reset:ms; list-style:none; margin-bottom:20px; }
+  .modal-steps li { padding:10px 0 10px 42px; position:relative; font-size:.9rem;
+        border-bottom:1px solid var(--border); }
+  .modal-steps li:last-child { border-bottom:none; }
+  .modal-steps li::before { counter-increment:ms; content:counter(ms); position:absolute;
+        left:0; top:8px; width:26px; height:26px; border-radius:50%; background:var(--gold);
+        color:#1c1600; font-weight:700; font-size:.85rem; display:flex; align-items:center;
+        justify-content:center; }
+  .modal-actions { display:flex; gap:10px; justify-content:flex-end; }
+  .modal-actions button, .modal-actions a { padding:10px 20px; border-radius:8px;
+        font-weight:600; font-size:.9rem; cursor:pointer; text-decoration:none;
+        border:none; }
+  .modal-cancel { background:transparent; color:var(--sub); border:1px solid var(--border) !important; }
+  .modal-continue { background:var(--gold); color:#1c1600; }
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="nav-inner">
+    <div class="brand"><img src="logo.png" alt="RN">RN<span>Algotrading</span></div>
+    <a href="index.html">Home</a>
+    <a href="product.html" class="active">Product &amp; Pricing</a>
+    <a href="index.html#how">How it works</a>
+    <a href="students.html">Students</a>
+    <a href="index.html#faq">FAQ</a>
+    <a href="guide.html">User Guide</a>
+    <a href="releases.html">Release Notes</a>
+    <a href="https://mail.google.com/mail/?view=cm&fs=1&to=RNAlgotrading@gmail.com&su=RNAlgotrading%20-%20Question">Contact</a>
+  </div>
+</nav>
+
+<header class="wrap">
+  <h1>Product &amp; Pricing</h1>
+  <p class="lede">RN TradeLab's core research tool is free, permanently.
+     Gold gets you early access to the newest things as they ship -
+     starting with live, real-time charting.</p>
+</header>
+
+<section class="wrap">
+  <div class="plans">
+
+    <div class="plan">
+      <div class="plan-name">Basic</div>
+      <div class="plan-price">Free</div>
+      <div class="plan-desc">The complete research tool. No card, no
+        trial countdown, no catch.</div>
+      <ul class="plan-features">
+        <li>Data Center - Broker, Yahoo Finance &amp; your own CSV data</li>
+        <li>Studies - write and save your own indicators and strategies</li>
+        <li>Chart - single-symbol, auto-refreshing playground</li>
+        <li>Basket - full multi-symbol walk-forward backtesting</li>
+        <li>Optimize - parameter search with honest out-of-sample checks</li>
+        <li>Portfolio construction &amp; performance</li>
+        <li>Live Signals scanning against a saved portfolio</li>
+        <li>Manual trade journal vs backtest comparison</li>
+        <li>Knowledge Base - Fundamental Analysis, Movers, Heatmap,
+          World Markets, Glossary</li>
+        <li class="dim">Live real-time chart updates</li>
+      </ul>
+      <a class="plan-btn" href="index.html#product">Download Basic</a>
+    </div>
+
+    <div class="plan gold">
+      <span class="plan-badge">Early access</span>
+      <div class="plan-name">Gold</div>
+      <div class="plan-price">Rs 499<small> / month</small></div>
+      <div class="sub" style="font-size:.85rem; margin-top:-2px;">
+        or Rs 4,500 / year <span style="color:var(--gold); font-weight:600;">- save ~25%</span></div>
+      <div class="plan-desc" style="margin-top:10px;">Everything in Basic,
+        plus the newest features as they ship.</div>
+      <ul class="plan-features">
+        <li>Everything in Basic</li>
+        <li><b>Live Chart</b> - the current candle updates every
+          second straight from your broker while the market is open</li>
+        <li>First access to whatever ships next</li>
+      </ul>
+      <a class="plan-btn" href="#" onclick="document.getElementById('goldModal').classList.add('open'); return false;">Request Gold Access</a>
+      <p class="sub" style="font-size:.78rem; margin-top:10px; text-align:center;">
+        You'll need your Request Code from inside the app first - the
+        email explains how to find it.</p>
+    </div>
+
+  </div>
+
+  <div class="note">
+    <b>How this works:</b> Basic and Gold run the exact same app - you're
+    never stuck on an old, unpatched build. Every bug fix and improvement
+    reaches everyone. Gold simply unlocks certain features early, starting
+    with Live Chart. To activate: download and open the app, sign up, go
+    to <b>Activate License</b> on the login screen to get your Request
+    Code, then send it to us with the "Request Gold Access" button above -
+    we'll reply with your key. You can do this any time, even on day one.
+  </div>
+</section>
+
+<section class="wrap">
+  <h2>Where this is headed</h2>
+  <p class="sub">More tiers are coming as more Gold-only features ship.
+     For now, it's just Basic and Gold - simple, and easy to understand.</p>
+  <div class="roadmap">
+    <span class="now">Basic</span>
+    <span class="now">Gold</span>
+    <span>Silver (planned)</span>
+    <span>Platinum (planned)</span>
+  </div>
+</section>
+
+<footer class="wrap">
+  <p><b>RNAlgotrading</b> - practical tools for traders who test first.</p>
+  <p style="margin-top:6px">www.RNAlgotrading.com &middot; RNAlgotrading@gmail.com</p>
+  <div class="disclaimer">
+    DISCLAIMER: RN TradeLab is a purely educational tool for learning to
+    test trading ideas on historical data. It does not provide investment
+    advice, tips or recommendations, does not place orders, and any
+    results shown are from backtests on historical data - not indicative
+    of future returns. Trading involves risk of loss. This is not
+    SEBI-registered investment advice.
+  </div>
+</footer>
+
+<div class="modal-overlay" id="goldModal">
+  <div class="modal-box">
+    <h3>Before you email us</h3>
+    <p class="sub">Three quick steps, then one email with everything we
+       need - no back and forth.</p>
+    <ol class="modal-steps">
+      <li>Download and open RN TradeLab, then sign up (free).</li>
+      <li>On the login screen, click <b>Activate License</b> and copy
+        your <b>Request Code</b> - it's unique to your installation.</li>
+      <li>Click "Continue to Email" below. Paste your Request Code in,
+        tell us monthly or yearly, and send.</li>
+    </ol>
+    <div class="modal-actions">
+      <button class="modal-cancel" onclick="document.getElementById('goldModal').classList.remove('open')">Cancel</button>
+      <a class="modal-continue" href="https://mail.google.com/mail/?view=cm&fs=1&to=RNAlgotrading@gmail.com&su=RN%20TradeLab%20-%20Activate%20License&body=Hi%2C%0A%0AI%27d%20like%20to%20activate%20Gold.%0A%0AMy%20sign-in%20email%3A%20%0APlan%3A%20monthly%20(Rs%20499)%20or%20yearly%20(Rs%204%2C500)%20-%20please%20keep%20one%0AMy%20Request%20Code%3A%20">Continue to Email</a>
+    </div>
+  </div>
+</div>
+
+</body>
+</html>
