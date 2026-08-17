@@ -134,7 +134,38 @@
 <section class="wrap" style="border-top:none; padding-top:0;">
 
   <div class="relnote">
-    <h3>v0.8 <span class="badge-current">Current</span></h3>
+    <h3>v0.9 <span class="badge-current">Current</span></h3>
+    <div class="date">Released August 2026</div>
+    <ul>
+      <li><b>New: Global market support.</b> Create your own universe
+        by uploading a plain symbol list - any market, not just NSE.
+        Pick from common presets (US, UK, Singapore, Hong Kong,
+        Australia, Canada, India NSE/BSE) or set a custom ticker
+        suffix, and download via Yahoo Finance with the correct local
+        timezone and trading hours for that market.</li>
+      <li><b>New: Chart drawing tools.</b> Horizontal/Vertical Lines,
+        Trend Lines, Fibonacci Retracements, Rectangles, and Text
+        notes - draw directly on any chart, with a live preview as you
+        place two-point tools. Right-click to delete one drawing or
+        every drawing of that type at once.</li>
+      <li><b>New: Sector lookup for any market.</b> Fetch and cache
+        each symbol's sector from Yahoo Finance for whatever universe
+        you're working with - portfolio construction relies on
+        sectors, and this now works well beyond NSE.</li>
+      <li><b>Safer, smarter downloads.</b> If a symbol already has
+        local data from a different source or universe, you're asked
+        once how to handle it - skip, fill in only new dates, or
+        overwrite - instead of two data sources silently blending
+        together. Broker downloads now always match whatever universe
+        is currently selected, automatically.</li>
+      <li><b>Small polish:</b> Live Chart now pauses gracefully and
+        resumes on its own if a rate limit is ever hit, instead of
+        silently going quiet.</li>
+    </ul>
+  </div>
+
+  <div class="relnote">
+    <h3>v0.8</h3>
     <div class="date">Released August 2026</div>
     <ul>
       <li><b>New: Pattern Probability (Gold).</b> Pick a symbol, an

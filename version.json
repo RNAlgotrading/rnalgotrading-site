@@ -1,5 +1,5 @@
 {
-  "latest": "0.8",
+  "latest": "0.9",
   "url": "https://rnalgotrading.github.io/rnalgotrading-site/",
-  "notes": "- New: Pattern Probability (Gold) - historical odds for any candlestick pattern, sample size always shown up front\n- New: candlestick pattern markers on the chart - Doji, Hammer, Engulfing, Shooting Star, Morning Star, Three Black Crows/Soldiers\n- More portfolio metrics: Sortino, CAGR, Calmar, avg/largest win-loss, longest streaks\n- Small polish: login cursor now lands where it's actually needed"
+  "notes": "- New: global market support - create a universe from any market, download via Yahoo with the correct timezone/hours\n- New: chart drawing tools - lines, trend lines, Fibonacci, rectangles, text, with live preview\n- New: sector lookup for any market, not just NSE\n- Safer downloads: asked before two data sources ever silently blend together\n- Small polish: Live Chart now pauses and resumes gracefully if a rate limit is hit"
 }
