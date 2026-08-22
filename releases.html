@@ -134,7 +134,39 @@
 <section class="wrap" style="border-top:none; padding-top:0;">
 
   <div class="relnote">
-    <h3>v0.10 <span class="badge-current">Current</span></h3>
+    <h3>v0.11 <span class="badge-current">Current</span></h3>
+    <div class="date">Released August 2026</div>
+    <ul>
+      <li><b>New: Gann Levels (Gold).</b> The Square of 9 spiral for
+        any symbol's current price, plus something we haven't seen on
+        other platforms - for every genuine swing high/low a symbol
+        has actually had, it checks whether price genuinely reacted
+        near a level like this afterward, shown separately for the
+        stronger cardinal angles and the weaker ordinal ones, with the
+        same honest small-sample warning as Pattern Probability. A
+        matching free overlay on the Chart tab draws the same levels
+        directly on real candles.</li>
+      <li><b>New: Strategy Performance panel on the Chart tab.</b>
+        Select a strategy and a collapsible panel appears below the
+        chart - in-sample and out-of-sample metrics side by side, plus
+        the full equity curve. It's the exact same walk-forward run
+        already computing your trade markers, finally showing what it
+        found. If the out-of-sample side looks good, that's the signal
+        to take it to Basket for the full multi-symbol test.</li>
+      <li><b>Half-written code can no longer disappear.</b> Switch
+        indicators or strategies mid-edit and you're asked to save,
+        discard, or go back - your list selection reverts cleanly if
+        you back out, instead of silently losing what you were
+        writing.</li>
+      <li><b>Small polish:</b> the Chart tab now always opens on the
+        most recent candles by default, even with a strategy selected
+        - it previously jumped back toward a symbol's very first trade
+        instead.</li>
+    </ul>
+  </div>
+
+  <div class="relnote">
+    <h3>v0.10</h3>
     <div class="date">Released August 2026</div>
     <ul>
       <li><b>Multi-broker support.</b> RN TradeLab now connects to

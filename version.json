@@ -1,5 +1,5 @@
 {
-  "latest": "0.10",
+  "latest": "0.11",
   "url": "https://rnalgotrading.github.io/rnalgotrading-site/",
-  "notes": "- Multi-broker support: Alpaca alongside Upstox - the biggest step yet beyond NSE-only\n- New: US stocks and Crypto via Alpaca - Broker Download, Live Chart, and Live Signals all route automatically\n- Live Chart is now free for everyone, both Upstox and Alpaca\n- New: one Broker Settings hub - connect any broker from a single dialog\n- Small polish: the Download button now always explains itself honestly"
+  "notes": "- New: Gann Levels (Gold) - the Square of 9 spiral, plus an honest historical track record of whether levels have actually held for each specific symbol\n- New: Strategy Performance panel on the Chart tab - in-sample/out-of-sample metrics and equity curve, the moment you pick a strategy\n- Half-written indicator/strategy code can no longer disappear - save/discard/cancel before switching\n- Small polish: Chart tab now always opens on the most recent candles by default"
 }
