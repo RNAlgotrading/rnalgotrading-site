@@ -1,5 +1,5 @@
 {
-  "latest": "0.12",
+  "latest": "0.11",
   "url": "https://rnalgotrading.github.io/rnalgotrading-site/",
   "notes": "- New: the full Smart Money Concepts / ICT set (Gold) - Order Blocks, Fair Value Gaps, Market Structure (BOS/CHoCH), and Liquidity Sweeps, each on a stated, precise rule\n- New: eight free technical indicators - ATR, ADX, CCI, Stochastic RSI, Williams %R, Parabolic SAR, Ichimoku Cloud, Volume Profile\n- New: Fyers as a second NSE/BSE broker alongside Upstox - asks once which to use if you connect both\n- Small polish: half-written indicator/strategy code can no longer disappear if you switch away mid-edit"
 }
