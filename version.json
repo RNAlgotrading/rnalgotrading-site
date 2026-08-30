@@ -1,5 +1,5 @@
 {
-  "latest": "0.11",
+  "latest": "0.12",
   "url": "https://rnalgotrading.github.io/rnalgotrading-site/",
-  "notes": "- New: Gann Levels (Gold) - the Square of 9 spiral, plus an honest historical track record of whether levels have actually held for each specific symbol\n- New: Strategy Performance panel on the Chart tab - in-sample/out-of-sample metrics and equity curve, the moment you pick a strategy\n- Half-written indicator/strategy code can no longer disappear - save/discard/cancel before switching\n- Small polish: Chart tab now always opens on the most recent candles by default"
+  "notes": "- New: the full Smart Money Concepts / ICT set (Gold) - Order Blocks, Fair Value Gaps, Market Structure (BOS/CHoCH), and Liquidity Sweeps, each on a stated, precise rule\n- New: eight free technical indicators - ATR, ADX, CCI, Stochastic RSI, Williams %R, Parabolic SAR, Ichimoku Cloud, Volume Profile\n- New: Fyers as a second NSE/BSE broker alongside Upstox - asks once which to use if you connect both\n- Small polish: half-written indicator/strategy code can no longer disappear if you switch away mid-edit"
 }
