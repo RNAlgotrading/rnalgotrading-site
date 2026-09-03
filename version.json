@@ -1,5 +1,5 @@
 {
-  "latest": "0.11",
+  "latest": "0.13",
   "url": "https://rnalgotrading.github.io/rnalgotrading-site/",
-  "notes": "- New: the full Smart Money Concepts / ICT set (Gold) - Order Blocks, Fair Value Gaps, Market Structure (BOS/CHoCH), and Liquidity Sweeps, each on a stated, precise rule\n- New: eight free technical indicators - ATR, ADX, CCI, Stochastic RSI, Williams %R, Parabolic SAR, Ichimoku Cloud, Volume Profile\n- New: Fyers as a second NSE/BSE broker alongside Upstox - asks once which to use if you connect both\n- Small polish: half-written indicator/strategy code can no longer disappear if you switch away mid-edit"
+  "notes": "- New: Fyers Login - connect through their own official browser-based login, never paste a token again (manual paste still works as a fallback)\n- New: Breakeven exit - locks in no-loss once a trade has moved in your favor, combines automatically with Trailing Stop\n- New: Debug Output panel - print() from your own indicator/strategy code shows right on the chart\n- New: live price tag on the right-hand axis, moving with every tick\n- New: a broker status indicator in the status bar, and a genuine disconnect (not a delete) for any broker\n- Fixed: Live Chart and Broker Download are now independent - stream live through any connected broker regardless of who downloaded the data\n- Small polish: line numbers in the code editor, Clear All in Debug Output, indicator/strategy parameters correctly shown even at defaults"
 }

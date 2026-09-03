@@ -134,7 +134,47 @@
 <section class="wrap" style="border-top:none; padding-top:0;">
 
   <div class="relnote">
-    <h3>v0.12 <span class="badge-current">Current</span></h3>
+    <h3>v0.13 <span class="badge-current">Current</span></h3>
+    <div class="date">Released September 2026</div>
+    <ul>
+      <li><b>New: Fyers Login.</b> Connect Fyers through their own
+        official browser-based login instead of generating and pasting
+        a token yourself - your username, PIN, and TOTP are entered on
+        Fyers' own site, never in this app. Manual token-paste is still
+        there as a simple fallback.</li>
+      <li><b>New: Breakeven exit.</b> Once a trade has moved a chosen %
+        in its favor, the stop jumps to entry - locks in "no loss" once
+        a trade has proven itself. Combines automatically with
+        Trailing Stop, whichever level is currently higher wins.</li>
+      <li><b>New: Debug Output panel.</b> Add a normal Python
+        print() statement to your own indicator or strategy code and
+        see it right on the chart - no special API, it's genuinely
+        just Python.</li>
+      <li><b>New: live price tag.</b> The price axis moved to the
+        right (matching every other charting platform), with the
+        current price pinned to it and moving with every tick during
+        Live Chart.</li>
+      <li><b>New: a broker status indicator</b> in the status bar -
+        green when live prices are genuinely flowing, red otherwise,
+        and it now honestly surfaces a persistent connection problem
+        instead of silently going quiet.</li>
+      <li><b>New: disconnect a broker</b> without losing your saved
+        credentials - it's a switch, not a delete, so reconnecting
+        later is one click.</li>
+      <li><b>Fixed:</b> Live Chart and Broker Download are now
+        independent choices - a symbol downloaded via one broker (or
+        even Yahoo) can stream live through whichever broker is
+        actually connected, not locked to whoever downloaded it
+        first.</li>
+      <li><b>Small polish:</b> line numbers in the Indicators/Strategies
+        code editor, a Clear All option in Debug Output, and indicator/
+        strategy parameters now show correctly on the chart even when
+        left at their defaults.</li>
+    </ul>
+  </div>
+
+  <div class="relnote">
+    <h3>v0.12</h3>
     <div class="date">Released August 2026</div>
     <ul>
       <li><b>New: the full Smart Money Concepts / ICT set (Gold).</b>
