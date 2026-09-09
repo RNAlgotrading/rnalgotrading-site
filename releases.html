@@ -134,7 +134,65 @@
 <section class="wrap" style="border-top:none; padding-top:0;">
 
   <div class="relnote">
-    <h3>v0.13 <span class="badge-current">Current</span></h3>
+    <h3>v0.14 <span class="badge-current">Current</span></h3>
+    <div class="date">Released September 2026</div>
+    <ul>
+      <li><b>New: Performance Report.</b> A full strategy tear sheet -
+        Overview, Trade Analysis, Risk &amp; Drawdown, Calendar &amp;
+        Sessions, Trade Log, and Settings &amp; Symbol, all in one dialog.
+        Sharpe, Sortino, Calmar, R-multiples, MAE/MFE, drawdown episodes,
+        monthly returns, and day-of-week/hour-of-day breakdowns - opened
+        straight from a strategy's results on the Chart tab.</li>
+      <li><b>New: export your Performance Report as a PDF.</b> One click,
+        a clean multi-page summary you can actually hand to someone - the
+        full trade-by-trade log is left out by default to keep it short,
+        with a checkbox to add it back in when you want it.</li>
+      <li><b>New: proper futures support.</b> Register any futures
+        contract's tick size, point value, and session hours under
+        Data Center &gt; Futures. Once registered, the app knows what a
+        tick is actually worth for that symbol - correct dollar P&amp;L,
+        and slippage/commission you can now set in $ or ticks instead of
+        only %, which is what a futures cost assumption should really be
+        built on.</li>
+      <li><b>New: Total Net Profit $ next to Total Return %.</b> These are
+        two genuinely different ways of measuring the same trades - %
+        compounds each trade against your current equity, $ just adds up
+        a fixed size per trade - and they can disagree, even in sign, on
+        a volatile sequence. The equity curve now has a toggle to see
+        both.</li>
+      <li><b>New: click any (i) icon on the Performance Report</b> to see
+        exactly how that metric is calculated, right where you're looking
+        - Sharpe, Calmar, Expectancy, MAE/MFE and everything else, no
+        separate page to go find.</li>
+      <li><b>New: Optimize This Instrument.</b> Run a parameter search
+        scoped to exactly the symbol, strategy, and timeframe you're
+        already looking at on the Chart tab - the same honest in-sample /
+        out-of-sample ranking as the full Optimize tab, without leaving
+        the chart.</li>
+      <li><b>New: a Long / Short / Both filter</b> on the Performance
+        Report - see every tab's stats recomputed for just your long
+        trades, just your shorts, or both together.</li>
+      <li><b>New: Session Boxes indicator</b> (Asian/London/NY AM/NY PM)
+        and a ready-made NY AM Box Breakout strategy to go with it.</li>
+      <li><b>Faster optimization.</b> Parameter combinations now run in
+        parallel across your CPU's cores instead of one at a time - same
+        ranking, just not waiting on it serially anymore.</li>
+      <li><b>Fixed:</b> short trades in the backtest engine were being
+        evaluated with long-side fill logic - a short's stop and target
+        are mirrored, not identical to a long's, and this was wrong.
+        Every short trade is now filled correctly against the candle's
+        high/low the way an actual short position would be.</li>
+      <li><b>Fixed:</b> the Trade Log's cumulative P&amp;L now sorts
+        consistently by exit time everywhere, matching the equity curve
+        and every other chronological calculation in the report.</li>
+      <li><b>Small polish:</b> 1-minute data support, a new Minute/Daily/
+        Weekly/Monthly timeframe picker, per-line indicator colors, and
+        sortable trade tables.</li>
+    </ul>
+  </div>
+
+  <div class="relnote">
+    <h3>v0.13</h3>
     <div class="date">Released September 2026</div>
     <ul>
       <li><b>New: Fyers Login.</b> Connect Fyers through their own
