@@ -134,7 +134,58 @@
 <section class="wrap" style="border-top:none; padding-top:0;">
 
   <div class="relnote">
-    <h3>v0.14 <span class="badge-current">Current</span></h3>
+    <h3>v0.15 <span class="badge-current">Current</span></h3>
+    <div class="date">Released September 2026</div>
+    <ul>
+      <li><b>New: Workspace save/open.</b> Save a chart's entire setup -
+        symbol, timeframe, strategy and its parameters, indicators,
+        paintbars, drawings - to a named <code>.rnw</code> file and
+        reopen it exactly as you left it later, TradeStation-style. An
+        unsaved-changes prompt protects against losing work when
+        opening a different workspace or closing the app, and the
+        current workspace's name shows right under the chart.</li>
+      <li><b>New: pick exactly which parameters to optimize.</b> Every
+        row in Optimize This Instrument now has its own checkbox -
+        leave it unchecked and that parameter stays fixed at an
+        editable value for the whole search, check it to sweep a
+        Start/Stop/Increment range instead. No more forcing every
+        parameter into the grid just to tune the one or two you
+        actually care about.</li>
+      <li><b>New: optimize Risk Management alongside strategy
+        parameters.</b> Stoploss %, Target %, Trailing Stop %,
+        Breakeven Trigger %, and Time Exit - whichever are on in
+        Settings &gt; Exits - now show up as optimizable rows right
+        next to a strategy's own parameters.</li>
+      <li><b>New: live progress during Optimize This Instrument.</b>
+        Elapsed time, an estimated time remaining, and the best
+        combination found so far - updating as each one completes,
+        instead of a bare progress bar.</li>
+      <li><b>New: copy or export optimization results.</b> Select any
+        rows and copy (Ctrl+C, or right-click) straight into Excel, or
+        export the full results table to a CSV file.</li>
+      <li><b>Fixed: Performance Report dollar figures now include
+        Slippage and Commission.</b> Total Net Profit, the equity
+        curve's dollar view, and the Trade Log's dollar columns were
+        being computed from raw price movement alone - correct in
+        percentage terms, but silently ignoring trading costs in
+        dollar terms. Trade Log now shows both Gross and After Cost
+        side by side, with Cumulative $ based on After Cost.</li>
+      <li><b>New: Settings &amp; Symbol shows the trading costs
+        actually in effect</b> - Slippage and Commission, both
+        per-side and the round-trip total, so there's no ambiguity
+        about what a backtest actually charged.</li>
+      <li><b>Fixed:</b> a newly created strategy wasn't appearing in
+        the Chart tab's dropdown until the app was restarted - it now
+        shows up immediately, matching the Basket tab.</li>
+      <li><b>Small polish:</b> .rnw workspace files now show the app's
+        own icon in Windows Explorer; Performance Report's info
+        tooltips rebuilt for reliable readability across different
+        Windows theme configurations.</li>
+    </ul>
+  </div>
+
+  <div class="relnote">
+    <h3>v0.14</h3>
     <div class="date">Released September 2026</div>
     <ul>
       <li><b>New: Performance Report.</b> A full strategy tear sheet -
