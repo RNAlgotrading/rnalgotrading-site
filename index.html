@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>RNAlgotrading - RN TradeLab | Test your trading ideas before the market tests you</title>
-<meta name="description" content="RNAlgotrading builds practical research tools for retail traders. RN TradeLab: walk-forward backtesting, portfolio analytics and live signal scanning for NSE, US stocks and Crypto - via Upstox, Fyers, or Alpaca. Free to use, no broker needed to start.">
+<meta name="description" content="RNAlgotrading builds practical research tools for Indian retail traders. RN TradeLab: walk-forward backtesting, portfolio analytics and live signal scanning for NSE, US stocks and Crypto - via Upstox, Fyers, or Alpaca. Free to use, no broker needed to start.">
 <link rel="icon" type="image/x-icon" href="favicon.ico">
 <style>
   :root { --bg:#1c2026; --panel:#23272e; --card:#2b303a; --accent:#4a9eff;
@@ -48,6 +48,23 @@
           border-radius:10px; padding:20px; }
   .card h3 { color:var(--accent); font-size:1.05rem; margin-bottom:8px; }
   .card p { color:var(--sub); font-size:.95rem; }
+
+  .flip-card { perspective:1000px; transition:transform .5s ease; transform-origin:center; }
+  .flip-card.active { transform:scale(1.06); z-index:2; position:relative; }
+  .flip-card .inner { position:relative; height:100%; min-height:210px;
+        transition:transform .5s ease; transform-style:preserve-3d; }
+  .flip-card.flipped .inner { transform:rotateY(180deg); }
+  .flip-face { position:absolute; inset:0; backface-visibility:hidden;
+        border-radius:10px; }
+  .flip-face.front { background:var(--card); border:1px solid var(--border);
+        padding:20px; }
+  .flip-face.back { background:var(--card); border:1px solid var(--accent);
+        transform:rotateY(180deg); overflow:hidden; display:flex;
+        align-items:center; justify-content:center; }
+  .flip-face.back img { width:100%; height:100%; object-fit:cover;
+        display:block; }
+  .flip-card:focus-visible .inner { outline:2px solid var(--accent);
+        outline-offset:3px; }
   .steps { counter-reset:s; }
   .step { background:var(--card); border:1px solid var(--border); border-radius:10px;
           padding:18px 20px 18px 64px; margin-bottom:12px; position:relative; }
@@ -113,14 +130,14 @@
 
 <header class="wrap" id="product">
   <img class="hero-logo" src="logo.png" alt="RN TradeLab">
-  <p class="kicker">RNAlgotrading builds practical research tools for retail traders. Our flagship:</p>
+  <p class="kicker">RNAlgotrading builds practical research tools for Indian retail traders. Our flagship:</p>
   <h1>RN TradeLab</h1>
   <p class="tagline">Test. Learn. Then trade.</p>
   <p class="sub">Prove your strategy works on data it has never seen -
      <em>before</em> you risk real money on the market you trade.</p>
 
   <div class="video-wrap">
-    <iframe src="https://www.youtube.com/embed/8yOYwLVS5PU"
+    <iframe src="https://www.youtube.com/embed/JsfZJRdZ1rg"
             title="RN TradeLab - overview"
             allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
             allowfullscreen></iframe>
@@ -142,30 +159,60 @@
 
 <section class="wrap">
   <h2>Why RN TradeLab</h2>
-  <div class="grid">
-    <div class="card"><h3>Honest backtesting</h3>
-      <p>Walk-forward 70/30 split: your strategy is judged only on the 30%
-      of history it never saw. Beautiful in-sample curves that collapse
-      out-of-sample are exposed, not hidden.</p></div>
-    <div class="card"><h3>Your own strategies</h3>
-      <p>Write entry logic in the built-in editor with a guided template.
-      Validated automatically, registered instantly - each strategy is its
-      own file.</p></div>
-    <div class="card"><h3>Discipline built in</h3>
-      <p>Trend, time-window and volatility filters plus daily / weekly /
-      monthly loss limits - simulated inside the backtest, with no
-      lookahead bias.</p></div>
-    <div class="card"><h3>Portfolios, not bets</h3>
-      <p>Sector-aware selection and a correlation-aware optimizer that
-      avoids stocks which lose money on the same days. Sharpe, drawdown
-      and rupee P&amp;L under a realistic capital model.</p></div>
-    <div class="card"><h3>Live signal scanning</h3>
-      <p>During market hours the app scans your portfolio at every
-      completed bar - locked to the exact setup you validated. You place
-      every trade yourself.</p></div>
-    <div class="card"><h3>Market context</h3>
-      <p>World market timings in IST and a live sector heatmap of the
-      Indian market - see where the money is rotating today.</p></div>
+  <div class="grid" id="whyGrid">
+    <div class="flip-card" tabindex="0">
+      <div class="inner">
+        <div class="flip-face front"><h3>Honest backtesting</h3>
+          <p>Walk-forward 70/30 split: your strategy is judged only on the 30%
+          of history it never saw. Beautiful in-sample curves that collapse
+          out-of-sample are exposed, not hidden.</p></div>
+        <div class="flip-face back"><img src="Images/why-honest-backtesting.png" alt="In-sample vs out-of-sample equity curve"></div>
+      </div>
+    </div>
+    <div class="flip-card" tabindex="0">
+      <div class="inner">
+        <div class="flip-face front"><h3>Your own strategies</h3>
+          <p>Write entry logic in the built-in editor with a guided template.
+          Validated automatically, registered instantly - each strategy is its
+          own file.</p></div>
+        <div class="flip-face back"><img src="Images/why-your-own-strategies.png" alt="Strategy code editor"></div>
+      </div>
+    </div>
+    <div class="flip-card" tabindex="0">
+      <div class="inner">
+        <div class="flip-face front"><h3>Discipline built in</h3>
+          <p>Trend, time-window and volatility filters plus daily / weekly /
+          monthly loss limits - simulated inside the backtest, with no
+          lookahead bias.</p></div>
+        <div class="flip-face back"><img src="Images/why-discipline-built-in.png" alt="Trend, time-window and volatility filter settings"></div>
+      </div>
+    </div>
+    <div class="flip-card" tabindex="0">
+      <div class="inner">
+        <div class="flip-face front"><h3>Stress-tested, not just backtested</h3>
+          <p>Monte Carlo resampling, rolling walk-forward windows, and
+          parameter sensitivity heatmaps - proof a result isn't just one
+          lucky sequence.</p></div>
+        <div class="flip-face back"><img src="Images/why-stress-tested.png" alt="Monte Carlo simulation fan chart"></div>
+      </div>
+    </div>
+    <div class="flip-card" tabindex="0">
+      <div class="inner">
+        <div class="flip-face front"><h3>Portfolios, not bets</h3>
+          <p>Sector-aware selection and a correlation-aware optimizer that
+          avoids stocks which lose money on the same days. Sharpe, drawdown
+          and rupee P&amp;L under a realistic capital model.</p></div>
+        <div class="flip-face back"><img src="Images/why-portfolios-not-bets.png" alt="Portfolio backtest results card"></div>
+      </div>
+    </div>
+    <div class="flip-card" tabindex="0">
+      <div class="inner">
+        <div class="flip-face front"><h3>Not locked to one broker</h3>
+          <p>Connect Upstox, Fyers, and Alpaca at once - NSE, US stocks and
+          Crypto all from the same portfolio, no juggling platforms.</p></div>
+        <div class="flip-face back"><img src="Images/why-multi-broker.png" alt="Multi-broker connection settings"></div>
+      </div>
+    </div>
   </div>
 </section>
 
@@ -247,6 +294,71 @@
   </div>
   <p style="margin-top:14px">&copy; RNAlgotrading 2026</p>
 </footer>
+
+  <script>
+(function () {
+  var grid = document.getElementById('whyGrid');
+  if (!grid) return;
+  var cards = grid.querySelectorAll('.flip-card');
+  if (!cards.length) return;
+
+  var reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  if (reduced) {
+    // no auto-cycle for people who've asked their OS to reduce motion -
+    // each card is still reachable, just via click/tap/Enter instead
+    cards.forEach(function (card) {
+      card.addEventListener('click', function () { card.classList.toggle('flipped'); });
+      card.addEventListener('keydown', function (e) {
+        if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); card.classList.toggle('flipped'); }
+      });
+    });
+    return;
+  }
+
+  var idx = 0;
+  var pendingFn = null, pendingRemaining = 0, pendingStart = 0, handle = null;
+  function schedule(fn, delay) {
+    pendingFn = fn; pendingRemaining = delay; pendingStart = Date.now();
+    handle = setTimeout(function () { pendingFn = null; fn(); }, delay);
+  }
+  function pauseTimer() {
+    if (handle && pendingFn) {
+      clearTimeout(handle);
+      pendingRemaining -= (Date.now() - pendingStart);
+      if (pendingRemaining < 0) pendingRemaining = 0;
+    }
+  }
+  function resumeTimer() {
+    if (pendingFn) {
+      var fn = pendingFn;
+      pendingStart = Date.now();
+      handle = setTimeout(function () { pendingFn = null; fn(); }, pendingRemaining);
+    }
+  }
+  function step1() {
+    cards[idx].classList.add('active');
+    schedule(step2, 1000);
+  }
+  function step2() {
+    cards[idx].classList.add('flipped');
+    schedule(step3, 2000);
+  }
+  function step3() {
+    cards[idx].classList.remove('flipped');
+    cards[idx].classList.remove('active');
+    schedule(step4, 2000);
+  }
+  function step4() {
+    idx = (idx + 1) % cards.length;
+    step1();
+  }
+  // pause the moment the pointer is anywhere near the section - someone
+  // reading shouldn't have a card fold out from under them
+  grid.addEventListener('mouseenter', pauseTimer);
+  grid.addEventListener('mouseleave', resumeTimer);
+  schedule(step1, 800);
+})();
+</script>
 
   <script>
 (function () {
