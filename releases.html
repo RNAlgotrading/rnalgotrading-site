@@ -134,7 +134,39 @@
 <section class="wrap" style="border-top:none; padding-top:0;">
 
   <div class="relnote">
-    <h3>v0.15 <span class="badge-current">Current</span></h3>
+    <h3>v0.16 <span class="badge-current">Current</span></h3>
+    <div class="date">Released September 2026</div>
+    <ul>
+      <li><b>New: Parameter sensitivity heatmap.</b> In Optimize This
+        Instrument, pick any two swept parameters and a metric to see a
+        2D heatmap of the results - a smooth, broad region of good
+        results means the strategy is robust to small parameter changes;
+        an isolated bright spike surrounded by mediocre neighbors is a
+        classic overfitting red flag.</li>
+      <li><b>New: Monte Carlo trade resampling.</b> New tab in
+        Performance Report - bootstrap-resamples the trade sequence
+        thousands of times to show the range of outcomes this trade mix
+        could plausibly have produced, not just the one sequence that
+        actually happened. Percentile stats, probability of a net loss,
+        and a worst-case drawdown figure more honest than the single
+        drawdown one particular sequence happened to show.</li>
+      <li><b>New: Rolling/Anchored Walk-Forward.</b> Also in Performance
+        Report - re-runs the exact same strategy, parameters, and cost
+        settings on sequential date slices, a consistency check across
+        time rather than a re-optimization. Rolling windows spot which
+        specific stretch a strategy fell apart in; anchored windows show
+        whether results stay stable or drift as more history is added.</li>
+      <li><b>Fixed:</b> the Basket table's per-stock equity curve
+        thumbnails could silently render with the wrong (dark)
+        background after using the new Optimize/Performance Report
+        features in the same session - a chart-styling setting shared
+        across unrelated parts of the app was being overwritten instead
+        of staying scoped to where it was set.</li>
+    </ul>
+  </div>
+
+  <div class="relnote">
+    <h3>v0.15</h3>
     <div class="date">Released September 2026</div>
     <ul>
       <li><b>New: Workspace save/open.</b> Save a chart's entire setup -
