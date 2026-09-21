@@ -134,7 +134,64 @@
 <section class="wrap" style="border-top:none; padding-top:0;">
 
   <div class="relnote">
-    <h3>v0.16 <span class="badge-current">Current</span></h3>
+    <h3>v0.17 <span class="badge-current">Current</span></h3>
+    <div class="date">Released September 2026</div>
+    <ul>
+      <li><b>New: Crypto is now a real asset type.</b> Data Center is
+        reorganized into Stocks / Futures / Crypto, each with its own
+        folder structure - previously Crypto was quietly treated as a
+        "country" under Stocks, which never made sense (no session
+        hours, no country, always USD).</li>
+      <li><b>New: broker downloads now pull 1-minute data</b> (previously
+        5-minute) for more precise backtesting; Yahoo Finance downloads
+        stay at 5-minute, matching its own free-tier limits.</li>
+      <li><b>New: multi-select indicators.</b> Select several at once
+        from Studies and apply them together - with a real Base (3) vs
+        Gold (10) limit on how many can be layered on one chart at a
+        time.</li>
+      <li><b>New: position sizing.</b> Choose Capital-per-stock or a
+        Fixed number of contracts in Settings - the actual quantity now
+        shows live on the chart at every entry, dropping to zero at
+        exit.</li>
+      <li><b>New: Download Strategy Description (Gold).</b> A fully
+        formatted Word document of everything behind one specific
+        result - entry logic, every active Settings panel, position
+        sizing, and costs - built for handing a validated strategy to a
+        developer or converting it to another platform to go live.</li>
+      <li><b>New: Optimize This Instrument overrides are now visible and
+        reversible</b> - a session-only override from a prior "Apply
+        Selected" shows clearly on the chart, with a right-click option
+        to clear it.</li>
+      <li><b>New: optimization ceiling is now tiered</b> - 500
+        combinations on Base, 2,000 on Gold.</li>
+      <li><b>Fixed:</b> a real data-corruption risk - mixing
+        different-resolution price data (e.g. existing 5-minute Yahoo
+        history with fresh 1-minute broker data) into the same file
+        could previously happen silently. It's now blocked outright,
+        with an explicit prompt to replace or keep the existing data.</li>
+      <li><b>Fixed:</b> changing Settings (Exits/Regime/Risk), or
+        editing a strategy/indicator/paintbar's code while it's
+        actively shown on the chart, now correctly refreshes the chart
+        automatically instead of requiring the strategy to be removed
+        and re-added.</li>
+      <li><b>Fixed:</b> Optimize This Instrument could show stale
+        starting values after applying "best parameters" from a
+        previous optimization run, rather than the values actually in
+        effect on the chart.</li>
+      <li><b>Fixed:</b> Trade Log column sorting could crash the report
+        - or, on some systems, the whole app - depending on the
+        underlying numeric type of the column being sorted.</li>
+      <li><b>One-time change for existing installs:</b> downloaded price
+        data is being reorganized into the new Stocks / Futures /
+        Crypto folder structure. You'll see a one-time notice on first
+        launch and will need to re-download your data in Data Center -
+        nothing else (strategies, portfolios, your account) is
+        affected.</li>
+    </ul>
+  </div>
+
+  <div class="relnote">
+    <h3>v0.16</h3>
     <div class="date">Released September 2026</div>
     <ul>
       <li><b>New: Parameter sensitivity heatmap.</b> In Optimize This
