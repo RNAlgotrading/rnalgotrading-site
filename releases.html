@@ -134,7 +134,56 @@
 <section class="wrap" style="border-top:none; padding-top:0;">
 
   <div class="relnote">
-    <h3>v0.17 <span class="badge-current">Current</span></h3>
+    <h3>v0.18 <span class="badge-current">Current</span></h3>
+    <div class="date">Released September 2026</div>
+    <ul>
+      <li><b>New: Symbol Properties.</b> Right-click a chart to filter that
+        symbol's data by session (Regular / Regular+Pre / Regular+Post / All)
+        or a custom date range - applied consistently to the chart AND any
+        backtest or optimization run on it, so they're never looking at two
+        different versions of the data.</li>
+      <li><b>New: Download Individual Symbol (Yahoo, daily).</b> Its own
+        Market dropdown, separate from the universe selector elsewhere - it
+        can no longer borrow the wrong exchange suffix and fail with a 404.</li>
+      <li><b>New: Optimize This Instrument's live "Best so far" is now a
+        real table</b> - Ret%, Net Profit, Sharpe, Win Rate, and Max DD
+        across In-Sample / Out-Sample / Total, instead of one crowded line
+        of text. Total is a properly recomputed full-period figure, not a
+        naive combination of the other two columns.</li>
+      <li><b>New: Optimize This Instrument remembers its last completed
+        run.</b> Close the dialog to check a few trades on the chart,
+        reopen it, and your results are still there - cleared only when the
+        symbol, strategy, timeframe, or mode actually changes.</li>
+      <li><b>New: two Performance Report KPIs</b> - Largest Win / Largest
+        Loss ($), and Win Streak / Loss Streak (the longest run of
+        consecutive wins or losses).</li>
+      <li><b>Faster: indicator computation windowing.</b> An indicator with
+        no long lookback dependency (like Session Boxes) now computes only
+        over the visible chart window instead of the full dataset - up to
+        50x faster on years of intraday history.</li>
+      <li><b>Fixed:</b> a data-loading, resampling, or backtest failure
+        inside Optimize This Instrument used to fail silently, leaving a
+        table of plain 0.0s indistinguishable from a strategy that
+        genuinely found nothing. Errors now surface directly, with a new
+        diagnostic that tells apart "no signals found" from "signals were
+        found, but none of them became an actual trade."</li>
+      <li><b>Fixed:</b> Optimize This Instrument was silently ignoring a
+        symbol's Symbol Properties filter, and any session-only Settings >
+        Exits override - both now match exactly what the chart itself
+        uses.</li>
+      <li><b>Fixed:</b> CSV import could silently strip a symbol name like
+        @NQ down to NQ, and could misread a day-first date depending on
+        what else was in the file.</li>
+      <li><b>Fixed:</b> Performance Report's dollar P&L figures now
+        correctly account for position sizing (Capital-per-stock or Fixed
+        contracts), rather than assuming one contract for every trade.</li>
+      <li><b>Small polish:</b> Futures Contract spec form redesigned into a
+        cleaner two-column layout.</li>
+    </ul>
+  </div>
+
+  <div class="relnote">
+    <h3>v0.17</h3>
     <div class="date">Released September 2026</div>
     <ul>
       <li><b>New: Crypto is now a real asset type.</b> Data Center is
