@@ -6,43 +6,66 @@
 <title>RNAlgotrading - Product &amp; Pricing | RN TradeLab</title>
 <meta name="description" content="RN TradeLab plans: Basic (free forever) and Gold (early access to new features). See exactly what's included in each, side by side.">
 <link rel="icon" type="image/x-icon" href="favicon.ico">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Inter+Tight:wght@600;700;800&display=swap" rel="stylesheet">
 <style>
-  :root { --bg:#1c2026; --panel:#23272e; --card:#2b303a; --accent:#4a9eff;
-          --green:#35d07f; --gold:#e8b84a; --text:#e8eaed; --sub:#9aa0aa; --border:#3a404d; }
+  :root {
+    --bg:#0b0e13; --panel:#12161d; --card:#171c25; --card-hover:#1c222d;
+    --accent:#4a9eff; --accent-2:#7cc4ff; --green:#35d07f; --red:#e8615a; --gold:#e8b84a;
+    --text:#eef1f5; --sub:#8b93a3; --border:#252b36; --border-soft:#1c212b;
+    --shadow-sm:0 1px 2px rgba(0,0,0,.35);
+    --shadow-md:0 8px 24px rgba(0,0,0,.35);
+    --shadow-lg:0 24px 60px rgba(0,0,0,.45);
+    --glow:0 0 0 1px rgba(74,158,255,.25), 0 8px 30px rgba(74,158,255,.18);
+    --glow-gold:0 0 0 1px rgba(232,184,74,.3), 0 8px 30px rgba(232,184,74,.16);
+  }
   * { margin:0; padding:0; box-sizing:border-box; }
+  html { scroll-behavior:smooth; }
   body { background:var(--bg); color:var(--text);
-         font-family:'Segoe UI', system-ui, sans-serif; line-height:1.6; }
-  .wrap { max-width:1000px; margin:0 auto; padding:0 20px; }
-  nav { background:var(--panel); border-bottom:1px solid var(--border);
+         font-family:'Inter', -apple-system, 'Segoe UI', system-ui, sans-serif;
+         line-height:1.6; -webkit-font-smoothing:antialiased; }
+  .wrap { max-width:1080px; margin:0 auto; padding:0 24px; }
+  nav { background:rgba(11,14,19,.82); backdrop-filter:blur(10px); -webkit-backdrop-filter:blur(10px);
+        border-bottom:1px solid var(--border-soft);
         position:sticky; top:0; z-index:10; }
-  .nav-inner { max-width:1000px; margin:0 auto; padding:14px 20px;
-        display:flex; align-items:center; gap:22px; flex-wrap:wrap; }
+  .nav-inner { max-width:1080px; margin:0 auto; padding:14px 24px;
+        display:flex; align-items:center; gap:24px; flex-wrap:wrap; }
   .brand { font-weight:700; font-size:1.15rem; color:var(--text);
-        display:flex; align-items:center; }
+        display:flex; align-items:center; letter-spacing:-.01em; }
   .brand img { height:28px; margin-right:9px; }
   .brand span { color:var(--accent); }
-  nav a { color:var(--sub); text-decoration:none; font-size:.95rem; }
-  nav a:hover { color:var(--accent); }
-  nav a.active { color:var(--accent); }
-  header { padding:48px 0 8px; text-align:center; }
-  h1 { font-size:2.2rem; color:var(--accent); }
-  .sub { color:var(--sub); }
-  .lede { max-width:640px; margin:14px auto 0; color:var(--sub); }
-  section { padding:44px 0; border-top:1px solid var(--border); }
-  h2 { font-size:1.5rem; margin-bottom:18px; }
-  a { color:var(--accent); }
+  nav a { color:var(--sub); text-decoration:none; font-size:.92rem; font-weight:500;
+        transition:color .15s ease; }
+  nav a:hover { color:var(--text); }
+  nav a.active { color:var(--accent-2); }
+  header { padding:56px 0 8px; text-align:center; }
+  h1 { font-family:'Inter Tight', 'Inter', sans-serif; font-size:2.6rem; font-weight:800;
+       line-height:1.1; letter-spacing:-.03em;
+       background:linear-gradient(135deg, var(--text) 20%, var(--accent-2) 100%);
+       -webkit-background-clip:text; background-clip:text; color:transparent; }
+  .sub { color:var(--sub); font-size:.95rem; }
+  .lede { max-width:640px; margin:16px auto 0; color:var(--sub); }
+  section { padding:56px 0; border-top:1px solid var(--border-soft); }
+  h2 { font-family:'Inter Tight', 'Inter', sans-serif; font-size:1.7rem; font-weight:700;
+       letter-spacing:-.02em; margin-bottom:20px; }
+  a { color:var(--accent-2); }
 
   .plans { display:grid; grid-template-columns:repeat(auto-fit,minmax(300px,1fr));
-           gap:20px; align-items:stretch; }
-  .plan { background:var(--card); border:1px solid var(--border); border-radius:12px;
-          padding:28px 26px; display:flex; flex-direction:column; }
-  .plan.gold { border-color:var(--gold); position:relative; }
-  .plan-badge { display:inline-block; background:var(--gold); color:#1c1600;
+           gap:22px; align-items:stretch; }
+  .plan { background:var(--card); border:1px solid var(--border); border-radius:16px;
+          padding:28px 26px; display:flex; flex-direction:column; box-shadow:var(--shadow-sm);
+          transition:transform .2s ease, box-shadow .2s ease; }
+  .plan:hover { transform:translateY(-3px); box-shadow:var(--shadow-md); }
+  .plan.gold { border-color:rgba(232,184,74,.45); position:relative; box-shadow:var(--glow-gold); }
+  .plan-badge { display:inline-block; background:linear-gradient(135deg, var(--gold), #c8952f); color:#1c1600;
         font-weight:700; font-size:.72rem; letter-spacing:.04em; text-transform:uppercase;
-        border-radius:20px; padding:3px 12px; position:absolute; top:-12px; right:24px; }
+        border-radius:20px; padding:3px 12px; position:absolute; top:-12px; right:24px;
+        box-shadow:0 4px 14px rgba(232,184,74,.35); }
   .plan-name { font-size:1.3rem; font-weight:700; }
   .plan.gold .plan-name { color:var(--gold); }
-  .plan-price { font-size:2rem; font-weight:700; color:var(--green); margin:10px 0 4px; }
+  .plan-price { font-size:2.1rem; font-weight:800; color:var(--green); margin:10px 0 4px;
+        font-family:'Inter Tight','Inter',sans-serif; letter-spacing:-.02em; }
   .plan.gold .plan-price { color:var(--gold); }
   .plan-price small { font-size:.95rem; color:var(--sub); font-weight:400; }
   .plan-desc { color:var(--sub); font-size:.9rem; margin-bottom:18px; min-height:40px; }
@@ -53,29 +76,36 @@
   .plan.gold .plan-features li::before { color:var(--gold); }
   .plan-features li.dim { color:var(--sub); }
   .plan-features li.dim::before { content:"\2013"; color:var(--sub); }
-  .plan-btn { display:block; text-align:center; margin-top:22px; padding:12px 20px;
-        border-radius:8px; font-weight:600; text-decoration:none; }
-  .plan .plan-btn { background:var(--accent); color:#fff; }
-  .plan.gold .plan-btn { background:var(--gold); color:#1c1600; }
+  .plan-btn { display:block; text-align:center; margin-top:22px; padding:13px 20px;
+        border-radius:10px; font-weight:600; text-decoration:none;
+        transition:transform .15s ease, box-shadow .15s ease; }
+  .plan .plan-btn { background:linear-gradient(135deg, var(--accent), #2f7fe0); color:#fff;
+        box-shadow:var(--glow); }
+  .plan .plan-btn:hover { transform:translateY(-2px); }
+  .plan.gold .plan-btn { background:linear-gradient(135deg, var(--gold), #c8952f); color:#1c1600;
+        box-shadow:var(--glow-gold); }
+  .plan.gold .plan-btn:hover { transform:translateY(-2px); }
 
-  .note { background:var(--panel); border:1px solid var(--border); border-radius:8px;
-          padding:16px 20px; font-size:.9rem; color:var(--sub); margin-top:24px; }
+  .note { background:var(--panel); border:1px solid var(--border); border-radius:12px;
+          padding:18px 22px; font-size:.9rem; color:var(--sub); margin-top:26px;
+          box-shadow:var(--shadow-sm); }
   .note b { color:var(--text); }
 
   .roadmap { display:flex; gap:10px; flex-wrap:wrap; margin-top:14px; }
   .roadmap span { background:var(--card); border:1px solid var(--border); border-radius:20px;
         padding:5px 16px; font-size:.85rem; color:var(--sub); }
-  .roadmap span.now { border-color:var(--accent); color:var(--accent); }
+  .roadmap span.now { border-color:var(--accent); color:var(--accent-2); }
 
-  footer { padding:36px 0 48px; border-top:1px solid var(--border);
+  footer { padding:44px 0 56px; border-top:1px solid var(--border-soft);
            color:var(--sub); font-size:.85rem; text-align:center; }
   .disclaimer { background:var(--panel); border:1px solid var(--border);
-           border-radius:8px; padding:14px 18px; margin-top:18px; font-size:.85rem; text-align:left; }
-  .modal-overlay { display:none; position:fixed; inset:0; background:rgba(0,0,0,.6);
+           border-radius:10px; padding:16px 20px; margin-top:20px; font-size:.85rem; text-align:left; }
+  .modal-overlay { display:none; position:fixed; inset:0; background:rgba(0,0,0,.7);
+        backdrop-filter:blur(3px); -webkit-backdrop-filter:blur(3px);
         z-index:100; align-items:center; justify-content:center; padding:20px; }
   .modal-overlay.open { display:flex; }
-  .modal-box { background:var(--card); border:1px solid var(--gold); border-radius:12px;
-        max-width:440px; width:100%; padding:28px; }
+  .modal-box { background:var(--card); border:1px solid rgba(232,184,74,.45); border-radius:16px;
+        max-width:440px; width:100%; padding:28px; box-shadow:var(--shadow-lg); }
   .modal-box h3 { color:var(--gold); font-size:1.2rem; margin-bottom:6px; }
   .modal-box .sub { font-size:.88rem; margin-bottom:18px; }
   .modal-steps { counter-reset:ms; list-style:none; margin-bottom:20px; }
@@ -83,20 +113,22 @@
         border-bottom:1px solid var(--border); }
   .modal-steps li:last-child { border-bottom:none; }
   .modal-steps li::before { counter-increment:ms; content:counter(ms); position:absolute;
-        left:0; top:8px; width:26px; height:26px; border-radius:50%; background:var(--gold);
+        left:0; top:8px; width:26px; height:26px; border-radius:50%;
+        background:linear-gradient(135deg, var(--gold), #c8952f);
         color:#1c1600; font-weight:700; font-size:.85rem; display:flex; align-items:center;
         justify-content:center; }
   .modal-actions { display:flex; gap:10px; justify-content:flex-end; }
-  .modal-actions button, .modal-actions a { padding:10px 20px; border-radius:8px;
+  .modal-actions button, .modal-actions a { padding:10px 20px; border-radius:10px;
         font-weight:600; font-size:.9rem; cursor:pointer; text-decoration:none;
-        border:none; }
+        border:none; transition:transform .15s ease; }
+  .modal-actions button:hover, .modal-actions a:hover { transform:translateY(-2px); }
   .modal-cancel { background:transparent; color:var(--sub); border:1px solid var(--border) !important; }
-  .modal-continue { background:var(--gold); color:#1c1600; }
+  .modal-continue { background:linear-gradient(135deg, var(--gold), #c8952f); color:#1c1600; }
 
   .plan-radios { display:flex; flex-direction:column; gap:8px; margin-bottom:18px; }
   .plan-radios label { display:flex; align-items:center; gap:10px; background:var(--panel);
-        border:1px solid var(--border); border-radius:8px; padding:10px 14px;
-        cursor:pointer; font-size:.9rem; }
+        border:1px solid var(--border); border-radius:10px; padding:10px 14px;
+        cursor:pointer; font-size:.9rem; transition:border-color .15s ease; }
   .plan-radios label:has(input:checked) { border-color:var(--gold); }
   .plan-radios input[type="radio"] { accent-color:var(--gold); width:16px; height:16px; }
   .plan-radios .save-tag { color:var(--gold); font-size:.8rem; font-weight:600; }
