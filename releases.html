@@ -95,14 +95,35 @@
   a { color:var(--accent-2); }
 
   .relnote { background:var(--card); border:1px solid var(--border);
-             border-radius:14px; padding:24px 28px; margin-bottom:20px;
+             border-radius:14px; padding:20px 28px; margin-bottom:14px;
              box-shadow:var(--shadow-sm); transition:border-color .2s ease; }
   .relnote:hover { border-color:#2f3644; }
   .relnote h3 { color:var(--text); font-size:1.2rem; font-weight:700; margin-bottom:4px; }
-  .relnote .date { color:var(--sub); font-size:.85rem; margin-bottom:14px; }
+  .relnote .date { color:var(--sub); font-size:.85rem; }
   .relnote ul { margin:0; padding-left:20px; }
   .relnote li { margin-bottom:8px; color:var(--text); }
   .relnote li b { color:var(--green); }
+
+  /* expandable release notes: only the current version starts open
+     (see the `open` attribute on its <details>) - every earlier one
+     starts collapsed to just its heading, click anywhere on the
+     heading row to expand it */
+  .relnote > summary.relnote-summary { list-style:none; cursor:pointer;
+             display:flex; align-items:center; justify-content:space-between;
+             gap:20px; }
+  .relnote > summary.relnote-summary::-webkit-details-marker,
+  .relnote > summary.relnote-summary::marker { display:none; content:''; }
+  .relnote-summary-text .date { margin-bottom:0; }
+  .relnote-summary:hover .relnote-summary-text h3 { color:var(--accent-2); }
+  .relnote-toggle { flex-shrink:0; width:30px; height:30px; border-radius:50%;
+             background:var(--panel); border:1px solid var(--border);
+             color:var(--accent-2); font-size:1.3rem; font-weight:400;
+             line-height:1; display:flex; align-items:center; justify-content:center;
+             transition:transform .2s ease, background .2s ease; user-select:none; }
+  .relnote-summary:hover .relnote-toggle { background:var(--card-hover); }
+  .relnote[open] .relnote-toggle { transform:rotate(45deg); }
+  .relnote-body { margin-top:16px; padding-top:16px;
+             border-top:1px solid var(--border-soft); }
   .badge-current { display:inline-block; background:linear-gradient(135deg, var(--green), #1fa363);
              color:#06210f; font-size:.72rem; font-weight:700;
              padding:2px 10px; border-radius:12px; margin-left:10px;
@@ -160,10 +181,16 @@
 
 <section class="wrap" style="border-top:none; padding-top:0;">
 
-  <div class="relnote">
-    <h3>v0.18 <span class="badge-current">Current</span></h3>
-    <div class="date">Released September 2026</div>
-    <ul>
+  <details class="relnote" open>
+    <summary class="relnote-summary">
+      <div class="relnote-summary-text">
+        <h3>v0.18 <span class="badge-current">Current</span></h3>
+        <div class="date">Released September 2026</div>
+      </div>
+      <span class="relnote-toggle" aria-hidden="true">+</span>
+    </summary>
+    <div class="relnote-body">
+      <ul>
       <li><b>New: Symbol Properties.</b> Right-click a chart to filter that
         symbol's data by session (Regular / Regular+Pre / Regular+Post / All)
         or a custom date range - applied consistently to the chart AND any
@@ -207,12 +234,19 @@
       <li><b>Small polish:</b> Futures Contract spec form redesigned into a
         cleaner two-column layout.</li>
     </ul>
-  </div>
+    </div>
+  </details>
 
-  <div class="relnote">
-    <h3>v0.17</h3>
-    <div class="date">Released September 2026</div>
-    <ul>
+  <details class="relnote">
+    <summary class="relnote-summary">
+      <div class="relnote-summary-text">
+        <h3>v0.17</h3>
+        <div class="date">Released September 2026</div>
+      </div>
+      <span class="relnote-toggle" aria-hidden="true">+</span>
+    </summary>
+    <div class="relnote-body">
+      <ul>
       <li><b>New: Crypto is now a real asset type.</b> Data Center is
         reorganized into Stocks / Futures / Crypto, each with its own
         folder structure - previously Crypto was quietly treated as a
@@ -264,12 +298,19 @@
         nothing else (strategies, portfolios, your account) is
         affected.</li>
     </ul>
-  </div>
+    </div>
+  </details>
 
-  <div class="relnote">
-    <h3>v0.16</h3>
-    <div class="date">Released September 2026</div>
-    <ul>
+  <details class="relnote">
+    <summary class="relnote-summary">
+      <div class="relnote-summary-text">
+        <h3>v0.16</h3>
+        <div class="date">Released September 2026</div>
+      </div>
+      <span class="relnote-toggle" aria-hidden="true">+</span>
+    </summary>
+    <div class="relnote-body">
+      <ul>
       <li><b>New: Parameter sensitivity heatmap.</b> In Optimize This
         Instrument, pick any two swept parameters and a metric to see a
         2D heatmap of the results - a smooth, broad region of good
@@ -296,12 +337,19 @@
         across unrelated parts of the app was being overwritten instead
         of staying scoped to where it was set.</li>
     </ul>
-  </div>
+    </div>
+  </details>
 
-  <div class="relnote">
-    <h3>v0.15</h3>
-    <div class="date">Released September 2026</div>
-    <ul>
+  <details class="relnote">
+    <summary class="relnote-summary">
+      <div class="relnote-summary-text">
+        <h3>v0.15</h3>
+        <div class="date">Released September 2026</div>
+      </div>
+      <span class="relnote-toggle" aria-hidden="true">+</span>
+    </summary>
+    <div class="relnote-body">
+      <ul>
       <li><b>New: Workspace save/open.</b> Save a chart's entire setup -
         symbol, timeframe, strategy and its parameters, indicators,
         paintbars, drawings - to a named <code>.rnw</code> file and
@@ -347,12 +395,19 @@
         tooltips rebuilt for reliable readability across different
         Windows theme configurations.</li>
     </ul>
-  </div>
+    </div>
+  </details>
 
-  <div class="relnote">
-    <h3>v0.14</h3>
-    <div class="date">Released September 2026</div>
-    <ul>
+  <details class="relnote">
+    <summary class="relnote-summary">
+      <div class="relnote-summary-text">
+        <h3>v0.14</h3>
+        <div class="date">Released September 2026</div>
+      </div>
+      <span class="relnote-toggle" aria-hidden="true">+</span>
+    </summary>
+    <div class="relnote-body">
+      <ul>
       <li><b>New: Performance Report.</b> A full strategy tear sheet -
         Overview, Trade Analysis, Risk &amp; Drawdown, Calendar &amp;
         Sessions, Trade Log, and Settings &amp; Symbol, all in one dialog.
@@ -405,12 +460,19 @@
         Weekly/Monthly timeframe picker, per-line indicator colors, and
         sortable trade tables.</li>
     </ul>
-  </div>
+    </div>
+  </details>
 
-  <div class="relnote">
-    <h3>v0.13</h3>
-    <div class="date">Released September 2026</div>
-    <ul>
+  <details class="relnote">
+    <summary class="relnote-summary">
+      <div class="relnote-summary-text">
+        <h3>v0.13</h3>
+        <div class="date">Released September 2026</div>
+      </div>
+      <span class="relnote-toggle" aria-hidden="true">+</span>
+    </summary>
+    <div class="relnote-body">
+      <ul>
       <li><b>New: Fyers Login.</b> Connect Fyers through their own
         official browser-based login instead of generating and pasting
         a token yourself - your username, PIN, and TOTP are entered on
@@ -445,12 +507,19 @@
         strategy parameters now show correctly on the chart even when
         left at their defaults.</li>
     </ul>
-  </div>
+    </div>
+  </details>
 
-  <div class="relnote">
-    <h3>v0.12</h3>
-    <div class="date">Released August 2026</div>
-    <ul>
+  <details class="relnote">
+    <summary class="relnote-summary">
+      <div class="relnote-summary-text">
+        <h3>v0.12</h3>
+        <div class="date">Released August 2026</div>
+      </div>
+      <span class="relnote-toggle" aria-hidden="true">+</span>
+    </summary>
+    <div class="relnote-body">
+      <ul>
       <li><b>New: the full Smart Money Concepts / ICT set (Gold).</b>
         Order Blocks, Fair Value Gaps, Market Structure (BOS/CHoCH),
         and Liquidity Sweeps - four indicators, each built on a
@@ -476,12 +545,19 @@
         can no longer disappear if you switch away mid-edit without
         saving.</li>
     </ul>
-  </div>
+    </div>
+  </details>
 
-  <div class="relnote">
-    <h3>v0.11</h3>
-    <div class="date">Released August 2026</div>
-    <ul>
+  <details class="relnote">
+    <summary class="relnote-summary">
+      <div class="relnote-summary-text">
+        <h3>v0.11</h3>
+        <div class="date">Released August 2026</div>
+      </div>
+      <span class="relnote-toggle" aria-hidden="true">+</span>
+    </summary>
+    <div class="relnote-body">
+      <ul>
       <li><b>New: Gann Levels (Gold).</b> The Square of 9 spiral for
         any symbol's current price, plus something we haven't seen on
         other platforms - for every genuine swing high/low a symbol
@@ -508,12 +584,19 @@
         - it previously jumped back toward a symbol's very first trade
         instead.</li>
     </ul>
-  </div>
+    </div>
+  </details>
 
-  <div class="relnote">
-    <h3>v0.10</h3>
-    <div class="date">Released August 2026</div>
-    <ul>
+  <details class="relnote">
+    <summary class="relnote-summary">
+      <div class="relnote-summary-text">
+        <h3>v0.10</h3>
+        <div class="date">Released August 2026</div>
+      </div>
+      <span class="relnote-toggle" aria-hidden="true">+</span>
+    </summary>
+    <div class="relnote-body">
+      <ul>
       <li><b>Multi-broker support.</b> RN TradeLab now connects to
         Alpaca alongside Upstox - the biggest step yet beyond being an
         NSE-only tool. Broker Download, Live Chart, and Live Signals
@@ -536,12 +619,19 @@
         whichever broker your selected universe actually needs, with
         an honest reason shown either way.</li>
     </ul>
-  </div>
+    </div>
+  </details>
 
-  <div class="relnote">
-    <h3>v0.9</h3>
-    <div class="date">Released August 2026</div>
-    <ul>
+  <details class="relnote">
+    <summary class="relnote-summary">
+      <div class="relnote-summary-text">
+        <h3>v0.9</h3>
+        <div class="date">Released August 2026</div>
+      </div>
+      <span class="relnote-toggle" aria-hidden="true">+</span>
+    </summary>
+    <div class="relnote-body">
+      <ul>
       <li><b>New: Global market support.</b> Create your own universe
         by uploading a plain symbol list - any market, not just NSE.
         Pick from common presets (US, UK, Singapore, Hong Kong,
@@ -567,13 +657,19 @@
         resumes on its own if a rate limit is ever hit, instead of
         silently going quiet.</li>
     </ul>
-  </div>
+    </div>
+  </details>
 
-  <div class="relnote">
-    <h3>v0.8</h3>
-
-    <div class="date">Released August 2026</div>
-    <ul>
+  <details class="relnote">
+    <summary class="relnote-summary">
+      <div class="relnote-summary-text">
+        <h3>v0.8</h3>
+        <div class="date">Released August 2026</div>
+      </div>
+      <span class="relnote-toggle" aria-hidden="true">+</span>
+    </summary>
+    <div class="relnote-body">
+      <ul>
       <li><b>New: Pattern Probability (Gold).</b> Pick a symbol, an
         interval, and a candlestick pattern - see exactly how many
         times it happened historically and what actually followed,
@@ -591,12 +687,19 @@
         where it's needed - email or password, whichever isn't filled
         in yet.</li>
     </ul>
-  </div>
+    </div>
+  </details>
 
-  <div class="relnote">
-    <h3>v0.7</h3>
-    <div class="date">Released August 2026</div>
-    <ul>
+  <details class="relnote">
+    <summary class="relnote-summary">
+      <div class="relnote-summary-text">
+        <h3>v0.7</h3>
+        <div class="date">Released August 2026</div>
+      </div>
+      <span class="relnote-toggle" aria-hidden="true">+</span>
+    </summary>
+    <div class="relnote-body">
+      <ul>
       <li><b>New: Instant parameter tuning.</b> Right-click any chart for
         "Edit Indicators" or "Edit Strategy" - try a different EMA
         length or SuperTrend multiplier on the spot, no full
@@ -612,12 +715,19 @@
       <li><b>Improved:</b> the Chart tab now opens showing the most
         recent price action, not the oldest candles in your history.</li>
     </ul>
-  </div>
+    </div>
+  </details>
 
-  <div class="relnote">
-    <h3>v0.6</h3>
-    <div class="date">Released August 2026</div>
-    <ul>
+  <details class="relnote">
+    <summary class="relnote-summary">
+      <div class="relnote-summary-text">
+        <h3>v0.6</h3>
+        <div class="date">Released August 2026</div>
+      </div>
+      <span class="relnote-toggle" aria-hidden="true">+</span>
+    </summary>
+    <div class="relnote-body">
+      <ul>
       <li><b>RN TradeLab is now free.</b> Full access, no card, no price
         anywhere in the app. Just sign up and start using it.</li>
       <li><b>New: Live Chart.</b> Watch the current candle update every
@@ -638,12 +748,19 @@
       <li><b>Smarter currency display.</b> Backtest and Portfolio now
         correctly show Rs or $ depending on the data you're looking at.</li>
     </ul>
-  </div>
+    </div>
+  </details>
 
-  <div class="relnote">
-    <h3>v0.5</h3>
-    <div class="date">Released August 2026</div>
-    <ul>
+  <details class="relnote">
+    <summary class="relnote-summary">
+      <div class="relnote-summary-text">
+        <h3>v0.5</h3>
+        <div class="date">Released August 2026</div>
+      </div>
+      <span class="relnote-toggle" aria-hidden="true">+</span>
+    </summary>
+    <div class="relnote-body">
+      <ul>
       <li><b>Import your own CSV data.</b> A new CSV Files tab lets you
         bring your own data - your columns are auto-detected, and if
         we're not confident, you get a quick confirm screen with a live
@@ -664,12 +781,19 @@
       <li><b>Fixed:</b> a startup crash affecting some users with
         previously CSV-imported data.</li>
     </ul>
-  </div>
+    </div>
+  </details>
 
-  <div class="relnote">
-    <h3>v0.4</h3>
-    <div class="date">Released August 2026</div>
-    <ul>
+  <details class="relnote">
+    <summary class="relnote-summary">
+      <div class="relnote-summary-text">
+        <h3>v0.4</h3>
+        <div class="date">Released August 2026</div>
+      </div>
+      <span class="relnote-toggle" aria-hidden="true">+</span>
+    </summary>
+    <div class="relnote-body">
+      <ul>
       <li><b>New SuperTrend indicator and strategy.</b> Drawn in two
         colours on the chart - green while it supports price, red while
         it resists it - and available as a ready-made "SuperTrend Flip"
@@ -690,12 +814,19 @@
         value, and click a trade in the trade list to jump the chart
         straight to it.</li>
     </ul>
-  </div>
+    </div>
+  </details>
 
-  <div class="relnote">
-    <h3>v0.3</h3>
-    <div class="date">Released July 2026</div>
-    <ul>
+  <details class="relnote">
+    <summary class="relnote-summary">
+      <div class="relnote-summary-text">
+        <h3>v0.3</h3>
+        <div class="date">Released July 2026</div>
+      </div>
+      <span class="relnote-toggle" aria-hidden="true">+</span>
+    </summary>
+    <div class="relnote-body">
+      <ul>
       <li><b>Volume on the trade chart.</b> A new Volume panel sits
         beneath the candles, colour-matched to each candle's
         direction.</li>
@@ -713,12 +844,19 @@
       <li><b>Fixed:</b> a crash that could occur when opening the trade
         chart from a fresh click.</li>
     </ul>
-  </div>
+    </div>
+  </details>
 
-  <div class="relnote">
-    <h3>v0.2</h3>
-    <div class="date">Released July 2026</div>
-    <ul>
+  <details class="relnote">
+    <summary class="relnote-summary">
+      <div class="relnote-summary-text">
+        <h3>v0.2</h3>
+        <div class="date">Released July 2026</div>
+      </div>
+      <span class="relnote-toggle" aria-hidden="true">+</span>
+    </summary>
+    <div class="relnote-body">
+      <ul>
       <li><b>Filter your live market view.</b> Top Gainers/Losers, Sector
         Heatmap and Gap &amp; Momentum Movers now let you narrow to
         Nifty 50, 100, 200, or any custom dataset you've built - instead
@@ -731,12 +869,19 @@
         password reset option if you ever get locked out, and stronger
         protection around your account.</li>
     </ul>
-  </div>
+    </div>
+  </details>
 
-  <div class="relnote">
-    <h3>v0.1</h3>
-    <div class="date">Released July 2026</div>
-    <ul>
+  <details class="relnote">
+    <summary class="relnote-summary">
+      <div class="relnote-summary-text">
+        <h3>v0.1</h3>
+        <div class="date">Released July 2026</div>
+      </div>
+      <span class="relnote-toggle" aria-hidden="true">+</span>
+    </summary>
+    <div class="relnote-body">
+      <ul>
       <li><b>Optimize tab.</b> Tune any strategy's inputs with
         Start/Stop/Increment ranges. Results rank on in-sample data with
         the out-of-sample column beside them, so overfitting has
@@ -756,7 +901,8 @@
       <li><b>In-app update notifications</b> so you always know when a
         new version is available.</li>
     </ul>
-  </div>
+    </div>
+  </details>
 
   <p class="sub" style="margin-top:10px;">
     Have a feature request or found a bug? We'd love to hear from you -
