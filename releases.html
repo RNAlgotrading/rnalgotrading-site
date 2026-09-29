@@ -184,7 +184,82 @@
   <details class="relnote" open>
     <summary class="relnote-summary">
       <div class="relnote-summary-text">
-        <h3>v0.18 <span class="badge-current">Current</span></h3>
+        <h3>v0.19 <span class="badge-current">Current</span></h3>
+        <div class="date">Released September 2026</div>
+      </div>
+      <span class="relnote-toggle" aria-hidden="true">+</span>
+    </summary>
+    <div class="relnote-body">
+      <ul>
+      <li><b>New: real-time Alerts actually fire now.</b> The scan
+        scheduler had a timing bug that meant no alert - of any
+        timeframe - was ever being evaluated, even though everything
+        looked correctly configured (broker connected, alert Active).
+        Rebuilt the scheduling logic to track each alert's own next
+        scan deadline directly instead of re-deriving it from the
+        current time, which is what was silently going wrong. If
+        you've been waiting on an Alert that never fired, this is why
+        - it will now.</li>
+      <li><b>New: 1-minute timeframe everywhere it was missing.</b>
+        Basket backtesting and the Alerts builder both only offered 5
+        Min and up, even though the app has downloaded 1-minute data
+        for a while. Both now offer 1 min.</li>
+      <li><b>New: a genuinely useful Alert Log.</b> Every scan now
+        leaves a trace - a fired alert, an error, or a quiet "scanned N
+        symbols, no signal" line confirming it's alive and working, so
+        an empty log and a working-but-quiet one no longer look
+        identical. The newest scan's lines sit flat at the top with a
+        light highlight; once a newer scan comes in, the previous
+        batch collapses into one "+ HH:MM:SS (N items)" row. Fired
+        alerts now show which indicator and length actually triggered
+        (e.g. "AAPL - Alert1 - SMA(50): Close crossed above SMA
+        line"), labeled by the alert's own row number in the table
+        rather than its (often blank, or "(copy)" after duplicating)
+        name field. A Clear button resets the log.</li>
+      <li><b>Fixed: broker credentials now take effect immediately.</b>
+        Entering or changing Alpaca or Fyers credentials in Broker
+        Settings was silently saved to disk but never reached the
+        already-running connection used by Alerts, Live Signals, or
+        Broker Download for the rest of that session - it looked
+        connected, but every broker call kept using the old (often
+        blank) credentials until a full restart. Saving now updates
+        the live connection too.</li>
+      <li><b>Fixed:</b> Alerts and Live Signals always fetched 5-minute
+        data from the broker regardless of a scan's own configured
+        timeframe - harmless at 5 min, but silently wrong for any
+        other interval (1 min included). Both now fetch at the
+        resolution the scan actually needs.</li>
+      <li><b>Fixed:</b> a scan failure for every symbol in a batch
+        (broker auth, network, a bad symbol) used to be thrown away
+        completely, looking identical in the Alert Log to a clean scan
+        that simply found no signal. Failures are now summarized right
+        in the log instead of vanishing.</li>
+      <li><b>Fixed: Gann Square of 9 levels were off by one angle
+        step.</b> A wrong constant meant every level landed at HALF
+        its correct position on the wheel - what should have been the
+        90&deg; level was showing where 45&deg; belongs, and so on.
+        Verified against the standard Square of 9 formula, a published
+        reference calculator, and an independent manual calculation.
+        Levels are now correct.</li>
+      <li><b>Fixed: multi-symbol Portfolio/Basket backtests could
+        produce a distorted-looking combined equity curve</b> - each
+        symbol's own 70/30 train/test split was computed from that
+        symbol's individual day count, so different symbols split on
+        different calendar dates. Every symbol in one portfolio run
+        now shares a single, common split date.</li>
+      <li><b>Small polish:</b> the Suggested Portfolio popup now
+        scrolls instead of growing past the screen for a large
+        suggested list, and this Release Notes page is now
+        expandable/collapsible, with only the current version open by
+        default.</li>
+    </ul>
+    </div>
+  </details>
+
+  <details class="relnote">
+    <summary class="relnote-summary">
+      <div class="relnote-summary-text">
+        <h3>v0.18</h3>
         <div class="date">Released September 2026</div>
       </div>
       <span class="relnote-toggle" aria-hidden="true">+</span>
