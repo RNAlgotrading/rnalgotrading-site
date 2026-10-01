@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>RNAlgotrading - Product &amp; Pricing | RN TradeLab</title>
-<meta name="description" content="RN TradeLab plans: Basic (free forever) and Gold (early access to new features). See exactly what's included in each, side by side.">
+<meta name="description" content="RN TradeLab plans: Basic (free forever), Gold (early access to new features), and Platinum (Paper Trading and the most advanced tools). See exactly what's included in each, side by side.">
 <link rel="icon" type="image/x-icon" href="favicon.ico">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -13,12 +13,14 @@
   :root {
     --bg:#0b0e13; --panel:#12161d; --card:#171c25; --card-hover:#1c222d;
     --accent:#4a9eff; --accent-2:#7cc4ff; --green:#35d07f; --red:#e8615a; --gold:#e8b84a;
+    --platinum:#cfd8e3; --platinum-2:#8fa3b8;
     --text:#eef1f5; --sub:#8b93a3; --border:#252b36; --border-soft:#1c212b;
     --shadow-sm:0 1px 2px rgba(0,0,0,.35);
     --shadow-md:0 8px 24px rgba(0,0,0,.35);
     --shadow-lg:0 24px 60px rgba(0,0,0,.45);
     --glow:0 0 0 1px rgba(74,158,255,.25), 0 8px 30px rgba(74,158,255,.18);
     --glow-gold:0 0 0 1px rgba(232,184,74,.3), 0 8px 30px rgba(232,184,74,.16);
+    --glow-platinum:0 0 0 1px rgba(207,216,227,.35), 0 8px 30px rgba(207,216,227,.16);
   }
   * { margin:0; padding:0; box-sizing:border-box; }
   html { scroll-behavior:smooth; }
@@ -85,6 +87,15 @@
   .plan.gold .plan-btn { background:linear-gradient(135deg, var(--gold), #c8952f); color:#1c1600;
         box-shadow:var(--glow-gold); }
   .plan.gold .plan-btn:hover { transform:translateY(-2px); }
+
+  .plan.platinum { border-color:rgba(207,216,227,.5); position:relative; box-shadow:var(--glow-platinum); }
+  .plan.platinum .plan-badge { background:linear-gradient(135deg, var(--platinum), var(--platinum-2)); color:#10151d; box-shadow:0 4px 14px rgba(207,216,227,.3); }
+  .plan.platinum .plan-name { color:var(--platinum); }
+  .plan.platinum .plan-price { color:var(--platinum); }
+  .plan.platinum .plan-features li::before { color:var(--platinum); }
+  .plan.platinum .plan-btn { background:linear-gradient(135deg, var(--platinum), var(--platinum-2)); color:#10151d;
+        box-shadow:var(--glow-platinum); }
+  .plan.platinum .plan-btn:hover { transform:translateY(-2px); }
 
   .note { background:var(--panel); border:1px solid var(--border); border-radius:12px;
           padding:18px 22px; font-size:.9rem; color:var(--sub); margin-top:26px;
@@ -156,7 +167,9 @@
      including live, real-time charting for NSE, US stocks, and Crypto
      via Upstox, Fyers, or Alpaca. Gold gets you early access to the
      newest things as they ship - Pattern Probability, Gann Levels,
-     Smart Money Concepts, and the newest additions below, so far.</p>
+     Smart Money Concepts, and the newest additions below. Platinum adds
+     Paper Trading - run a strategy against live, real-time data with
+     zero risk, before a single rupee is on the line.</p>
 </header>
 
 <section class="wrap">
@@ -202,6 +215,9 @@
         <li><b>Live Chart</b> - the current candle updates every
           second straight from whichever broker your symbol needs
           (Upstox, Fyers, or Alpaca) while the market is open</li>
+        <li><b>Paper Trading</b> - run one strategy on one symbol
+          against live, real-time data with zero risk; resets every
+          trading day</li>
       </ul>
       <a class="plan-btn" href="index.html#product">Download Basic</a>
     </div>
@@ -223,6 +239,9 @@
         <li><b>Unlimited active Alerts</b>, and point one Alert at your
           whole Portfolio or Universe at once - Basic is capped at 5
           active alerts, one symbol each</li>
+        <li><b>Paper Trading, taken further</b> - up to 5 single-stock
+          sessions running at once, plus 1 Portfolio session, each
+          tracked for 5 full trading days before it closes out</li>
         <li><b>Download Strategy Description</b> - a fully formatted
           Word document of everything behind one result (entry logic,
           every active setting, position sizing, costs) for handing a
@@ -246,13 +265,37 @@
         email explains how to find it.</p>
     </div>
 
+    <div class="plan platinum">
+      <span class="plan-badge">New</span>
+      <div class="plan-name">Platinum</div>
+      <div class="plan-price">Coming soon</div>
+      <div class="plan-desc" style="margin-top:10px;">Everything in Gold,
+        built for traders who want to prove a strategy live before
+        risking real capital.</div>
+      <ul class="plan-features">
+        <li>Everything in Gold</li>
+        <li><b>Paper Trading, unlimited</b> - any number of individual
+          stocks and any number of Portfolios running at once, each
+          tracked for a full 60 trading days before it closes out</li>
+        <li><b>Every closed Paper Trading session keeps its full
+          record</b> - P&amp;L, win rate, and the complete trade log,
+          so a strategy's live track record is never lost</li>
+        <li>Priority access to whatever ships next, ahead of Gold</li>
+      </ul>
+      <a class="plan-btn" href="#" onclick="document.getElementById('platinumModal').classList.add('open'); return false;">Join the Platinum Waitlist</a>
+      <p class="sub" style="font-size:.78rem; margin-top:10px; text-align:center;">
+        Pricing isn't final yet - join the waitlist and we'll email you
+        the moment it opens.</p>
+    </div>
+
   </div>
 
   <div class="note">
-    <b>How this works:</b> Basic and Gold run the exact same app - you're
-    never stuck on an old, unpatched build. Every bug fix and improvement
-    reaches everyone. Gold simply unlocks certain features early, starting
-    with Pattern Probability. To activate: download and open the app, sign up, go
+    <b>How this works:</b> Basic, Gold, and Platinum all run the exact same
+    app - you're never stuck on an old, unpatched build. Every bug fix and
+    improvement reaches everyone. Gold and Platinum simply unlock certain
+    features early and at higher limits, starting with Pattern Probability
+    and Paper Trading. To activate: download and open the app, sign up, go
     to <b>Activate License</b> on the login screen to get your Request
     Code, then send it to us with the "Request Gold Access" button above -
     we'll reply with your key. You can do this any time, even on day one.
@@ -261,12 +304,12 @@
 
 <section class="wrap">
   <h2>Where this is headed</h2>
-  <p class="sub">More tiers are coming as more Gold-only features ship.
-     For now, it's just Basic and Gold - simple, and easy to understand.</p>
+  <p class="sub">Platinum is the newest tier, built around Paper Trading.
+     More Platinum-only features will keep landing here as they ship.</p>
   <div class="roadmap">
     <span class="now">Basic</span>
     <span class="now">Gold</span>
-    <span>Platinum (planned)</span>
+    <span class="now" style="border-color:var(--platinum); color:var(--platinum);">Platinum</span>
   </div>
 </section>
 
@@ -308,6 +351,19 @@
   </div>
 </div>
 
+<div class="modal-overlay" id="platinumModal">
+  <div class="modal-box" style="border-color:rgba(207,216,227,.5);">
+    <h3 style="color:var(--platinum);">Join the Platinum waitlist</h3>
+    <p class="sub">Platinum is launching with Paper Trading. Tell us your
+       sign-in email and we'll reach out the moment pricing and activation
+       are ready - no commitment.</p>
+    <div class="modal-actions">
+      <button class="modal-cancel" onclick="document.getElementById('platinumModal').classList.remove('open')">Cancel</button>
+      <button class="modal-continue" style="background:linear-gradient(135deg, var(--platinum), var(--platinum-2)); color:#10151d;" onclick="sendPlatinumWaitlist()">Continue to Email</button>
+    </div>
+  </div>
+</div>
+
 <script>
 function sendGoldRequest() {
   var plan = document.querySelector('input[name="goldPlan"]:checked').value;
@@ -318,6 +374,16 @@ function sendGoldRequest() {
   var url = "https://mail.google.com/mail/?view=cm&fs=1"
       + "&to=RNAlgotrading@gmail.com"
       + "&su=" + encodeURIComponent("RN TradeLab - Activate License")
+      + "&body=" + encodeURIComponent(body);
+  window.location.href = url;
+}
+
+function sendPlatinumWaitlist() {
+  var body = "Hi,\n\nI'd like to join the Platinum waitlist (Paper Trading).\n\n"
+      + "My sign-in email: ";
+  var url = "https://mail.google.com/mail/?view=cm&fs=1"
+      + "&to=RNAlgotrading@gmail.com"
+      + "&su=" + encodeURIComponent("RN TradeLab - Platinum Waitlist")
       + "&body=" + encodeURIComponent(body);
   window.location.href = url;
 }
