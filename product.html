@@ -365,6 +365,17 @@
 </div>
 
 <script>
+// Opens Gmail compose in its own window beside the site, so the page
+// stays open. Falls back to the same tab if a popup blocker stops it.
+function openMailWindow(url) {
+  var w = 640, h = Math.min(760, screen.availHeight - 40);
+  var left = Math.max(0, (screen.availLeft || 0) + screen.availWidth - w - 20);
+  var top = (screen.availTop || 0) + 20;
+  var win = window.open(url, "rnMailCompose",
+      "popup=yes,width=" + w + ",height=" + h + ",left=" + left + ",top=" + top);
+  if (win) { win.focus(); } else { window.location.href = url; }
+}
+
 function sendGoldRequest() {
   var plan = document.querySelector('input[name="goldPlan"]:checked').value;
   var body = "Hi,\n\nI'd like to activate Gold.\n\n"
@@ -375,7 +386,7 @@ function sendGoldRequest() {
       + "&to=RNAlgotrading@gmail.com"
       + "&su=" + encodeURIComponent("RN TradeLab - Activate License")
       + "&body=" + encodeURIComponent(body);
-  window.location.href = url;
+  openMailWindow(url);
 }
 
 function sendPlatinumWaitlist() {
@@ -385,7 +396,7 @@ function sendPlatinumWaitlist() {
       + "&to=RNAlgotrading@gmail.com"
       + "&su=" + encodeURIComponent("RN TradeLab - Platinum Waitlist")
       + "&body=" + encodeURIComponent(body);
-  window.location.href = url;
+  openMailWindow(url);
 }
 </script>
 
