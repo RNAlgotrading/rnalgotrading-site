@@ -184,7 +184,75 @@
   <details class="relnote" open>
     <summary class="relnote-summary">
       <div class="relnote-summary-text">
-        <h3>v0.19 <span class="badge-current">Current</span></h3>
+        <h3>v0.20 <span class="badge-current">Current</span></h3>
+        <div class="date">Released October 2026</div>
+      </div>
+      <span class="relnote-toggle" aria-hidden="true">+</span>
+    </summary>
+    <div class="relnote-body">
+      <ul>
+      <li><b>New: Paper Trading.</b> Run a tested strategy against live,
+        real-time broker data with zero risk, before any real money is
+        involved. Its own tab shows every session's open positions, a
+        permanent trade log and running P&amp;L. Base gets 1 session
+        lasting 1 trading day; Gold runs up to 5 single-stock sessions
+        plus 1 Portfolio session, 5 trading days each; Platinum is
+        unlimited, 60 trading days per session, with every closed
+        session's full record kept.</li>
+      <li><b>New: Platinum is now available</b> - built around Paper
+        Trading. See Product &amp; Pricing for details.</li>
+      <li><b>New: stoploss and target fill the moment they're hit.</b>
+        Every open Paper Trading position is checked against the live
+        price every second, across all sessions, and filled as soon as
+        its stop or target is reached - marked "(live)" in the Trade
+        Log. A stop fills at the price that triggered it, like a real
+        stop order (which can be worse than the stop on a fast move); a
+        target fills at the target, like a limit order. Trailing,
+        breakeven and time exits still apply at bar close.</li>
+      <li><b>New: a Portfolio session trades exactly what was
+        tested.</b> Picking a saved portfolio locks the strategy, its
+        parameters, the timeframe, the regime filters, and the stoploss,
+        target and loss limits it was backtested with. Single-symbol
+        sessions get their own Risk Management section, starting from
+        your Settings. Each session keeps its own settings from the
+        moment it's created, so changing Settings later never quietly
+        changes a session that's already running.</li>
+      <li><b>New: an Activity log for every session</b> - each check,
+        the latest bar received from the broker, every new and closed
+        position, and any problem (no broker connected, no data yet) in
+        red. A <b>Check Now</b> button runs a check immediately, so you
+        can see it working without waiting for the next bar.</li>
+      <li><b>Faster checks.</b> A session now checks 5 seconds after
+        each bar closes instead of 10, fetches every symbol in parallel
+        instead of one after another, and re-asks the broker if a bar
+        hasn't been published yet - a 10-symbol portfolio that took
+        about 20 seconds now takes a few.</li>
+      <li><b>New:</b> Qty column in Open Positions and the Trade Log,
+        and Side shown as LONG (green) or SHORT (red).</li>
+      <li><b>New: Trade List on the Portfolio page.</b> Every trade in
+        a saved portfolio, collapsed until you open it. Sort by any
+        column; group by Symbol, Date or Weekday, each group showing its
+        trade count, win rate and P&amp;L; filter In-sample or
+        Out-of-sample; double-click a trade to open it on the chart;
+        export exactly what you see to CSV.</li>
+      <li><b>New:</b> the Portfolio page lists every symbol in the
+        portfolio with its trade count, and the equity chart now matches
+        the Performance Report - in-sample grey, out-of-sample blue,
+        with drawdown underneath.</li>
+      <li><b>Fixed: saved portfolios now record the exact settings the
+        backtest ran with,</b> captured when you click Run rather than
+        when you click Save - so changing Settings in between can no
+        longer save the wrong values. Portfolios now also store their
+        stoploss, target and loss limits; re-run and re-save an older
+        portfolio to lock those for Paper Trading.</li>
+    </ul>
+    </div>
+  </details>
+
+  <details class="relnote">
+    <summary class="relnote-summary">
+      <div class="relnote-summary-text">
+        <h3>v0.19</h3>
         <div class="date">Released September 2026</div>
       </div>
       <span class="relnote-toggle" aria-hidden="true">+</span>

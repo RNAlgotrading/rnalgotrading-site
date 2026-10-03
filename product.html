@@ -143,6 +143,41 @@
   .plan-radios label:has(input:checked) { border-color:var(--gold); }
   .plan-radios input[type="radio"] { accent-color:var(--gold); width:16px; height:16px; }
   .plan-radios .save-tag { color:var(--gold); font-size:.8rem; font-weight:600; }
+  /* currency switch */
+  .cur-row { display:flex; justify-content:flex-end; align-items:center; gap:10px;
+        margin:0 0 14px; font-size:.82rem; color:var(--sub); }
+  .cur-switch { display:inline-flex; background:var(--panel); border:1px solid var(--border);
+        border-radius:999px; padding:3px; }
+  .cur-switch button { background:transparent; border:none; color:var(--sub); font:inherit;
+        font-weight:600; padding:5px 14px; border-radius:999px; cursor:pointer; }
+  .cur-switch button.on { background:var(--card-hover); color:var(--text); box-shadow:var(--shadow-sm); }
+  /* buy modal */
+  .modal-box.buy { max-width:520px; max-height:calc(100vh - 32px); overflow-y:auto; }
+  .modal-box.buy.platinum { border-color:rgba(207,216,227,.5); }
+  .modal-box.buy.platinum h3 { color:var(--platinum); }
+  .modal-box.buy.platinum .plan-radios label:has(input:checked) { border-color:var(--platinum); }
+  .modal-box.buy.platinum .plan-radios input[type="radio"] { accent-color:var(--platinum); }
+  .modal-box.buy.platinum .modal-steps li::before { background:linear-gradient(135deg, var(--platinum), var(--platinum-2)); color:#10151d; }
+  .modal-box.buy.platinum .plan-radios .save-tag { color:var(--platinum); }
+  .modal-box.buy.platinum .modal-continue { background:linear-gradient(135deg, var(--platinum), var(--platinum-2)); color:#10151d; }
+  .modal-steps li .step-body { margin-top:10px; }
+  .pay-box { background:var(--panel); border:1px solid var(--border); border-radius:12px;
+        padding:16px; text-align:center; }
+  .pay-qr { background:#fff; border-radius:10px; padding:10px; display:inline-block; line-height:0; }
+  .pay-qr img, .pay-qr canvas { width:196px; height:196px; }
+  .pay-amount { font-size:1.35rem; font-weight:800; margin:10px 0 2px; letter-spacing:-.01em; }
+  .pay-hint { font-size:.8rem; color:var(--sub); }
+  .pay-id { display:inline-flex; align-items:center; gap:8px; margin-top:10px; font-size:.85rem;
+        background:var(--card); border:1px solid var(--border); border-radius:8px; padding:6px 10px; }
+  .pay-id code { color:var(--text); font-family:inherit; font-weight:600; }
+  .pay-id button { background:none; border:none; color:var(--accent-2); cursor:pointer; font:inherit; font-size:.8rem; }
+  .pay-btn { display:inline-block; margin-top:12px; padding:11px 22px; border-radius:10px;
+        font-weight:700; text-decoration:none; }
+  .pay-btn.paypal { background:#ffc439; color:#111; }
+  .pay-btn.upi { background:var(--green); color:#06210f; }
+  .pay-switch { margin-top:12px; font-size:.78rem; color:var(--sub); }
+  .pay-switch a { color:var(--accent-2); cursor:pointer; }
+  @media (max-width:640px) { .cur-row { justify-content:center; } }
 </style>
 </head>
 <body>
@@ -173,6 +208,13 @@
 </header>
 
 <section class="wrap">
+  <div class="cur-row">
+    <span id="curNote">Prices in</span>
+    <div class="cur-switch" role="group" aria-label="Currency">
+      <button type="button" data-cur="INR">&#8377; INR</button>
+      <button type="button" data-cur="USD">$ USD</button>
+    </div>
+  </div>
   <div class="plans">
 
     <div class="plan">
@@ -225,9 +267,9 @@
     <div class="plan gold">
       <span class="plan-badge">Early access</span>
       <div class="plan-name">Gold</div>
-      <div class="plan-price">Rs 499<small> / month</small></div>
+      <div class="plan-price"><span data-price="gold:m"></span><small> / month</small></div>
       <div class="sub" style="font-size:.85rem; margin-top:-2px;">
-        or Rs 4,500 / year <span style="color:var(--gold); font-weight:600;">- save ~25%</span></div>
+        or <span data-price="gold:y"></span> / year <span style="color:var(--gold); font-weight:600;">- save ~25%</span></div>
       <div class="plan-desc" style="margin-top:10px;">Everything in Basic,
         plus the newest features as they ship.</div>
       <ul class="plan-features">
@@ -259,16 +301,18 @@
           vague "smart money did something here"</li>
         <li>First access to whatever ships next</li>
       </ul>
-      <a class="plan-btn" href="#" onclick="document.getElementById('goldModal').classList.add('open'); return false;">Request Gold Access</a>
+      <a class="plan-btn" href="#" onclick="openBuy('gold'); return false;">Get Gold</a>
       <p class="sub" style="font-size:.78rem; margin-top:10px; text-align:center;">
-        You'll need your Request Code from inside the app first - the
-        email explains how to find it.</p>
+        Pay by UPI or PayPal, then email us your Request Code -
+        we reply with your license key.</p>
     </div>
 
     <div class="plan platinum">
       <span class="plan-badge">New</span>
       <div class="plan-name">Platinum</div>
-      <div class="plan-price">Coming soon</div>
+      <div class="plan-price"><span data-price="platinum:m"></span><small> / month</small></div>
+      <div class="sub" style="font-size:.85rem; margin-top:-2px;">
+        or <span data-price="platinum:y"></span> / year <span style="color:var(--platinum); font-weight:600;">- save ~25%</span></div>
       <div class="plan-desc" style="margin-top:10px;">Everything in Gold,
         built for traders who want to prove a strategy live before
         risking real capital.</div>
@@ -282,10 +326,10 @@
           so a strategy's live track record is never lost</li>
         <li>Priority access to whatever ships next, ahead of Gold</li>
       </ul>
-      <a class="plan-btn" href="#" onclick="document.getElementById('platinumModal').classList.add('open'); return false;">Join the Platinum Waitlist</a>
+      <a class="plan-btn" href="#" onclick="openBuy('platinum'); return false;">Get Platinum</a>
       <p class="sub" style="font-size:.78rem; margin-top:10px; text-align:center;">
-        Pricing isn't final yet - join the waitlist and we'll email you
-        the moment it opens.</p>
+        Pay by UPI or PayPal, then email us your Request Code -
+        we reply with your license key.</p>
     </div>
 
   </div>
@@ -297,7 +341,7 @@
     features early and at higher limits, starting with Pattern Probability
     and Paper Trading. To activate: download and open the app, sign up, go
     to <b>Activate License</b> on the login screen to get your Request
-    Code, then send it to us with the "Request Gold Access" button above -
+    Code, then pay and send it to us with the "Get Gold" or "Get Platinum" button above -
     we'll reply with your key. You can do this any time, even on day one.
   </div>
 </section>
@@ -326,44 +370,31 @@
   </div>
 </footer>
 
-<div class="modal-overlay" id="goldModal">
-  <div class="modal-box">
-    <h3>Before you email us</h3>
-    <p class="sub">Three quick steps, then one email with everything we
-       need - no back and forth.</p>
+<div class="modal-overlay" id="buyModal" onclick="if (event.target === this) closeBuy()">
+  <div class="modal-box buy" id="buyBox" role="dialog" aria-modal="true" aria-labelledby="buyTitle">
+    <h3 id="buyTitle">Get Gold</h3>
+    <p class="sub">Pay now, send one email, and we reply with your license
+       key - no back and forth.</p>
     <ol class="modal-steps">
-      <li>Download and open RN TradeLab, then sign up (free).</li>
-      <li>On the login screen, click <b>Activate License</b> and copy
-        your <b>Request Code</b> - it's unique to your installation.</li>
-      <li>Pick a plan, click "Continue to Email" - your Request Code
-        and choice go in automatically, ready to send.</li>
+      <li><b>Get your Request Code.</b> Download and open RN TradeLab, sign
+        up (free), then click <b>Activate License</b> on the login screen
+        and copy your Request Code.</li>
+      <li><b>Pick a plan.</b>
+        <div class="step-body plan-radios" id="buyPlans"></div></li>
+      <li><b>Pay.</b>
+        <div class="step-body pay-box" id="payBox"></div></li>
+      <li><b>Email us.</b> "Continue to Email" fills in your plan and
+        payment details - just paste your Request Code and attach a
+        screenshot of the payment.</li>
     </ol>
-    <div class="plan-radios">
-      <label><input type="radio" name="goldPlan" value="Monthly (Rs 499/month)" checked>
-        Monthly - Rs 499 / month</label>
-      <label><input type="radio" name="goldPlan" value="Yearly (Rs 4,500/year)">
-        Yearly - Rs 4,500 / year <span class="save-tag">save ~25%</span></label>
-    </div>
     <div class="modal-actions">
-      <button class="modal-cancel" onclick="document.getElementById('goldModal').classList.remove('open')">Cancel</button>
-      <button class="modal-continue" onclick="sendGoldRequest()">Continue to Email</button>
+      <button class="modal-cancel" onclick="closeBuy()">Cancel</button>
+      <button class="modal-continue" onclick="sendBuyRequest()">Continue to Email</button>
     </div>
   </div>
 </div>
 
-<div class="modal-overlay" id="platinumModal">
-  <div class="modal-box" style="border-color:rgba(207,216,227,.5);">
-    <h3 style="color:var(--platinum);">Join the Platinum waitlist</h3>
-    <p class="sub">Platinum is launching with Paper Trading. Tell us your
-       sign-in email and we'll reach out the moment pricing and activation
-       are ready - no commitment.</p>
-    <div class="modal-actions">
-      <button class="modal-cancel" onclick="document.getElementById('platinumModal').classList.remove('open')">Cancel</button>
-      <button class="modal-continue" style="background:linear-gradient(135deg, var(--platinum), var(--platinum-2)); color:#10151d;" onclick="sendPlatinumWaitlist()">Continue to Email</button>
-    </div>
-  </div>
-</div>
-
+<script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
 <script>
 // Opens Gmail compose in its own window beside the site, so the page
 // stays open. Falls back to the same tab if a popup blocker stops it.
@@ -376,28 +407,155 @@ function openMailWindow(url) {
   if (win) { win.focus(); } else { window.location.href = url; }
 }
 
-function sendGoldRequest() {
-  var plan = document.querySelector('input[name="goldPlan"]:checked').value;
-  var body = "Hi,\n\nI'd like to activate Gold.\n\n"
+// ---------------------------------------------------------------
+// PAYMENT DETAILS. Leave UPI_ID empty to show the static QR image
+// (Images/gpay_qr.png) instead of a generated one with the amount.
+// ---------------------------------------------------------------
+var PAY = {
+  UPI_ID: "ponnanmani@okicici",
+  UPI_NAME: "RNAlgotrading",   // name shown in the UPI app
+  UPI_QR_IMAGE: "Images/gpay_qr.png",
+  PAYPAL_EMAIL: "easylanguage.india@gmail.com"
+};
+
+var PRICES = {
+  gold:     { INR: { m: 499, y: 4500 }, USD: { m: 10, y: 90 } },
+  platinum: { INR: { m: 999, y: 8999 }, USD: { m: 20, y: 180 } }
+};
+var TIER_NAME = { gold: "Gold", platinum: "Platinum" };
+
+function detectCurrency() {
+  try {
+    var saved = localStorage.getItem("rn_currency");
+    if (saved === "INR" || saved === "USD") return saved;
+  } catch (e) {}
+  try {
+    var tz = Intl.DateTimeFormat().resolvedOptions().timeZone || "";
+    if (tz === "Asia/Kolkata" || tz === "Asia/Calcutta") return "INR";
+  } catch (e) {}
+  return "USD";
+}
+var CUR = detectCurrency();
+
+function fmt(cur, n) {
+  return cur === "INR" ? "₹" + n.toLocaleString("en-IN") : "$" + n.toLocaleString("en-US");
+}
+
+function setCurrency(cur, remember) {
+  CUR = cur;
+  if (remember) { try { localStorage.setItem("rn_currency", cur); } catch (e) {} }
+  document.querySelectorAll("[data-price]").forEach(function (el) {
+    var k = el.getAttribute("data-price").split(":");
+    el.textContent = fmt(cur, PRICES[k[0]][cur][k[1]]);
+  });
+  document.querySelectorAll(".cur-switch button").forEach(function (b) {
+    b.classList.toggle("on", b.getAttribute("data-cur") === cur);
+  });
+  if (document.getElementById("buyModal").classList.contains("open")) renderBuy();
+}
+
+var BUY_TIER = "gold";
+function openBuy(tier) {
+  BUY_TIER = tier;
+  var box = document.getElementById("buyBox");
+  box.classList.toggle("platinum", tier === "platinum");
+  document.getElementById("buyTitle").textContent = "Get " + TIER_NAME[tier];
+  renderBuy(true);
+  document.getElementById("buyModal").classList.add("open");
+}
+function closeBuy() { document.getElementById("buyModal").classList.remove("open"); }
+
+function selectedTerm() {
+  var r = document.querySelector('input[name="buyTerm"]:checked');
+  return r ? r.value : "m";
+}
+
+function renderBuy(resetTerm) {
+  var term = resetTerm ? "m" : selectedTerm();
+  var p = PRICES[BUY_TIER][CUR];
+  document.getElementById("buyPlans").innerHTML =
+    '<label><input type="radio" name="buyTerm" value="m"' + (term === "m" ? " checked" : "") +
+    '> Monthly - ' + fmt(CUR, p.m) + ' / month</label>' +
+    '<label><input type="radio" name="buyTerm" value="y"' + (term === "y" ? " checked" : "") +
+    '> Yearly - ' + fmt(CUR, p.y) + ' / year <span class="save-tag">save ~25%</span></label>';
+  document.querySelectorAll('input[name="buyTerm"]').forEach(function (r) {
+    r.addEventListener("change", renderPay);
+  });
+  renderPay();
+}
+
+function amountNow() { return PRICES[BUY_TIER][CUR][selectedTerm()]; }
+function planLabel() {
+  var t = selectedTerm(), a = amountNow();
+  return (t === "m" ? "Monthly" : "Yearly") + " (" + fmt(CUR, a) + (t === "m" ? "/month" : "/year") + ")";
+}
+
+function renderPay() {
+  var box = document.getElementById("payBox"), a = amountNow();
+  var note = "RN TradeLab " + TIER_NAME[BUY_TIER] + " " + (selectedTerm() === "m" ? "Monthly" : "Yearly");
+  if (CUR === "INR") {
+    var upi = "upi://pay?pa=" + encodeURIComponent(PAY.UPI_ID) + "&pn=" + encodeURIComponent(PAY.UPI_NAME) +
+              "&am=" + a + "&cu=INR&tn=" + encodeURIComponent(note);
+    var mobile = /Android|iPhone|iPad/i.test(navigator.userAgent);
+    box.innerHTML =
+      '<div class="pay-qr" id="payQr"></div>' +
+      '<div class="pay-amount">' + fmt("INR", a) + '</div>' +
+      '<div class="pay-hint">Scan with GPay, PhonePe, Paytm or any UPI app' +
+        (PAY.UPI_ID ? ' - the amount is filled in for you.' : ' and enter ' + fmt("INR", a) + '.') + '</div>' +
+      (PAY.UPI_ID ? '<div class="pay-id">UPI ID <code>' + PAY.UPI_ID +
+        '</code><button type="button" onclick="copyText(\'' + PAY.UPI_ID + '\', this)">Copy</button></div>' : '') +
+      (PAY.UPI_ID && mobile ? '<div><a class="pay-btn upi" href="' + upi + '">Pay ' + fmt("INR", a) + ' in your UPI app</a></div>' : '') +
+      '<div class="pay-switch">Paying from outside India? <a onclick="setCurrency(\'USD\', true)">Pay in USD with PayPal</a></div>';
+    var qr = document.getElementById("payQr");
+    if (PAY.UPI_ID && window.QRCode) {
+      new QRCode(qr, { text: upi, width: 196, height: 196, correctLevel: QRCode.CorrectLevel.M });
+    } else {
+      qr.innerHTML = '<img src="' + PAY.UPI_QR_IMAGE + '" alt="GPay / UPI QR code">';
+    }
+  } else {
+    // PayPal's standard payment link: works with just the account email,
+    // and opens with the amount and item already filled in
+    var pp = "https://www.paypal.com/cgi-bin/webscr?cmd=_xclick" +
+             "&business=" + encodeURIComponent(PAY.PAYPAL_EMAIL) +
+             "&item_name=" + encodeURIComponent(note) +
+             "&amount=" + a + "&currency_code=USD&no_shipping=1";
+    box.innerHTML =
+      '<div class="pay-amount">' + fmt("USD", a) + '</div>' +
+      '<div class="pay-hint">Opens PayPal with the amount already filled in - pay with your PayPal balance or a card.</div>' +
+      '<div><a class="pay-btn paypal" href="' + pp + '" target="_blank" rel="noopener">Pay ' +
+        fmt("USD", a) + ' with PayPal</a></div>' +
+      '<div class="pay-id">PayPal <code>' + PAY.PAYPAL_EMAIL +
+        '</code><button type="button" onclick="copyText(\'' + PAY.PAYPAL_EMAIL + '\', this)">Copy</button></div>' +
+      '<div class="pay-switch">Paying from India? <a onclick="setCurrency(\'INR\', true)">Pay in ₹ with UPI</a></div>';
+  }
+}
+
+function copyText(t, btn) {
+  try { navigator.clipboard.writeText(t); btn.textContent = "Copied"; } catch (e) {}
+  setTimeout(function () { btn.textContent = "Copy"; }, 1500);
+}
+
+function sendBuyRequest() {
+  var tier = TIER_NAME[BUY_TIER];
+  var body = "Hi,\n\nI'd like to activate " + tier + ".\n\n"
+      + "Plan: " + planLabel() + "\n"
+      + "Paid via: " + (CUR === "INR" ? "UPI" : "PayPal") + "\n"
+      + "Payment / transaction ID: \n"
       + "My sign-in email: \n"
-      + "Plan: " + plan + "\n"
-      + "My Request Code: ";
+      + "My Request Code: \n\n"
+      + "(Payment screenshot attached)";
   var url = "https://mail.google.com/mail/?view=cm&fs=1"
       + "&to=RNAlgotrading@gmail.com"
-      + "&su=" + encodeURIComponent("RN TradeLab - Activate License")
+      + "&su=" + encodeURIComponent("RN TradeLab - Activate " + tier + " License")
       + "&body=" + encodeURIComponent(body);
   openMailWindow(url);
 }
 
-function sendPlatinumWaitlist() {
-  var body = "Hi,\n\nI'd like to join the Platinum waitlist (Paper Trading).\n\n"
-      + "My sign-in email: ";
-  var url = "https://mail.google.com/mail/?view=cm&fs=1"
-      + "&to=RNAlgotrading@gmail.com"
-      + "&su=" + encodeURIComponent("RN TradeLab - Platinum Waitlist")
-      + "&body=" + encodeURIComponent(body);
-  openMailWindow(url);
-}
+document.querySelectorAll(".cur-switch button").forEach(function (b) {
+  b.addEventListener("click", function () { setCurrency(b.getAttribute("data-cur"), true); });
+});
+document.addEventListener("keydown", function (e) { if (e.key === "Escape") closeBuy(); });
+setCurrency(CUR, false);
 </script>
 
 </body>
