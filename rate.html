@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Rate RN TradeLab - RNAlgotrading</title>
+<meta name="description" content="Using RN TradeLab? Tell us how it's working for you - a 1 to 5 star rating and an optional comment.">
+<link rel="icon" type="image/x-icon" href="favicon.ico">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Inter+Tight:wght@600;700;800&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg:#0b0e13; --panel:#12161d; --card:#171c25;
+    --accent:#4a9eff; --accent-2:#7cc4ff; --green:#35d07f; --red:#e8615a;
+    --star:#f5b301; --star-off:#3a4150;
+    --text:#eef1f5; --sub:#8b93a3; --border:#252b36; --border-soft:#1c212b;
+  }
+  * { margin:0; padding:0; box-sizing:border-box; }
+  body { background:var(--bg); color:var(--text);
+         font-family:'Inter', -apple-system, 'Segoe UI', system-ui, sans-serif;
+         line-height:1.6; -webkit-font-smoothing:antialiased; }
+  .wrap { max-width:620px; margin:0 auto; padding:0 16px; }
+  nav { border-bottom:1px solid var(--border-soft); }
+  .nav-inner { max-width:1080px; margin:0 auto; padding:14px 24px;
+        display:flex; align-items:center; gap:24px; flex-wrap:wrap; }
+  .brand { font-weight:700; font-size:1.15rem; color:var(--text); text-decoration:none;
+        display:flex; align-items:center; }
+  .brand img { height:28px; margin-right:9px; }
+  .brand span { color:var(--accent); }
+  nav a.link { color:var(--sub); text-decoration:none; font-size:.92rem; font-weight:500; }
+  nav a.link:hover { color:var(--text); }
+  h1 { font-family:'Inter Tight','Inter',sans-serif; font-size:2rem; font-weight:800;
+       letter-spacing:-.02em; margin:48px 0 6px; }
+  .lead { color:var(--sub); margin-bottom:24px; }
+  .card { background:var(--card); border:1px solid var(--border); border-radius:14px;
+          padding:24px; }
+  .stars { display:flex; align-items:center; gap:4px; margin-bottom:6px; }
+  .stars button { background:none; border:none; cursor:pointer; font-size:2.2rem;
+          line-height:1; color:var(--star-off); padding:0 2px; transition:transform .1s; }
+  .stars button.on { color:var(--star); }
+  .stars button:hover { transform:scale(1.1); }
+  .stars button:focus-visible { outline:2px solid var(--accent); border-radius:6px; }
+  .star-label { color:var(--sub); margin-left:10px; font-size:.9rem; }
+  label { display:block; font-size:.85rem; color:var(--sub); margin:16px 0 6px; }
+  input[type=text], input[type=email], textarea {
+          width:100%; background:var(--panel); border:1px solid var(--border);
+          border-radius:8px; color:var(--text); padding:10px 12px; font:inherit; }
+  textarea { min-height:110px; resize:vertical; }
+  input:focus, textarea:focus { outline:none; border-color:var(--accent); }
+  .row { display:grid; grid-template-columns:1fr 1fr; gap:12px; }
+  @media (max-width:520px) { .row { grid-template-columns:1fr; } }
+  .consent { display:flex; gap:10px; align-items:flex-start; margin-top:18px;
+          font-size:.9rem; color:var(--text); }
+  .consent input { margin-top:4px; }
+  .note { color:var(--sub); font-size:.8rem; margin-top:10px; }
+  .btn { display:inline-block; margin-top:20px; padding:12px 30px; border:none;
+         border-radius:10px; font:inherit; font-weight:600; cursor:pointer;
+         background:linear-gradient(135deg, var(--accent), #2f7fe0); color:#fff; }
+  .btn:disabled { opacity:.45; cursor:not-allowed; }
+  .msg { margin-top:14px; font-size:.92rem; }
+  .msg.err { color:var(--red); }
+  .thanks { text-align:center; padding:30px 10px; }
+  .thanks .big { font-size:2.4rem; color:var(--star); }
+  .thanks h2 { margin:8px 0; }
+  .thanks p { color:var(--sub); }
+  footer { color:var(--sub); font-size:.85rem; text-align:center; padding:40px 0 56px; }
+  a { color:var(--accent-2); }
+  [hidden] { display:none !important; }
+</style>
+</head>
+<body>
+<nav>
+  <div class="nav-inner">
+    <a class="brand" href="index.html"><img src="logo.png" alt="RN">RN<span>Algotrading</span></a>
+    <a class="link" href="index.html">Home</a>
+    <a class="link" href="product.html">Product &amp; Pricing</a>
+    <a class="link" href="index.html#reviews">Reviews</a>
+  </div>
+</nav>
+
+<main class="wrap">
+  <h1>Rate RN TradeLab</h1>
+  <p class="lead">How is RN TradeLab working for you? Every rating and comment is
+     read - it's how the next version gets better.</p>
+
+  <div class="card" id="formCard">
+    <form id="rateForm" novalidate>
+      <div class="stars" id="stars" role="radiogroup" aria-label="Your rating">
+        <button type="button" data-v="1" aria-label="1 star - Poor">&#9733;</button>
+        <button type="button" data-v="2" aria-label="2 stars - Fair">&#9733;</button>
+        <button type="button" data-v="3" aria-label="3 stars - Good">&#9733;</button>
+        <button type="button" data-v="4" aria-label="4 stars - Very good">&#9733;</button>
+        <button type="button" data-v="5" aria-label="5 stars - Excellent">&#9733;</button>
+        <span class="star-label" id="starLabel">Click a star</span>
+      </div>
+
+      <label for="comment" id="commentLabel">Anything you'd like to tell us? (optional)</label>
+      <textarea id="comment" maxlength="1500"></textarea>
+
+      <div class="row">
+        <div><label for="name">First name (optional)</label><input type="text" id="name" maxlength="40"></div>
+        <div><label for="city">City (optional)</label><input type="text" id="city" maxlength="40"></div>
+      </div>
+      <label for="email">Email (optional - only if you'd like a reply)</label>
+      <input type="email" id="email" maxlength="80">
+
+      <div class="consent">
+        <input type="checkbox" id="consent">
+        <label for="consent" style="margin:0;color:var(--text);font-size:.9rem">
+          You may show my rating and comment on rnalgotrading.com with my first name and city</label>
+      </div>
+      <p class="note">Your email is never shown publicly. Reviews appear on the site
+         only with your permission, and only your first name and city.</p>
+
+      <button class="btn" type="submit" id="sendBtn" disabled>Send rating</button>
+      <p class="msg" id="msg" role="status"></p>
+    </form>
+  </div>
+
+  <div class="card thanks" id="thanks" hidden>
+    <div class="big">&#9733;</div>
+    <h2>Thank you!</h2>
+    <p>Your rating has been sent. It really helps.</p>
+    <p style="margin-top:14px"><a href="index.html">Back to the home page</a></p>
+  </div>
+
+  <div class="card" id="notReady" hidden>
+    <p>The rating form isn't open just yet. Please email your feedback to
+      <a href="https://mail.google.com/mail/?view=cm&fs=1&to=RNAlgotrading@gmail.com&su=RN%20TradeLab%20feedback"
+         target="_blank" rel="noopener">RNAlgotrading@gmail.com</a> - thank you!</p>
+  </div>
+</main>
+
+<footer>&copy; RNAlgotrading 2026 &middot; <a href="index.html">rnalgotrading.com</a></footer>
+
+<script>
+(function () {
+  // Form address and field IDs come from version.json ("feedback") -
+  // the same settings the app uses, so they're set in one place.
+  var LABELS = ["", "Poor", "Fair", "Good", "Very good", "Excellent"];
+  var form = null, rating = 0;
+  var stars = Array.prototype.slice.call(document.querySelectorAll('#stars button'));
+  var sendBtn = document.getElementById('sendBtn');
+  var msg = document.getElementById('msg');
+
+  function paint(n) {
+    stars.forEach(function (b, i) { b.classList.toggle('on', i < n); });
+  }
+  stars.forEach(function (b) {
+    var v = +b.dataset.v;
+    b.addEventListener('mouseenter', function () { paint(v); });
+    b.addEventListener('mouseleave', function () { paint(rating); });
+    b.addEventListener('click', function () {
+      rating = v; paint(v);
+      stars.forEach(function (s) { s.setAttribute('aria-checked', +s.dataset.v === v); });
+      document.getElementById('starLabel').textContent = LABELS[v];
+      document.getElementById('commentLabel').textContent = v >= 4
+        ? "What do you like most? (optional)"
+        : "What should we improve? Every comment is read. (optional)";
+      sendBtn.disabled = !form;
+    });
+  });
+
+  fetch('version.json', { cache: 'no-store' })
+    .then(function (r) { return r.json(); })
+    .then(function (info) {
+      var fb = info && info.feedback;
+      if (fb && /^https:\/\/docs\.google\.com\/forms\/.*\/formResponse$/.test(fb.form_url || '')
+          && fb.fields && fb.fields.rating) {
+        form = fb;
+        if (rating) sendBtn.disabled = false;
+      } else { notReady(); }
+    })
+    .catch(notReady);
+
+  function notReady() {
+    document.getElementById('formCard').hidden = true;
+    document.getElementById('notReady').hidden = false;
+  }
+
+  document.getElementById('rateForm').addEventListener('submit', function (e) {
+    e.preventDefault();
+    if (!form || !rating) return;
+    var val = function (id) { return document.getElementById(id).value.trim(); };
+    var values = {
+      rating: String(rating), comment: val('comment'), name: val('name'),
+      city: val('city'), email: val('email'),
+      consent: document.getElementById('consent').checked ? 'Yes' : 'No',
+      source: 'Website', version: '', days: ''
+    };
+    var body = new URLSearchParams();
+    Object.keys(values).forEach(function (k) {
+      if (form.fields[k]) body.append(form.fields[k], values[k]);
+    });
+    sendBtn.disabled = true;
+    msg.className = 'msg'; msg.textContent = 'Sending...';
+    // Google Forms doesn't allow reading the reply from another site,
+    // so a completed request is treated as sent
+    fetch(form.form_url, { method: 'POST', mode: 'no-cors', body: body })
+      .then(function () {
+        document.getElementById('formCard').hidden = true;
+        document.getElementById('thanks').hidden = false;
+      })
+      .catch(function () {
+        msg.className = 'msg err';
+        msg.textContent = "Couldn't send - please check your connection and try again.";
+        sendBtn.disabled = false;
+      });
+  });
+})();
+</script>
+</body>
+</html>

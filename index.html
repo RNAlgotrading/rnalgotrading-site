@@ -101,6 +101,23 @@
             box-shadow:var(--shadow-sm); }
   summary { cursor:pointer; font-weight:600; }
   details p { color:var(--sub); margin-top:8px; }
+  [hidden] { display:none !important; }
+  /* customer reviews */
+  .rv-summary { display:flex; align-items:center; gap:12px; flex-wrap:wrap;
+        margin:-14px 0 24px; color:var(--sub); }
+  .rv-avg { font-size:1.6rem; font-weight:800; color:var(--text);
+        font-family:'Inter Tight','Inter',sans-serif; }
+  .rv-stars { color:#f5b301; letter-spacing:2px; }
+  .rv-stars .off { color:#3a4150; }
+  .rv-meter { position:relative; display:inline-block; letter-spacing:2px;
+        color:#3a4150; font-size:1.1rem; line-height:1; }
+  .rv-meter .fill { position:absolute; left:0; top:0; overflow:hidden;
+        white-space:nowrap; color:#f5b301; }
+  .rv-card { display:flex; flex-direction:column; gap:10px; }
+  .rv-card .quote { color:var(--text); font-size:.95rem; flex:1; }
+  .rv-card .who { color:var(--sub); font-size:.85rem; }
+  .rv-empty { text-align:center; }
+  .rv-cta { margin-top:22px; text-align:center; }
   footer { padding:44px 0 56px; border-top:1px solid var(--border-soft);
            color:var(--sub); font-size:.85rem; text-align:center; }
   .disclaimer { background:var(--panel); border:1px solid var(--border);
@@ -232,6 +249,7 @@
         </div>
       </div>
     </div>
+    <a href="#reviews">Reviews</a>
     <a href="#faq">FAQ</a>
     <a href="guide.html">User Guide</a>
     <a href="releases.html">Release Notes</a>
@@ -414,6 +432,18 @@
   </div>
 </section>
 
+<section class="wrap" id="reviews">
+  <h2>What our customers say</h2>
+  <div class="rv-summary" id="rvSummary" hidden></div>
+  <div class="grid" id="rvGrid"></div>
+  <div class="card rv-empty" id="rvEmpty" hidden>
+    <h3>RN TradeLab is new - be one of the first to rate it</h3>
+    <p>Using it already? A quick rating and a line about how it's working
+       for you helps other traders, and helps shape the next version.</p>
+  </div>
+  <div class="rv-cta"><a class="btn btn-ghost" href="rate.html">&#9733; Rate RN TradeLab</a></div>
+</section>
+
 <section class="wrap price" id="pricing">
   <h2>Pricing</h2>
   <p><span class="amount">Basic is free</span></p>
@@ -446,14 +476,15 @@
     grows.</p></details>
   <details><summary>Will my strategies or data leave my computer?</summary>
     <p>No. Your broker keys, data, strategies and results live in files
-    next to the app on your PC. Nothing is uploaded.</p></details>
+    next to the app on your PC. Nothing is uploaded. The only thing the app
+    ever sends is a rating, and only if you choose to send one.</p></details>
   <details><summary>Which Windows versions are supported?</summary>
     <p>Windows 10 and 11, 64-bit.</p></details>
 </section>
 
 <footer class="wrap">
   <p><b>RNAlgotrading</b> - practical tools for traders who test first.</p>
-  <p style="margin-top:6px">www.RNAlgotrading.com &middot; RNAlgotrading@gmail.com</p>
+  <p style="margin-top:6px">www.RNAlgotrading.com &middot; RNAlgotrading@gmail.com &middot; <a href="rate.html">Rate RN TradeLab</a></p>
   <div class="disclaimer">
     DISCLAIMER: RN TradeLab is a purely educational tool for learning to
     test trading ideas on historical data. It does not provide investment
@@ -914,6 +945,44 @@
     elWin.textContent = demo.finalWinRate.toFixed(1) + '%';
     elDD.textContent = demo.finalMaxDD.toFixed(2) + '%';
   }
+})();
+</script>
+<script>
+/* customer reviews - from reviews.json (only reviews people agreed to
+   share; the summary counts every rating received) */
+(function () {
+  function esc(t) { var d = document.createElement('div'); d.textContent = t || ''; return d.innerHTML; }
+  function starStr(n) {
+    var full = Math.round(n), out = '';
+    for (var i = 1; i <= 5; i++) out += i <= full ? '&#9733;' : '<span class="off">&#9733;</span>';
+    return out;
+  }
+  fetch('reviews.json', { cache: 'no-store' })
+    .then(function (r) { return r.json(); })
+    .then(function (data) {
+      var list = (data && data.reviews) || [];
+      var grid = document.getElementById('rvGrid');
+      if (!list.length) { document.getElementById('rvEmpty').hidden = false; }
+      list.forEach(function (rv) {
+        var who = [rv.name, rv.city].filter(Boolean).map(esc).join(', ');
+        var el = document.createElement('div');
+        el.className = 'card rv-card';
+        el.innerHTML = '<div class="rv-stars">' + starStr(rv.stars || 0) + '</div>' +
+          '<div class="quote">&ldquo;' + esc(rv.text) + '&rdquo;</div>' +
+          (who ? '<div class="who">&mdash; ' + who + '</div>' : '');
+        grid.appendChild(el);
+      });
+      var s = data && data.summary;
+      if (data && data.show_summary && s && s.count > 0) {
+        var box = document.getElementById('rvSummary');
+        box.innerHTML = '<span class="rv-avg">' + Number(s.average).toFixed(1) + '</span>' +
+          '<span class="rv-meter" aria-label="' + Number(s.average).toFixed(1) + ' out of 5">&#9733;&#9733;&#9733;&#9733;&#9733;' +
+          '<span class="fill" style="width:' + Math.max(0, Math.min(100, s.average / 5 * 100)) + '%">&#9733;&#9733;&#9733;&#9733;&#9733;</span></span>' +
+          '<span>from ' + s.count + ' rating' + (s.count === 1 ? '' : 's') + '</span>';
+        box.hidden = false;
+      }
+    })
+    .catch(function () { document.getElementById('rvEmpty').hidden = false; });
 })();
 </script>
 </body>
