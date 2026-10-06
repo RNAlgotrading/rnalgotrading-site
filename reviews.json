@@ -1,12 +1,6 @@
 {
   "_how_to_use": "Copy approved reviews from your Google Sheet into 'reviews' - only people who ticked 'You may show my rating'. 'summary' is the average and count of ALL ratings received (not only the ones shown); set show_summary to true once you have about 10.",
-  "show_summary": true,
-  "summary": { "average": 4.5, "count": 3 },
-  "reviews": [{ "name": "Mani", "city": "Coimbatore", "stars": 5,
-      "text": "Extremely useful and meaningful APP for a Real Algo Developer." },
-{ "name": "Karthi", "city": "Kochi", "stars": 4,
-      "text": "Extremely useful and meaningful APP for a Real Algo Developer." },
-{ "name": "Rhiya", "city": "OOTY", "stars": 4.5,
-      "text": "Extremely useful and meaningful APP for a Real Algo Developer." }
-]
+  "show_summary": false,
+  "summary": { "average": 0, "count": 0 },
+  "reviews": []
 }
