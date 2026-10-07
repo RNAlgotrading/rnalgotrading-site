@@ -184,7 +184,87 @@
   <details class="relnote" open>
     <summary class="relnote-summary">
       <div class="relnote-summary-text">
-        <h3>v0.20 <span class="badge-current">Current</span></h3>
+        <h3>v0.21 <span class="badge-current">Current</span></h3>
+        <div class="date">Released October 2026</div>
+      </div>
+      <span class="relnote-toggle" aria-hidden="true">+</span>
+    </summary>
+    <div class="relnote-body">
+      <ul>
+      <li><b>New: stop-and-reverse strategies.</b> A strategy can now
+        flip straight from long to short (and back) on the same candle:
+        the opposite signal closes the open trade (exit reason
+        "REVERSE") and opens the new one, so it's always in the market.
+        A stoploss or target from Settings &gt; Exits still wins if it's
+        hit first. Works the same in Backtest, Basket, Optimize,
+        Walk-Forward and Paper Trading.</li>
+      <li><b>New strategy: SuperTrend Flip Reversal.</b> Long when
+        SuperTrend turns green, short when it turns red - always
+        following the colour. Period and multiplier can be
+        optimized.</li>
+      <li><b>New: RN Fisher RSI and RN Inverse Fisher RSI</b> -
+        indicators and matching strategies, built from John Ehlers'
+        published Fisher Transform and Inverse Fisher Transform
+        methods. The line is coloured green while rising and red while
+        falling; arrows mark signals only when it leaves an overbought
+        or oversold zone; an optional EMA trend filter keeps only
+        signals in the trend's direction. No repainting.</li>
+      <li><b>New indicators: MovAvg 2 Lines, MovAvg 3 Lines, EMA 2
+        Lines and EMA 3 Lines</b> - fast, (medium) and slow moving
+        averages in one indicator, each line with its own length and
+        colour in Edit Indicators.</li>
+      <li><b>New: Universe sessions in Paper Trading.</b> The New
+        Session window now offers Symbol / Universe / Portfolio - paper
+        trade a strategy across a whole universe at once. A Universe
+        session uses Gold's Portfolio session slot; at 1-minute bars a
+        universe can have up to 50 symbols.</li>
+      <li><b>New: P&amp;L in money in Paper Trading.</b> An Unrealized
+        P&amp;L column, an "Open positions | Running unrealized P&amp;L"
+        line above the Trade Log, and realized P&amp;L in money - in $
+        for US stocks, crypto and futures, Rs for NSE/BSE.</li>
+      <li><b>New: Rate RN TradeLab</b> (Help menu). After you've used
+        the app on 5 different days it asks once for a quick star
+        rating. Nothing is sent unless you click Send, and nothing is
+        shown on our website without your permission.</li>
+      <li><b>Clearer trade markers on the chart.</b> Long entries are a
+        blue arrow pointing right (LE), short entries a red arrow
+        pointing left (SE); the dotted line joining entry to exit is
+        green for a profit and red for a loss. A stop-and-reverse shows
+        just the new LE or SE at the flip.</li>
+      <li><b>Chart scrolling:</b> the empty space after the last candle
+        now appears only at the true end of the data - scrolled back,
+        candles run right to the edge. A trade that runs past the edge
+        keeps its true slope as you scroll.</li>
+      <li><b>The Performance Report fits its window</b> - metric cards
+        wrap into even rows and every chart fits the window's width, so
+        there's no sideways scrolling and no flattened charts.</li>
+      <li><b>The Portfolio page fits the screen</b> - compact buttons,
+        an expandable Symbols list, In-sample and Out-of-sample metrics
+        side by side, and the whole equity chart in view.</li>
+      <li><b>Tidier New Session window</b> - no stretched controls, and
+        the Risk Management text wraps.</li>
+      <li><b>Fixed: Paper Trading with many symbols no longer freezes
+        the app.</b> A 50-stock, 1-minute session could make the whole
+        app go "Not Responding" when switching tabs; each bar is now
+        processed in a fraction of the time, without blocking the
+        screen.</li>
+      <li><b>Fixed:</b> a chart error with indicators or paintbars that
+        return True/False values.</li>
+      <li><b>Fixed:</b> an open trade on the chart shows only its entry
+        - no line to the latest price, which made it look closed.</li>
+      <li><b>Fixed:</b> the first letter of each line was clipped in
+        the Strategies and Paintbar code editors.</li>
+      <li><b>Fixed:</b> multi-line indicators such as Prior Session
+        Levels and Ichimoku were drawn on the wrong candles on very
+        long histories.</li>
+    </ul>
+    </div>
+  </details>
+
+  <details class="relnote">
+    <summary class="relnote-summary">
+      <div class="relnote-summary-text">
+        <h3>v0.20</h3>
         <div class="date">Released October 2026</div>
       </div>
       <span class="relnote-toggle" aria-hidden="true">+</span>
