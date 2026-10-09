@@ -137,6 +137,13 @@
   .modal-continue { background:linear-gradient(135deg, var(--gold), #c8952f); color:#1c1600; }
 
   .plan-radios { display:flex; flex-direction:column; gap:8px; margin-bottom:18px; }
+  .ref-input { width:100%; max-width:260px; margin-top:8px; padding:9px 12px;
+        background:var(--panel); border:1px solid var(--border); border-radius:8px;
+        color:var(--text); font:inherit; letter-spacing:.06em; text-transform:uppercase; }
+  .ref-input:focus { outline:none; border-color:var(--accent); }
+  .ref-input.bad { border-color:#e8615a; }
+  .ref-note { display:block; font-size:.8rem; color:var(--sub); margin-top:5px; }
+  .ref-note.bad { color:#e8615a; } .ref-note.ok { color:var(--green); }
   .plan-radios label { display:flex; align-items:center; gap:10px; background:var(--panel);
         border:1px solid var(--border); border-radius:10px; padding:10px 14px;
         cursor:pointer; font-size:.9rem; transition:border-color .15s ease; }
@@ -383,9 +390,15 @@
         <div class="step-body plan-radios" id="buyPlans"></div></li>
       <li><b>Pay.</b>
         <div class="step-body pay-box" id="payBox"></div></li>
-      <li><b>Email us.</b> "Continue to Email" fills in your plan and
-        payment details - just paste your Request Code and attach a
-        screenshot of the payment.</li>
+      <li><b>Referred by someone?</b> <span style="color:var(--sub)">(optional)</span>
+        <div class="step-body">
+          <input class="ref-input" id="refCode" placeholder="RN-XXXX-XXXX"
+                 autocomplete="off" spellcheck="false" oninput="checkRef()">
+          <span class="ref-note" id="refNote">Enter their referral code, or leave it blank.</span>
+        </div></li>
+      <li><b>Email us.</b> "Continue to Email" fills in your plan, payment
+        details and referral code - just paste your Request Code and
+        attach a screenshot of the payment.</li>
     </ol>
     <div class="modal-actions">
       <button class="modal-cancel" onclick="closeBuy()">Cancel</button>
@@ -535,10 +548,44 @@ function copyText(t, btn) {
   setTimeout(function () { btn.textContent = "Copy"; }, 1500);
 }
 
+// Referral codes: RN-XXXX-XXXX. The 8th character is a typo check (same
+// rule as the app - no secret needed), so a mistyped code is caught here.
+var REF_ALPHABET = "ABCDEFGHJKLMNPQRSTUVWXYZ23456789";
+function normalizeRef(text) {
+  var t = (text || "").toUpperCase().replace(/[^A-Z0-9]/g, "");
+  if (t.indexOf("RN") === 0) t = t.slice(2);
+  return t.length === 8 ? "RN-" + t.slice(0, 4) + "-" + t.slice(4) : "";
+}
+function refOk(text) {
+  var code = normalizeRef(text);
+  if (!code) return false;
+  var chars = code.slice(3, 7) + code.slice(8), total = 17;
+  for (var i = 0; i < 8; i++) if (REF_ALPHABET.indexOf(chars[i]) < 0) return false;
+  for (var j = 0; j < 7; j++) total += (2 * j + 1) * REF_ALPHABET.indexOf(chars[j]);
+  return REF_ALPHABET[total % 32] === chars[7];
+}
+function checkRef() {
+  var el = document.getElementById("refCode"), note = document.getElementById("refNote");
+  var raw = el.value.trim();
+  el.classList.remove("bad"); note.className = "ref-note";
+  if (!raw) { note.textContent = "Enter their referral code, or leave it blank."; return true; }
+  if (!refOk(raw)) {
+    el.classList.add("bad"); note.className = "ref-note bad";
+    note.textContent = "That doesn't look like a valid referral code - please check it.";
+    return false;
+  }
+  note.className = "ref-note ok";
+  note.textContent = "Referral code " + normalizeRef(raw) + " will be included.";
+  return true;
+}
+
 function sendBuyRequest() {
+  if (!checkRef()) { document.getElementById("refCode").focus(); return; }
+  var ref = normalizeRef(document.getElementById("refCode").value.trim());
   var tier = TIER_NAME[BUY_TIER];
   var body = "Hi,\n\nI'd like to activate " + tier + ".\n\n"
       + "Plan: " + planLabel() + "\n"
+      + "Referral code: " + (ref || "-") + "\n"
       + "Paid via: " + (CUR === "INR" ? "UPI" : "PayPal") + "\n"
       + "Payment / transaction ID: \n"
       + "My sign-in email: \n"

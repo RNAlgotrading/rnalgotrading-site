@@ -184,7 +184,58 @@
   <details class="relnote" open>
     <summary class="relnote-summary">
       <div class="relnote-summary-text">
-        <h3>v0.21 <span class="badge-current">Current</span></h3>
+        <h3>v0.22 <span class="badge-current">Current</span></h3>
+        <div class="date">Released October 2026</div>
+      </div>
+      <span class="relnote-toggle" aria-hidden="true">+</span>
+    </summary>
+    <div class="relnote-body">
+      <ul>
+      <li><b>New: automatic daily data updates (Gold).</b> Tick "Keep up
+        to date automatically" for a universe in the Data Center and its
+        1-minute data stays current with no clicks - about 30 seconds
+        after login, and again after each market close while the app is
+        open. During market hours it fetches up to the previous day's
+        close, so a half-formed day never lands in your data; missing
+        days in the last 30 days are found and filled. A Stop button
+        sits in the status bar, and if the broker login has expired it
+        says so instead of retrying.</li>
+      <li><b>New: chart backgrounds</b> - Light, Black or Midnight (a
+        dark blue-to-black blend). Grid lines are gone; only the session
+        lines remain. Your choice is remembered.</li>
+      <li><b>New: Help &gt; Upgrade to Gold / Platinum.</b> Pick the
+        plan and length (1, 3 or 12 months), add a referral code if you
+        have one, and send the request in one step. The plan shown in
+        the status bar is clickable too.</li>
+      <li><b>New: Help &gt; My Referral Code</b> - your personal code,
+        with a ready-to-send share message.</li>
+      <li><b>Licence keys now carry the plan</b> (Gold or Platinum), so
+        Platinum features unlock automatically. Existing keys keep
+        working as Gold.</li>
+      <li><b>Exit labels on the chart:</b> LX (long exit) in red and SX
+        (short exit) in blue, with the exit reason and P&amp;L.</li>
+      <li><b>In-sample and out-of-sample run as one continuous
+        test.</b> A trade opened near the split now runs to its natural
+        exit, and the out-of-sample period starts in position just as it
+        would in real life. Trades are counted by their entry date, so
+        figures may shift slightly from older versions.</li>
+      <li><b>Intraday charts open on the last 12 months</b> by default
+        - faster to load. Choose a longer range in Symbol
+        Properties.</li>
+      <li><b>Fixed:</b> when a stop-and-reverse flip was blocked by a
+        loss limit, the chart line just stopped. The exit now shows at
+        the flip, and the next trade comes only when the entry condition
+        is met again after the reset.</li>
+      <li><b>Fixed:</b> an entry blocked by risk limits is now skipped
+        the same way for every strategy.</li>
+    </ul>
+    </div>
+  </details>
+
+  <details class="relnote">
+    <summary class="relnote-summary">
+      <div class="relnote-summary-text">
+        <h3>v0.21</h3>
         <div class="date">Released October 2026</div>
       </div>
       <span class="relnote-toggle" aria-hidden="true">+</span>
