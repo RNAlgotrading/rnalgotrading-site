@@ -184,7 +184,46 @@
   <details class="relnote" open>
     <summary class="relnote-summary">
       <div class="relnote-summary-text">
-        <h3>v0.22 <span class="badge-current">Current</span></h3>
+        <h3>v0.23 <span class="badge-current">Current</span></h3>
+        <div class="date">Released October 2026</div>
+      </div>
+      <span class="relnote-toggle" aria-hidden="true">+</span>
+    </summary>
+    <div class="relnote-body">
+      <ul>
+      <li><b>New: AI strategy writer</b> (Studies &gt; Strategies).
+        Describe your idea in plain English - "buy when RSI crosses
+        above 30 and the close is above the 200 EMA" - and click
+        Generate. Use Refine to change it ("add a 1.5% stoploss", "only
+        trade after 10:00"). The code opens in the editor; nothing is
+        saved until you click Add Strategy.</li>
+      <li><b>Every AI strategy is checked before you see it:</b> a
+        safety check (no file, network or system access), a lookahead
+        check (it may not peek at future candles - the most common way
+        backtests lie), and a trial backtest. If a check fails, the AI
+        gets one automatic, free attempt to fix it.</li>
+      <li><b>Your own free AI key</b> - Google Gemini, Groq, OpenRouter,
+        or Ollama running entirely on your PC. Set it up in AI Key
+        (button in the strategy editor, or Help &gt; AI Key), with an
+        optional backup provider used automatically when the main one
+        hits its free limit. Your key stays on your PC and goes only to
+        the provider you choose.</li>
+      <li><b>AI requests per day:</b> Basic 5, Gold 20, Platinum
+        unlimited. Each Generate or Refine is one request.</li>
+      <li><b>A simpler tab layout:</b> Live Signals and Performance (the
+        manual trade journal) have been removed. Paper Trading does
+        everything Live Signals did and more - it runs your strategy on
+        live data bar by bar and tracks the trades - and Alerts covers
+        notifications. Paper Trading is now tab 6. Any journal entries
+        you made stay in your data folder.</li>
+    </ul>
+    </div>
+  </details>
+
+  <details class="relnote">
+    <summary class="relnote-summary">
+      <div class="relnote-summary-text">
+        <h3>v0.22</h3>
         <div class="date">Released October 2026</div>
       </div>
       <span class="relnote-toggle" aria-hidden="true">+</span>
