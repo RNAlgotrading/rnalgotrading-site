@@ -184,7 +184,56 @@
   <details class="relnote" open>
     <summary class="relnote-summary">
       <div class="relnote-summary-text">
-        <h3>v0.23 <span class="badge-current">Current</span></h3>
+        <h3>v0.24 <span class="badge-current">Current</span></h3>
+        <div class="date">Released October 2026</div>
+      </div>
+      <span class="relnote-toggle" aria-hidden="true">+</span>
+    </summary>
+    <div class="relnote-body">
+      <ul>
+      <li><b>New: Data2 and Data3.</b> Right-click the chart &gt; Add
+        Symbol to add a second (and third) data series - the same symbol
+        on a higher timeframe, or another one like the NIFTY index. Trade
+        the 5-min chart while confirming the 60-min trend. Each shows in
+        its own panel under the chart, and a Data2/Data3 bar only becomes
+        visible to your strategy once it has actually closed, so there is
+        no lookahead. Two new example strategies show how to use them.
+        Data2 is free; Data3 is a Gold feature.</li>
+      <li><b>New: a full drawing toolbar</b> (tick Drawing tools above
+        the chart): trend lines, rays, horizontal and vertical lines,
+        parallel channels, Fibonacci retracement and extension,
+        rectangles that can extend right, text notes, arrow markers, and
+        a Measure tool. The <b>Long / Short Position</b> tool shows entry,
+        stop-loss, target and risk:reward - drag the lines to adjust.
+        Drag any drawing to move it, drag its corner dots to resize,
+        double-click to edit.</li>
+      <li><b>New: candle styles</b> (Symbol Properties &gt; Style) -
+        Candlesticks, Hollow candles, Bars (OHLC) and Heikin Ashi, used
+        on every chart and remembered. Volume candles, where each
+        candle's width shows its volume, are a Gold feature.</li>
+      <li><b>New: bar inspector</b> - left-click and hold any bar to see
+        its time, OHLC, volume and Data2/Data3 values. Let go and it's
+        gone.</li>
+      <li><b>Bar times now show when a bar closes, like
+        TradeStation.</b> The first 5-min bar on NSE reads 09:20 and the
+        last bar of every timeframe reads 15:30, so bars that finish
+        together show the same time everywhere - chart, trade list,
+        reports, Paper Trading and alerts. Prefer open times? Settings
+        &gt; General &gt; Bar time. Your data and strategies are
+        unchanged.</li>
+      <li><b>US stocks:</b> 30-min and 60-min bars now start at 09:30
+        New York time, and Alerts and Paper Trading scan on the US market
+        clock.</li>
+      <li>Easier-to-see checkboxes, and a new install no longer asks you
+        to "re-download" data it never had.</li>
+    </ul>
+    </div>
+  </details>
+
+  <details class="relnote">
+    <summary class="relnote-summary">
+      <div class="relnote-summary-text">
+        <h3>v0.23</h3>
         <div class="date">Released October 2026</div>
       </div>
       <span class="relnote-toggle" aria-hidden="true">+</span>

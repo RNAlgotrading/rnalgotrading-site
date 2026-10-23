@@ -1,7 +1,7 @@
 {
-  "latest": "0.23",
+  "latest": "0.24",
   "url": "https://rnalgotrading.github.io/rnalgotrading-site/",
-  "notes": "- New: AI strategy writer (Studies > Strategies) - describe your idea in plain English, click Generate; Refine changes it. Nothing is saved until you click Add Strategy\n- Every AI strategy passes a safety check, a lookahead check (no peeking at future candles) and a trial backtest; one free automatic fix if a check fails\n- Uses your own free AI key: Gemini, Groq, OpenRouter or Ollama on your PC, with an optional backup provider. Your key stays on your PC\n- AI requests per day: Basic 5, Gold 20, Platinum unlimited\n- Simpler tabs: Live Signals and Performance removed - Paper Trading (now tab 6) and Alerts cover them",
+  "notes": "- New: Data2 & Data3 - right-click the chart > Add Symbol to confirm on a higher timeframe (e.g. 5-min with the 60-min trend), no lookahead. Data3 is Gold\n- New: drawing toolbar - trend lines, rays, channels, Fibonacci, rectangles, text, Long/Short position with risk:reward, Measure; drag, resize and edit any drawing\n- New: candle styles - Candlesticks, Hollow, Bars, Heikin Ashi; Volume candles for Gold\n- New: left-click and hold a bar to inspect it\n- Bar times now show the bar's CLOSE time, like TradeStation (Settings > General > Bar time to change)\n- US stocks: 30/60-min bars start at 09:30 New York, scans run on the US clock",
   "feedback": {
     "form_url": "https://docs.google.com/forms/d/e/1FAIpQLSdUw8kGo22ok9VHF8QmyyEQXs3O8g6pn33TNirNT0mr19AGlw/formResponse",
     "fields": {
