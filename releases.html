@@ -184,7 +184,56 @@
   <details class="relnote" open>
     <summary class="relnote-summary">
       <div class="relnote-summary-text">
-        <h3>v0.24 <span class="badge-current">Current</span></h3>
+        <h3>v0.25 <span class="badge-current">Current</span></h3>
+        <div class="date">Released October 2026</div>
+      </div>
+      <span class="relnote-toggle" aria-hidden="true">+</span>
+    </summary>
+    <div class="relnote-body">
+      <ul>
+      <li><b>New: Scanner</b> (tab 7, now Scanner &amp; Alerts). List the
+        symbols that pass all your conditions - for example price between
+        20 and 100, market cap above 100M and close above the 50-day
+        average. Conditions cover price, volume, technicals (moving
+        averages, RSI, MACD, ATR or any indicator in your library) and
+        fundamentals (market cap, P/E, EPS, dividend yield, ROE, debt,
+        holdings, sector), each on its own timeframe. Results show the
+        value every condition saw; double-click to open the chart. Save
+        scans by name, export to CSV, or save the result as a dataset for
+        Backtest, Optimize and Alerts. Free for everyone.</li>
+      <li><b>New: alerts on a dataset.</b> Point an alert at a list you
+        saved from the Scanner - re-save the scan and the alert follows
+        the new list. Alerting on a whole list is a Gold feature.</li>
+      <li><b>New: Probability Lab</b> (Knowledge Base, Gold). Market
+        Twins (the past moments most like now, and what came next),
+        Target vs Stop (odds of hitting a target before a stop),
+        Candlestick Edge (each pattern against the stock's normal rate)
+        and Classic Stats. Every percentage shows its sample size and a
+        95% range, with an honest verdict. Live mode updates as bars
+        close, with optional popup and sound alerts.</li>
+      <li><b>Optimizer:</b> tick exactly which parameters to optimize
+        (remembered per strategy); much faster when testing a few
+        combinations across many stocks, with clearer progress; tells
+        you why if every result has 0 trades; long parameter lists now
+        scroll so Run and Apply stay on screen.</li>
+      <li><b>Charts:</b> indicator legends show just the name - hover to
+        see every setting; pick a colour for each line of indicators like
+        MACD; whole-number inputs show as 12, not 12.00.</li>
+      <li><b>For strategy writers:</b> limit entries valid for N bars,
+        breakeven at a price, exit at a time of day, gap-through stop
+        fills, and a max-trades-per-day cap.</li>
+      <li><b>Fixed:</b> $ commission and slippage now apply to stocks
+        (expect slightly lower, more realistic backtest results); renamed
+        strategies always apply to the chart; the Performance Report no
+        longer runs off the screen for strategies with many inputs.</li>
+    </ul>
+    </div>
+  </details>
+
+  <details class="relnote">
+    <summary class="relnote-summary">
+      <div class="relnote-summary-text">
+        <h3>v0.24</h3>
         <div class="date">Released October 2026</div>
       </div>
       <span class="relnote-toggle" aria-hidden="true">+</span>

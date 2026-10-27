@@ -1,7 +1,7 @@
 {
-  "latest": "0.24",
+  "latest": "0.25",
   "url": "https://rnalgotrading.github.io/rnalgotrading-site/",
-  "notes": "- New: Data2 & Data3 - right-click the chart > Add Symbol to confirm on a higher timeframe (e.g. 5-min with the 60-min trend), no lookahead. Data3 is Gold\n- New: drawing toolbar - trend lines, rays, channels, Fibonacci, rectangles, text, Long/Short position with risk:reward, Measure; drag, resize and edit any drawing\n- New: candle styles - Candlesticks, Hollow, Bars, Heikin Ashi; Volume candles for Gold\n- New: left-click and hold a bar to inspect it\n- Bar times now show the bar's CLOSE time, like TradeStation (Settings > General > Bar time to change)\n- US stocks: 30/60-min bars start at 09:30 New York, scans run on the US clock",
+  "notes": "- New: Scanner (tab 7, Scanner & Alerts) - find symbols by price, volume, technical and fundamental conditions; save results as a dataset\n- New: alerts on a saved dataset (Gold)\n- New: Probability Lab (Gold) - Market Twins, Target vs Stop, Candlestick Edge, with Live mode\n- Optimizer: tick which parameters to optimize; much faster for few combinations on many stocks\n- Charts: short indicator legends with full settings on hover; a colour for each indicator line\n- Fixed: $ commission and slippage now apply to stocks",
   "feedback": {
     "form_url": "https://docs.google.com/forms/d/e/1FAIpQLSdUw8kGo22ok9VHF8QmyyEQXs3O8g6pn33TNirNT0mr19AGlw/formResponse",
     "fields": {
