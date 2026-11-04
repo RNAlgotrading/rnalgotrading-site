@@ -11,5 +11,11 @@
       "name": "Sourabh",
       "city": "Mumbai"
     }
+    {
+      "stars": 5,
+      "text": "I've been trading for over 20 years. RN Tradelab is an excellent platform for learning how to build, evaluate, and trade live strategies."
+      "name": "Bryan",
+      "city": "New York, NY"
+    }
   ]
 }
