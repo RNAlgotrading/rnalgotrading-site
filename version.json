@@ -1,7 +1,7 @@
 {
-  "latest": "0.25",
+  "latest": "0.26",
   "url": "https://rnalgotrading.github.io/rnalgotrading-site/",
-  "notes": "- New: Scanner (tab 7, Scanner & Alerts) - find symbols by price, volume, technical and fundamental conditions; save results as a dataset\n- New: alerts on a saved dataset (Gold)\n- New: Probability Lab (Gold) - Market Twins, Target vs Stop, Candlestick Edge, with Live mode\n- Optimizer: tick which parameters to optimize; much faster for few combinations on many stocks\n- Charts: short indicator legends with full settings on hover; a colour for each indicator line\n- Fixed: $ commission and slippage now apply to stocks",
+  "notes": "- New: Angel One broker (NSE/BSE) - downloads, Live Chart, Alerts, Paper Trading\n- New: split and bonus adjustment, plus Data Center > Check Splits & Bonuses\n- New: Volume Average indicator with volume-spike highlight\n- New: overbought/oversold colours on RSI, Stochastic, MFI, Williams %R, CCI and more\n- Add the same indicator more than once, each with its own settings\n- Drawing tools on volume, oscillator and Data2/Data3 panels",
   "feedback": {
     "form_url": "https://docs.google.com/forms/d/e/1FAIpQLSdUw8kGo22ok9VHF8QmyyEQXs3O8g6pn33TNirNT0mr19AGlw/formResponse",
     "fields": {

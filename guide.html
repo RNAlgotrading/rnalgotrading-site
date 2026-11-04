@@ -227,6 +227,14 @@
 <li>In Tab 1, click <b>Broker Settings (Upstox)...</b> and paste your api_key, api_secret and access_token - the app writes config.json for you and unlocks downloading. This is the only place you need to enter broker details - no hand-editing of config files.</li>
 <li><b>Token validity varies</b> with your Upstox app settings - some tokens expire daily (~3:30 AM IST), others last much longer. If downloads start failing with a 401 error, generate a fresh token and paste it into Broker Settings.</li>
 </ol>
+<h4 id="connecting-angel-one">Connecting Angel One</h4>
+<ol style='margin-top:2px;'>
+<li>Create an app at https://smartapi.angelone.in/ and copy its <b>API Key</b>.</li>
+<li>Turn on TOTP at https://smartapi.angelone.in/enable-totp and add it to an authenticator app (Google Authenticator, Microsoft Authenticator...).</li>
+<li>In Tab 1, open <b>Broker Settings... &gt; Angel One (NSE/BSE)</b>, enter the API Key, your Client Code, PIN and the 6-digit TOTP code, and click <b>Log in &amp; Save</b>.</li>
+<li><b>One login per trading day.</b> The next day Broker Settings shows <i>Log in for today</i> - click it and enter a fresh TOTP code. Optional: tick <b>Log in automatically each day</b> and paste the TOTP <i>secret key</i> (the long code shown when you enabled TOTP) - the app then logs in by itself. This saves your PIN and the key on your computer, so leave it off on a shared PC.</li>
+<li>With more than one India broker connected (Upstox, Fyers, Angel One), pick which one to use under <b>Preferred NSE/BSE broker</b> in Broker Settings.</li>
+</ol>
 <hr>
 <h3 id="2-the-tabs">2. The tabs</h3>
 <p><b>Tab 1 - Download Data</b></p>

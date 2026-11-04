@@ -190,7 +190,53 @@
   <details class="relnote" open>
     <summary class="relnote-summary">
       <div class="relnote-summary-text">
-        <h3>v0.25 <span class="badge-current">Current</span></h3>
+        <h3>v0.26 <span class="badge-current">Current</span></h3>
+        <div class="date">Released November 2026</div>
+      </div>
+      <span class="relnote-toggle" aria-hidden="true">+</span>
+    </summary>
+    <div class="relnote-body">
+      <ul>
+      <li><b>New: Angel One.</b> A third NSE/BSE broker next to Upstox and
+        Fyers - broker downloads, auto-update, Live Chart, Alerts and
+        Paper Trading. Log in with your Client Code, PIN and TOTP once a
+        trading day, or turn on automatic daily login. With more than
+        one India broker connected, choose which one to use in Broker
+        Settings. See <a href="guide.html#connecting-angel-one">Connecting
+        Angel One</a>.</li>
+      <li><b>New: splits and bonus issues handled.</b> When a stock splits
+        or issues bonus shares, its stored history is adjusted so the
+        chart and backtests don't see a false crash. Updates spot it
+        automatically, and <b>Data Center &gt; Check Splits &amp;
+        Bonuses</b> checks every stored stock against Yahoo's split list.
+        Every change is backed up first and logged. Alpaca US data now
+        comes split-adjusted.</li>
+      <li><b>New: Volume Average indicator.</b> An SMA or EMA line drawn on
+        the volume panel, with an optional highlight on bars that are a
+        chosen multiple of the average (volume spikes).</li>
+      <li><b>New: overbought / oversold colours.</b> RSI, Stochastic,
+        Stochastic RSI, MFI, Connors RSI, Williams %R and CCI change
+        colour exactly where they cross the overbought or oversold
+        level, with optional shaded zones. Levels and colours are yours
+        to set in Edit Indicators.</li>
+      <li><b>Indicators:</b> add the same indicator more than once - for
+        example two RSIs or three moving averages - each with its own
+        settings and colour (shown as RSI #2, RSI #3).</li>
+      <li><b>Drawing tools on every panel:</b> trend lines, levels and
+        other drawings now work on the volume panel, oscillators and the
+        Data2/Data3 panels, not just the price chart.</li>
+      <li><b>Honest backtests:</b> a note on survivorship bias now appears
+        on the Basket, Performance Report and Optimize - today's index
+        lists leave out stocks that were dropped or delisted, which can
+        make past results look better than they were.</li>
+    </ul>
+    </div>
+  </details>
+
+  <details class="relnote">
+    <summary class="relnote-summary">
+      <div class="relnote-summary-text">
+        <h3>v0.25</h3>
         <div class="date">Released October 2026</div>
       </div>
       <span class="relnote-toggle" aria-hidden="true">+</span>
